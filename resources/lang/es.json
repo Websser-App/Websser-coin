@@ -65,7 +65,7 @@
     "Vouchers": "Comprobantes",
     "Amount": "Monto",
     "Departaments": "Departamentos",
-    "ID Bulding": "Identificador de edificios",
+    "ID Bulding": "ID de edificios",
     "ID departament": "Identificador de departamento",
     "Departament Number": "Numero de departamento",
     "Nombre del inquilino": "Tenant name",
@@ -138,6 +138,7 @@
     "Choose spending concept": "Elige el concepto de gasto",
     "PDF generated successfully": "PDF generado con exito",
     "Expense report": "Reporte de gasto",
-    "Fields preceded by a * are required":"Los campos precedidos de un * son obligatorios"
+    "Fields preceded by a * are required":"Los campos precedidos de un * son obligatorios",
+    "Complete your registration": "Completa tu registro"
     
 }

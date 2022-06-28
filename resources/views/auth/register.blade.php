@@ -11,7 +11,7 @@
                     <div class="card-body px-lg-5 py-lg-5">
                         <center>
                             <a class="navbar-brand" href="{{ route('inicio') }}">
-                                <img height="80px" width="80px" src="{{ asset('argon') }}/img/brand/white.png" />
+                                <img height="80px" width="80px" src="{{ asset('argon') }}/img/brand/blue.png" />
                             </a>
                         </center>
                         <br>

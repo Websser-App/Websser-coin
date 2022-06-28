@@ -79,7 +79,7 @@
                         <div class="form-check form-check-inline{{ $errors->has('name') ? ' has-danger' : '' }}">
                             <input  type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Horizontal') }}" value="horizontal"   autofocus>
                             <label class="form-check-label" for="input-name">{{ __('Horizontal') }}</label>
-                            <img src="{{ asset('argon') }}/img/h.png" width="300" class="mt--4 p-3"> <br>
+                            <img src="{{ asset('argon') }}/img/h.png" width="350" class="mt-2"> <br>
                             
                             @if ($errors->has('name'))
                             <span class="invalid-feedback" role="alert">

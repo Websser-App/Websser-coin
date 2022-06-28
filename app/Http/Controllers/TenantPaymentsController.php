@@ -164,9 +164,11 @@ class TenantPaymentsController extends Controller
             ]);
 
             $bills = Bills::find($request->bill_id);
-            $tenants = Tenants::join('depataments', 'depataments.id', 'tenants.depatament_id')->select('tenants.*', 'depataments.building_id')->where('depataments.building_id', $bills->building_id)->get();
             $sumAmounts = TenantPayments::where('bills_id', $bills->id)->where('buildings_id', $bills->building_id)->where('isActive', 1)->sum('amount');
-            $tenantPayments = TenantPayments::where('bills_id', $bills->id)->where('buildings_id', $bills->building_id)->get();
+            $tenants = Tenants::leftjoin('tenant_payments', function($query) use($bills){
+                $query->on('tenant_payments.tenants_id', 'tenants.id');
+                $query->where('tenant_payments.bills_id', $bills->id);
+            })->where('tenants.building_id', $bills->building_id)->select('tenants.*','tenant_payments.*', 'tenant_payments.id as payments_id')->get();
             view()->share ('bills', $bills);
             view()->share('tenants', $tenants);
             view()->share('sumAmounts', $sumAmounts);

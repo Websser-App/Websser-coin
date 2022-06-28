@@ -2,7 +2,7 @@
 <html lang="en" style="margin: 30px 10px">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Pago de gastos</title>
+    <title>Reporte de gastos</title>
 </head>
 <body >
     <div style="width: 100%; height: 97%; background-color: #FFFFFF; border-radius: 5px; border: 1px solid #000000;">
@@ -10,45 +10,29 @@
             <div class="table-responsive" style="margin-top: -25px">
                 <table style="width: 100%; text-align: center; font-family: Arial, Helvetica, sans-serif; padding: 0 5px; margin-top: 0">
                     <thead  style="border-bottom: 1px solid #000000">
-                        <tr>
-                            <th>Edificio</th>
-                            <th>Departamento</th>
-                            <th>Nombre de inquilino</th>
-                            <th>Nombre de gasto</th>
-                            <th>Monto</th>
-                            <th>Actividad</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($tenants as $tenant) 
-                            @if(!$tenant->tenantPayments)
                             <tr>
-                                <td>{{$tenant->departaments->UUID}}</td>
+                                <th scope="col">@lang('Departament')</th>
+                                <th scope="col">@lang('Tenant name')</th>
+                                <th scope="col">@lang('Expense name')</th>
+                                <th scope="col">@lang('Amount')</th>
+                                <th scope="col">@lang('IsActive')</th>
+
+
+                            </tr>
+                        </thead>
+                        @foreach($tenants as $tenant)
+                            <tr>
                                 <td>{{$tenant->departaments->number_departament}}</td>
                                 <td>{{$tenant->name}} {{$tenant->surname}} {{$tenant->second_surname}}</td>
                                 <td>{{$bills->name}}</td>
-                                <td>$0</td>
-                                <td class="bg-danger">@lang('Not payed')</td>
-                            </tr>
-                            @elseif($tenant->tenantPayments->bills == $bills)
-                                <tr>
-                                    <td>{{$tenant->tenantPayments->buildings->UUID}}</td>
-                                    <td>{{$tenant->tenantPayments->departaments->number_departament}}</td>
-                                    <td>{{$tenant->tenantPayments->tenants->name}} {{$tenant->tenantPayments->tenants->surname}} {{$tenant->tenantPayments->tenants->second_surname}}</td>
-                                    <td>{{$tenant->tenantPayments->bills->name}}</td>
-                                    <td>${{getAmount($tenant->tenantPayments->amount,2)}}</td>
+                                @if($tenant->amount)
+                                    <td>${{getAmount($tenant->amount,2)}}</td>
                                     <td class="bg-success">@lang('Paid')</td>
-                                </tr>    
-                            @else
-                                <tr>
-                                    <td>{{$tenant->departaments->UUID}}</td>
-                                    <td>{{$tenant->departaments->number_departament}}</td>
-                                    <td>{{$tenant->name}} {{$tenant->surname}} {{$tenant->second_surname}}</td>
-                                    <td>{{$bills->name}}</td>
+                                @elseif(!$tenant->amount || $tenant->amount == 0)
                                     <td>$0</td>
                                     <td class="bg-danger">@lang('Not payed')</td>
-                                </tr>
-                            @endif
+                                @endif
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
