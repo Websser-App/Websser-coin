@@ -3,7 +3,6 @@
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"> --}}
     <style>
         .row{
-            width: auto;
             display: flex;
             grid-template-columns: repeat(3, auto);
             padding: 0 40px;
@@ -11,7 +10,7 @@
             align-items: center;
         }
         .dataTables_length > label{
-            width: auto;
+            width: 99%;
             display: contents;
             grid-template-columns: repeat(3, auto);
             padding: 25px 50px;
@@ -19,7 +18,7 @@
             align-items: center;
         }
         .dataTables_filter > label{
-            width: auto;
+            width: 99%;
             display: contents;
             grid-template-columns: repeat(2, auto);
             padding: 25px 50px;
@@ -27,7 +26,7 @@
             align-items: center;
         }
         .dataTables_paginate {
-            width: auto;
+            width: 99%;
             margin-top: 1px;
             display: flex;
             justify-content: center;

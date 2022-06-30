@@ -3,6 +3,16 @@
 @section('content')
 @include('layouts.headers.page')
 <div class="container-fluid mt-7">
+    <style>
+        .row{
+            width: 99%;
+            display: flex;
+            grid-template-columns: repeat(3, auto);
+            padding: 0 40px;
+            gap: 0px;
+            align-items: center;
+        }
+    </style>
     <div class="row">
         <div class="col">
             <div class="card shadow">

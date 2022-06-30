@@ -1,11 +1,20 @@
 @extends('layouts.app')
-
 @section('content')
 @include('layouts.headers.page')
-<div class="container-fluid mt-7">
-    <div class="row">
-        <div class="col">
-            <div class="card">
+<style>
+    .row{
+        width: 99%;
+        display: flex;
+        grid-template-columns: repeat(3, auto);
+        padding: 0 40px;
+        gap: 0px;
+        align-items: center;
+    }
+</style>
+<div class="container-lg mt-7">
+    <div class="card">
+        <div class="row">
+            <div class="col">
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col-8">
@@ -17,14 +26,14 @@
                     </div>
                 </div>
                 
-                                        @if(Session::has('message'))
-                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                            {{ Session::get('message') }}
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                    @endif
+                @if(Session::has('message'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ Session::get('message') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
 
                 <div class="table-responsive">
                     <table id="tablelist" class="table align-items-center table-flush">
@@ -56,7 +65,7 @@
                             <td class="text-right">
                                 <button title="@lang('Address')" type="button" class="btn btn-sm text-primary" data-bs-toggle="modal"  data-bs-target="#assignModal{{ $building->id }}" data-id="{{ $building->id }}">
                                     <i class="ni ni-square-pin"></i>
-                                  </button>
+                                </button>
                                 <a title="@lang('Departaments')" href="{{route('departaments.create', $building->id)}}" class="btn btn-sm text-primary">
                                     <i class="ni ni-building"></i>
                                 </a>
@@ -75,6 +84,25 @@
                                 </div>
                             </td>
                         </tr>
+                        <!-- Modal -->
+                        <div class="modal fade" id="assignModal{{ $building->id }}" tabindex="-1" role="dialog" aria-labelledby="assignModal{{ $building->id }}" aria-hidden="true">
+                            <div class="modal-dialog modalSize">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="assignModal{{ $building->id }}">@lang('Address')</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <center>
+                                            <h5>{{$building->address}}</h5>
+                                        </center>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('Close')</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
                     </tbody>
                 </table>

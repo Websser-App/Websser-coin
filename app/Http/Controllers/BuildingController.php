@@ -65,7 +65,7 @@ class BuildingController extends Controller
 
             return redirect('building')->with('message', __('Building added successfully'));
         } catch (\Exception $e) {
-            return redirect('')->with('message',$e->getMessage());
+            return redirect()->back()->with('message',__('Complete all the fields'));
         }
     }
 

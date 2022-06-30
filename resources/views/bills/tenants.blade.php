@@ -2,6 +2,16 @@
 
 @section('content')
 @include('layouts.headers.page')
+<style>
+    .row{
+        width: 99%;
+        display: flex;
+        grid-template-columns: repeat(3, auto);
+        padding: 0 40px;
+        gap: 0px;
+        align-items: center;
+    }
+</style>
 <div class="container-fluid mt-7">
     <div class="row">
         <div class="col">
@@ -68,7 +78,7 @@
                                                         @csrf
                                                         <div class="col-md-6">
                                                             <label for="amount" class="form-label text-center">@lang('Amount')</label>
-                                                            <input type="text" class="form-control text-center" id="amount" name="amount" placeholder="@lang('Amount')" required>
+                                                            <input type="text" class="form-control text-center" id="amount" name="amount" value="0" placeholder="@lang('Amount')" readonly required>
                                                         </div>
                                                         <div class="text-center">
                                                             <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
@@ -77,7 +87,7 @@
                                                 </center>
                                             </div>
                                             <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('Close')</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('Close')</button>
                                             </div>
                                         </div>
                                         </div>
@@ -106,7 +116,7 @@
                                                         <input type="hidden" name="bills_id" value="{{$bills->id}}">
                                                         <div class="col-md-6">
                                                             <label for="amount" class="form-label text-center">@lang('Amount')</label>
-                                                            <input type="text" class="form-control text-center" id="amount" name="amount" placeholder="@lang('Amount')" required>
+                                                            <input type="text" class="form-control text-center" id="amount" name="amount" value="{{$bills->amount}}" placeholder="@lang('Amount')" required readonly>
                                                         </div>
                                                         <div class="text-center">
                                                             <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>

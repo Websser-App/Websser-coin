@@ -31,11 +31,9 @@
     @foreach($bills as $bill)
     <div class="col-sm-3">
         <a href="{{route('bills.tenants', $bill->id )}}" class="card">
-            <img src="https://www.freeiconspng.com/thumbs/list-icon/to-do-list-icon-buy-this-icon-for--0-48-1.png" width="auto" height=auto alt="">
+            <img src="{{asset('argon')}}\img\concepgastos.png" width="auto" height=auto alt="">
           <div class="card-body">
             <h5 class="card-title">@lang('Information')</h5>
-            <strong><b> @lang('ID Bulding'):</b></strong>
-            <p class="card-text">{{$bill->buildings->UUID}}</p>
             <strong><b> @lang('Name'):</b></strong>
             <p class="card-text">{{$bill->name}}</p>
             <strong><b>@lang('Amount'):</b></strong>

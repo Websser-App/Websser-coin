@@ -28,7 +28,7 @@
                             <center>
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">@lang('Propietarios')</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">@lang('Inquilinos')</h5>
                                         <span class="h2 font-weight-bold mb-0">{{$tenants}}</span>
                                     </div>
                                     <div class="col">
@@ -48,7 +48,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <h5 class="card-title text-uppercase text-muted mb-0">@lang('Pagos')</h5>
-                                        <span class="h2 font-weight-bold mb-0">${{getAmount($payments,2)}}</span>
+                                        <span class="h2 font-weight-bold mb-0">${{getAmount($payments,0)}}</span>
                                     </div>
                                     <div class="col">
                                         <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -67,8 +67,8 @@
                                 <div class="row">
                                     <div class="col">
                                         <h5 class="card-title text-uppercase text-muted mb-0">@lang('Departamentos')</h5>
-                                        <span class="h2 font-weight-bold mb-0">{{$departaments}}</span>
                                     </div>
+                                    <span class="h2 font-weight-bold mb-0">{{$departaments}}</span>
                                     <div class="col">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow">
                                             <i class="fas fa-percent"></i>

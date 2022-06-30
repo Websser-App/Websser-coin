@@ -43,10 +43,10 @@
                                             <div class="row">
                                                 <input type="text" name="address" class="form-control" placeholder="@lang('Address')" id="input-address" readonly required/>
                                                 <div class="col-6">
-                                                    <input type="text" name="latitude" class="form-control" placeholder="@lang('Latitude')" id="latitude" readonly required/>
+                                                    <input type="hidden" name="latitude" class="form-control" placeholder="@lang('Latitude')" id="latitude" readonly required/>
                                                 </div>
                                                 <div class="col-6">    
-                                                    <input type="text" name="longitude" class="form-control" placeholder="{{__('Longitude')}}" id="longitude" readonly required/>
+                                                    <input type="hidden" name="longitude" class="form-control" placeholder="{{__('Longitude')}}" id="longitude" readonly required/>
                                                 </div>
                                             </div>
                                             
@@ -65,7 +65,7 @@
                 <center>
                 <div class="pl-lg-4">
                         <div  class="form-check form-check-inline{{ $errors->has('name') ? ' has-danger' : '' }}">
-                            <input type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Vertical') }}"  value="vertical"  autofocus>
+                            <input type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Vertical') }}"  value="vertical" required autofocus>
                             <label class="form-check-label" for="input-name">{{ __('Vertical') }}</label>
                             <img src="{{ asset('argon') }}/img/v.png" width="300 " class="p-1">
                             
@@ -77,7 +77,7 @@
                         </div>
                         
                         <div class="form-check form-check-inline{{ $errors->has('name') ? ' has-danger' : '' }}">
-                            <input  type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Horizontal') }}" value="horizontal"   autofocus>
+                            <input  type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Horizontal') }}" value="horizontal" required  autofocus>
                             <label class="form-check-label" for="input-name">{{ __('Horizontal') }}</label>
                             <img src="{{ asset('argon') }}/img/h.png" width="350" class="mt-2"> <br>
                             
@@ -133,7 +133,7 @@
     var infowindow = new google.maps.InfoWindow();
     function initialize() {
         var mapOptions = {
-        zoom: 3,
+        zoom: 10,
         center: myLatlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
         };

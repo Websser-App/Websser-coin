@@ -78,10 +78,10 @@ class BillsController extends Controller
                 'amount' => 'required',
             ]);
 
-                
+                $bills = Bills::find($request->bills_id);
                 if($request->payments_id){
                     $tenantpayments = TenantPayments::find($request->payments_id);
-                    $tenantpayments->amount = $request->amount;
+                    $tenantpayments->amount = $bills->amount;
                     $tenantpayments->save();
                 } else {
                     $departaments = Depataments::find($id);
@@ -90,7 +90,7 @@ class BillsController extends Controller
                     $tenantpayments->depataments_id  = $departaments->id;
                     $tenantpayments->tenants_id  = $departaments->tenants->id;
                     $tenantpayments->bills_id  = $request->bills_id;
-                    $tenantpayments->amount = $request->amount;
+                    $tenantpayments->amount = $bills->amount;
                     $tenantpayments->save();
                 }  
         return redirect()->route('bills.tenants', $request->bills_id)->with('message', __('The payment was accepted successfully'));

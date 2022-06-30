@@ -151,7 +151,7 @@ class TenantPaymentsController extends Controller
                 'building_id' => 'required',
             ]);
         $bills = Bills::where('building_id', $request->building_id)->get();
-        return view('tenantpayments.chooseBills')->with('bills', $bills);
+        return view('TenantPayments.chooseBills')->with('bills', $bills);
         } catch (\Exception $e) {         
             return redirect('tenantpayments')->with('message',$e->getMessage());
         }
