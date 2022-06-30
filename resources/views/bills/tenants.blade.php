@@ -22,6 +22,12 @@
                             <h3 class="mb-0">{{__('List of expense payments')}}</h3>
                             {{-- <a href="{{ route('tenantpayments.create')}}" class="btn btn-sm btn-primary mt-3 text-center">{{ __('Create expense payment') }}</a> --}}
                         </div>
+                        <div class="card-footer py-4">
+                            <nav class="d-flex justify-content-end" aria-label="...">
+                            <h3 style="width: 98%; text-align: right; font-family: Arial, Helvetica, sans-serif; margin:0; padding:0;">Total a pagar: ${{getAmount((($bills->amount * $tenantsCount)-$tenantsSum), 2)}}</h4>
+                                
+                            </nav>
+                        </div>
                     </div>
                 </div>
                 

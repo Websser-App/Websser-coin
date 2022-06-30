@@ -69,7 +69,15 @@ class BillsController extends Controller
             $query->on('tenant_payments.tenants_id', 'tenants.id');
             $query->where('tenant_payments.bills_id', $bills->id);
         })->where('tenants.building_id', $bills->building_id)->select('tenants.*','tenant_payments.*', 'tenant_payments.id as payments_id')->get();
-        return view('bills.tenants')->with('tenants', $tenants)->with('bills', $bills);
+        $tenantsCount = count(Tenants::leftjoin('tenant_payments', function($query) use($bills){
+            $query->on('tenant_payments.tenants_id', 'tenants.id');
+            $query->where('tenant_payments.bills_id', $bills->id);
+        })->where('tenants.building_id', $bills->building_id)->select('tenants.*','tenant_payments.*', 'tenant_payments.id as payments_id')->get());
+        $tenantsSum = Tenants::leftjoin('tenant_payments', function($query) use($bills){
+            $query->on('tenant_payments.tenants_id', 'tenants.id');
+            $query->where('tenant_payments.bills_id', $bills->id);
+        })->where('tenants.building_id', $bills->building_id)->select('tenants.*','tenant_payments.*', 'tenant_payments.id as payments_id')->get()->sum('amount');
+        return view('bills.tenants')->with('tenants', $tenants)->with('bills', $bills)->with('tenantsCount', $tenantsCount)->with('tenantsSum', $tenantsSum);
     }
 
     public function paid(Request $request, $id){
