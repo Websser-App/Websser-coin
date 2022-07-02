@@ -19,6 +19,12 @@
                     @for ($i = 0; $i < $inputsDepartaments; $i++)
                         <div class="col-md-4">
                             <label for="number_departament" class="form-label">@lang('Departament Number')</label>
+                            <select class="form-select" aria-label="Default select example" name="buildings_row[]">
+                                <option selected disabled>@lang('Choose the floor number')</option>
+                                @for ($j = 1; $j <= $buildings->rows; $j++)
+                                    <option value="{{$j}}">{{$j}}</option>
+                                @endfor
+                            </select><br>
                             <input type="text" class="form-control" id="number_departament" name="number_departament[]" placeholder="@lang('Departament Number')" required>
                         </div>
                     @endfor
@@ -27,14 +33,26 @@
                         @if($departament->number_departament != NULL )
                             <div class="col-md-4">
                                 <label for="number_departament" class="form-label">@lang('Departament Number')</label>
+                                <select class="form-select" aria-label="Default select example" name="buildings_row[]">
+                                    <option selected disabled>@lang('Choose the floor number')</option>
+                                    @for ($j = 1; $j <= $buildings->rows; $j++)
+                                        <option value="{{$j}}">{{$j}}</option>
+                                    @endfor
+                                </select><br>
                                 <input type="text" class="form-control" id="number_departament" name="number_departament[]" placeholder="@lang('Departament Number')" value="{{$departament->number_departament}}" required disabled>
                             </div>
                         @endif  
                     @endforeach
                     @for ($i = $index+1; $i < $inputsDepartaments; $i++)
                         @if($index !=  $inputsDepartaments)
-                            <div class="col-md-4">
+                        <div class="col-md-4">
                                 <label for="number_departament" class="form-label">@lang('Departament Number')</label>
+                                <select class="form-select" aria-label="Default select example" name="buildings_row[]">
+                                    <option selected disabled>@lang('Choose the floor number')</option>
+                                    @for ($j = 1; $j <= $buildings->rows; $j++)
+                                        <option value="{{$j}}">{{$j}}</option>
+                                    @endfor
+                                </select><br>
                                 <input type="text" class="form-control" id="number_departament" name="number_departament[]" placeholder="@lang('Departament Number')" required>
                             </div>
                         @endif

@@ -132,9 +132,11 @@ class BillsController extends Controller
      * @param  \App\Models\Bills  $bills
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bills $bills)
+    public function edit($id)
     {
-        //
+        $bills = Bills::find($id);
+        $buildings = Building::all();
+        return view('bills.edit')->with('bills', $bills)->with('buildings', $buildings);
     }
 
     /**
@@ -144,9 +146,24 @@ class BillsController extends Controller
      * @param  \App\Models\Bills  $bills
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bills $bills)
+    public function update(Request $request, $id)
     {
-        //
+        try {
+            $this->validate($request, [
+                'name' => 'required',
+                'amount' => 'required',
+            ]);
+        $bills = Bills::find($id);
+        if($request->building_id){
+            $bills->building_id = $request->building_id;
+        }
+        $bills->name = $request->name;
+        $bills->amount = $request->amount;
+        $bills->save();
+        return redirect('bills')->with('message', __('Expenses Updated successfully'));
+        } catch (\Exception $e) {
+            return  redirect('bills')->with('message',$e->getMessage());
+        }
     }
 
     /**
@@ -155,8 +172,10 @@ class BillsController extends Controller
      * @param  \App\Models\Bills  $bills
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bills $bills)
+    public function destroy($id)
     {
-        //
+        $bills = Bills::find($id);
+        $bills->delete();
+        return redirect('bills')->with('message', __('Successfully removed expenses'));
     }
 }

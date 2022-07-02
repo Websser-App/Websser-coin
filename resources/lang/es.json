@@ -32,6 +32,8 @@
     "All rights reserved.":  "Todos los derechos reservados.",
     "User logged out successfully": "Usuario desconectado con éxito",
     "Expenses added successfully": "Gastos añadidos con éxito",
+    "Expenses Updated successfully": "Gastos actualizados con éxito",
+    "Successfully removed expenses": "Gasto eliminado con extio",
     "Building added successfully": "Edificio añadido con éxito",
     "Successfully Updated building": "Edificio actualizado con éxito",
     "Successfully removed building": "Edificio eliminado con éxito",
@@ -140,6 +142,7 @@
     "Expense report": "Reporte de gasto",
     "Fields preceded by a * are required":"Los campos precedidos de un * son obligatorios",
     "Complete your registration": "Completa tu registro",
-    "Complete all the fields": "Completa todos los campos"
+    "Complete all the fields": "Completa todos los campos",
+    "Choose the floor number": "Escoge el numero de piso"
     
 }

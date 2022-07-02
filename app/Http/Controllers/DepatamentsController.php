@@ -58,16 +58,18 @@ class DepatamentsController extends Controller
         try {
             $this->validate($request, [
                 'building_id' => 'required',
+                'buildings_row' => 'required', '[]',
                 'number_departament' => 'required', '[]',
 
             ]);
             $buildings = Building::find($request->building_id);
 
             if ( $request->number_departament ) {
-                foreach($request->number_departament as $departaments){
+                foreach(array_combine($request->number_departament, $request->buildings_row) as $departaments => $key){
                     $departament = new Depataments;
                     $departament->UUID = uniqid();
                     $departament->building_id = $buildings->id;
+                    $departament->floor = $key;
                     $departament->number_departament = $departaments;
                     $departament->save();
                 }

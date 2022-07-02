@@ -43,7 +43,7 @@ route::get('tenants/{id}/create', 'TenantsController@create')->name('tenants.cre
 Route::resource('departaments', 'DepatamentsController')->except('create','destroy','edit', 'update');
 route::get('departaments/{id}/create', 'DepatamentsController@create')->name('departaments.create');
 
-Route::resource('bills', 'BillsController')->except('show','destroy','edit', 'update');
+Route::resource('bills', 'BillsController')->except('show');
 Route::get('bills/tenants/{id}', 'BillsController@tenants')->name('bills.tenants');
 Route::post('bills/tenants/paid/{id}', 'BillsController@paid')->name('bills.paid');
 Route::post('bills/tenants/notPayed/{id}', 'BillsController@notPayed')->name('bills.notPayed');

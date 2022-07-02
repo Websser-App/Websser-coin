@@ -29,19 +29,35 @@
     @endif
 
     @foreach($bills as $bill)
-    <div class="col-sm-3">
-        <a href="{{route('bills.tenants', $bill->id )}}" class="card">
-            <img src="{{asset('argon')}}\img\concepgastos.png" width="auto" height=auto alt="">
-          <div class="card-body">
-            <h5 class="card-title">@lang('Information')</h5>
-            <strong><b> @lang('Name'):</b></strong>
-            <p class="card-text">{{$bill->name}}</p>
-            <strong><b>@lang('Amount'):</b></strong>
-            <p class="card-text">${{getAmount($bill->amount, 2)}}</p>
-
-          </div>
-        </a>
-      </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <img src="{{asset('argon')}}\img\concepgastos.png" width="auto" height=auto alt="">
+                <div align="right"> 
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="{{route('bills.edit', $bill->id )}}">{{__('Edit')}}</a>
+                            <form action="{{route('bills.destroy', $bill->id )}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" class="dropdown-item" value="{{__('Delete')}}">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <a href="{{route('bills.tenants', $bill->id )}}" class="card-body">
+                    <h5 class="card-title">@lang('Information')</h5>
+                    <strong><b> @lang('Name'):</b></strong>
+                    <p class="card-text">{{$bill->name}}</p>
+                    <strong><b>@lang('Amount'):</b></strong>
+                    <p class="card-text">${{getAmount($bill->amount, 2)}}</p>
+                </a>
+                {{-- <div class="card-footer text-muted">
+                </div> --}}
+            </div>
+        </div>
     @endforeach
     </div>
     @include('layouts.footers.auth')
