@@ -39,10 +39,10 @@
         <div class="navbar-brand pt-0">
             <div class = "mb-3"></div>
             <span class="avatar avatar-sm rounded-circle" style=" margin-right: 80%;">
-                <a href="#">
+                <a href="{{url('packages')}}">
                     <i class="iconos ni ni-settings-gear-65 text-black conf " style=""></i>
                 </a>
-                <a href="/profile">
+                <a href="{{url('profile')}}">
                     <img alt="Image placeholder"    src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg" class= "">
                 </a>
                 
