@@ -5,9 +5,9 @@
 <div class="container-fluid mt-7">
     <style>
         .buttons{
-            width:100%;
+            width:40%;
             height: 40%;
-            font-size: 90%;
+            font-size: 140%;
         }
         .row{
             width: 99%;

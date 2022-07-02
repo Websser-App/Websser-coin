@@ -70,39 +70,39 @@
                 <li class="nav-item">
                     <a class="nav-link text-black"  href="{{ url('home') }}">
                         <i class="iconos ni ni-chart-bar-32 text-black " style="font-size: 30px;"></i> 
-                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 20px;">{{ __('Dashboard') }}</span>
+                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 140%;">{{ __('Dashboard') }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-black" href="{{ url('building') }}">
                         <i class="ni ni-building text-black" style="font-size: 30px; font-size: 30px;"></i> 
-                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 20px;">{{ __('Entity') }}</span>
+                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 140%;">{{ __('Entity') }}</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
                         <i class="ni ni-money-coins text-black" style="color: #f4645f; font-size: 30px;"></i>
-                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 20px;">{{ __('Expenses') }}</span>
+                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 140%;">{{ __('Expenses') }}</span>
                     </a>
 
                     <div class="collapse" id="navbar-examples">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link font-size: 30px;" href="{{ url('bills') }}">
-                                <span class="nav-link-text text-black" style="color: #f4645f; font-size: 20px;"> {{ __('Expenses') }}</span>
+                                <span class="nav-link-text text-black" style="color: #f4645f; font-size: 140%;"> {{ __('Expenses') }}</span>
                                    
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link font-size: 30px;" href="{{ url('tenantpayments') }}">
-                                <span class="nav-link-text text-black" style="color: #f4645f; font-size: 20px;">{{ __('Expense report') }}</span>
+                                <span class="nav-link-text text-black" style="color: #f4645f; font-size: 140%;">{{ __('Expense report') }}</span>
                                     
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link font-size: 30px;" href="{{ route('tenantpayments.wallet') }}">
-                                <span class="nav-link-text text-black" style="color: #f4645f; font-size: 20px;"> {{ __('Wallet') }}</span>
+                                <span class="nav-link-text text-black" style="color: #f4645f; font-size: 140%;"> {{ __('Wallet') }}</span>
                                    
                                 </a>
                             </li>
@@ -113,7 +113,7 @@
                     <a href="{{ route('logout') }}" class="nav-link text-black" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         <i class="ni ni-user-run" style="font-size: 30px; "></i>
-                        <span font-size: 30px; style=" font-size: 20px;">{{ __('Logout') }}</span>
+                        <span font-size: 30px; style=" font-size: 140%;">{{ __('Logout') }}</span>
                     </a>
                 </li>
             </ul>

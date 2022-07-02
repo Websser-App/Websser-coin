@@ -1,3 +1,10 @@
+<style>
+    .centrar{
+        justify-content: center;
+        text-align:center;
+    }
+</style>
+
 <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
     <div class="container-fluid">
         <div class="header-body">
@@ -8,11 +15,11 @@
                         <div class="card-body">
                             <center>
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="row">
                                         <h5 class="card-title text-uppercase text-muted mb-0">@lang('Buildings')</h5>
                                         <span class="h2 font-weight-bold mb-1">{{$buildings}}</span>
                                     </div>
-                                    <div class="col">
+                                    <div class="row centrar" >
                                         <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
                                             <i class="fas fa-chart-bar"></i>
                                         </div>
@@ -27,11 +34,11 @@
                         <div class="card-body">
                             <center>
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="row">
                                         <h5 class="card-title text-uppercase text-muted mb-0">@lang('Inquilinos')</h5>
                                         <span class="h2 font-weight-bold mb-0">{{$tenants}}</span>
                                     </div>
-                                    <div class="col">
+                                    <div class="row centrar">
                                         <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
                                             <i class="fas fa-users"></i>
                                         </div>
@@ -46,11 +53,11 @@
                         <div class="card-body">
                             <center>
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="row ">
                                         <h5 class="card-title text-uppercase text-muted mb-0">@lang('Pagos')</h5>
                                         <span class="h2 font-weight-bold mb-0">${{getAmount($payments,0)}}</span>
                                     </div>
-                                    <div class="col">
+                                    <div class="row centrar">
                                         <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
                                             <i class="fas fa-chart-pie"></i>
                                         </div>
@@ -65,11 +72,12 @@
                         <div class="card-body">
                             <center>
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="row">
                                         <h5 class="card-title text-uppercase text-muted mb-0">@lang('Departamentos')</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{$departaments}}</span>
                                     </div>
-                                    <span class="h2 font-weight-bold mb-0">{{$departaments}}</span>
-                                    <div class="col">
+                                    
+                                    <div class="row centrar">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow">
                                             <i class="fas fa-percent"></i>
                                         </div>
