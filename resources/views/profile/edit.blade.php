@@ -2,8 +2,8 @@
 
 @section('content')
     @include('users.partials.header', [
-        'title' => __('Hello') . ' '. auth()->user()->name,
-        'description' => __('This is your profile page. You can see the progress you\'ve made with your work and manage your projects or assigned tasks'),
+        'title' => __('BIENVENIDO') . ' '. auth()->user()->name,
+        'description' => __(''),
         'class' => 'col-lg-7'
     ])   
 
@@ -12,21 +12,37 @@
             <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
                 <div class="card card-profile shadow">
                     <div class="row justify-content-center">
+                        
                         <div class="col-lg-3 order-lg-2">
                             <div class="card-profile-image">
-                                <a href="#">
-                                    <img src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                
+                                <a href="/home">
+                                    <img src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg" class="rounded-circle mb-3">
+                                    
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+                        <!---
                         <div class="d-flex justify-content-between">
                             <a href="#" class="btn btn-sm btn-info mr-4">{{ __('Connect') }}</a>
                             <a href="#" class="btn btn-sm btn-default float-right">{{ __('Message') }}</a>
                         </div>
+                        -->
                     </div>
                     <div class="card-body pt-0 pt-md-4">
+                    <div class="row">
+                            <div class="col">
+                                <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                                    <div>
+                                        <h2><label  style = "color = #000; font-weight:500; font-size: 150%; text-shadow: 2px 2px 3px;" >{{ old('name', auth()->user()->name) }}</label></h2>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!--
                         <div class="row">
                             <div class="col">
                                 <div class="card-profile-stats d-flex justify-content-center mt-md-5">
@@ -62,7 +78,9 @@
                             <p>{{ __('Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.') }}</p>
                             <a href="#">{{ __('Show more') }}</a>
                         </div>
+                        -->
                     </div>
+                    <label value="{{ old('name', auth()->user()->name) }}" ></label>
                 </div>
             </div>
             <div class="col-xl-8 order-xl-1">
@@ -73,7 +91,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('profile.update') }}" autocomplete="off">
+                        <form method="post" action="" autocomplete="off">
                             @csrf
                             @method('put')
 
@@ -111,13 +129,38 @@
                                     @endif
                                 </div>
 
+                                <div class="form-group{{ $errors->has('country') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-email">{{ __('Country') }}</label><!--- Sin traducidrrrrrrrr-->
+                                    <input type="text" name="country" id="input-country" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('contry') }}" value="{{ old('email', auth()->user()->country) }}" required>
+
+                                    @if ($errors->has('email'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('country') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-name">{{ __('Phone') }}</label>
+                                    <input type="text" name="phone" id="input-phone" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('phone') }}" value="{{ old('name', auth()->user()->phone) }}" required autofocus>
+
+                                    @if ($errors->has('name'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <!-- 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
                                 </div>
+                                -->
                             </div>
-                        </form>
+                        <!---</form>-->
                         <hr class="my-4" />
-                        <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
+
+                        <!--<form method="post" action="{}" autocomplete="off">--->
                             @csrf
                             @method('put')
 
@@ -159,7 +202,7 @@
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-success mt-4">{{ __('Change password') }}</button>
+                                    <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
                                 </div>
                             </div>
                         </form>

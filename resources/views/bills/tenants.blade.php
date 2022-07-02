@@ -3,6 +3,11 @@
 @section('content')
 @include('layouts.headers.page')
 <style>
+    .buttons{
+        width:270px;
+        height: 40px;
+        font-size: 55px;
+    }
     .row{
         width: 99%;
         display: flex;
@@ -19,7 +24,7 @@
                 <div class="card-header border-0">
                     <div class="row">
                         <div class="col-8">
-                            <h3 class="mb-0">{{__('List of expense payments')}}</h3>
+                            <h3 class="mb-0">{{__('List of expense payments')}} sss</h3>
                             {{-- <a href="{{ route('tenantpayments.create')}}" class="btn btn-sm btn-primary mt-3 text-center">{{ __('Create expense payment') }}</a> --}}
                         </div>
                         <div class="card-footer py-4">
