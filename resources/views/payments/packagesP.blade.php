@@ -12,7 +12,7 @@
 
     .paquetes{
         border-radius: 20px;
-        width: 30%;
+        width: 100%;
         margin-left: 5px;
         margin-right: 5px;
         background: linear-gradient(to  right bottom, #5e6afb, #c2e8fe);
@@ -32,7 +32,9 @@
     }
     .contenerdor2{
         display: grid;
-        
+        gap: 1rem;
+        grid-auto-rows: 22rem;
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
         
     }
     .descripcion{
