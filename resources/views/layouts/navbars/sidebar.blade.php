@@ -2,6 +2,32 @@
     i{
         font-size: 30px;
     }
+    .conf{
+        font-size: 35px;
+        position: absolute;
+        top: 18%;
+    }
+    .avatar{
+        width: 80%; 
+        height: 80%;
+    }
+    @media only screen and (max-width: 767px) {
+        .conf{
+            font-size: 20px;
+            position: absolute;
+            top: 160%;
+            right: 83%;
+        }
+        .avatar{
+        width: 20%; 
+        height: 20%;
+        margin-right: 80%;
+        position: absolute;
+        right:-75%;
+        top: 40%;
+        }
+        
+    }
 </style>
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
     <div class="container-fluid">
@@ -11,11 +37,15 @@
         </button>
         <!-- Brand -->
         <div class="navbar-brand pt-0">
-        <div class = "mb-3"></div>
-            <span class="avatar avatar-sm rounded-circle">
-                <a href="/profile">
-                    <img alt="Image placeholder" style="width: 200%; height: 200%;" width="60"  src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg" class= "mb-2">
+            <div class = "mb-3"></div>
+            <span class="avatar avatar-sm rounded-circle" style=" margin-right: 80%;">
+                <a href="#">
+                    <i class="iconos ni ni-settings-gear-65 text-black conf " style=""></i>
                 </a>
+                <a href="/profile">
+                    <img alt="Image placeholder"    src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg" class= "">
+                </a>
+                
             </span> <br></br>
             <div class="media-body ml-2 d-none d-lg-inline">
                 <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->name }}</span> 
