@@ -3,6 +3,13 @@
 @section('content')
     @include('layouts.headers.page') 
 <style>
+
+    @media only screen and (max-width: 520px) {
+        .contenerdor2 {
+            display: block flow;
+        }
+    }
+
     .paquetes{
         border-radius: 20px;
         width: 30%;
@@ -24,8 +31,8 @@
         border-bottom: 1px solid #a7b3af;
     }
     .contenerdor2{
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        
         
     }
     .descripcion{
@@ -66,6 +73,7 @@
         <div class="contenedor" >
             <h1 style= "color: #000; margin-bottom: 5%; font-size: 50px; font-family: serif;">Elige tu plan de precios</h1>
             <div  class="contenerdor2">
+                
                 <div class="paquetes">
                     <div class= "precios">
                         <h2>Principiante</h2>

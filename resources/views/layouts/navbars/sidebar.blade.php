@@ -3,20 +3,20 @@
         font-size: 30px;
     }
     .conf{
-        font-size: 35px;
-        position: absolute;
+        font-size: 40px;
+        position: ;
         top: 18%;
     }
     .avatar{
-        width: 80%; 
-        height: 80%;
+        width: 70%; 
+        height: 70%;
     }
     @media only screen and (max-width: 767px) {
         .conf{
             font-size: 20px;
             position: absolute;
-            top: 160%;
-            right: 83%;
+            top: 10%;
+            right: 22%;
         }
         .avatar{
         width: 20%; 
@@ -38,17 +38,18 @@
         <!-- Brand -->
         <div class="navbar-brand pt-0">
             <div class = "mb-3"></div>
-            <span class="avatar avatar-sm rounded-circle" style=" margin-right: 80%;">
-                <a href="#">
+            <a href="/packages">
                     <i class="iconos ni ni-settings-gear-65 text-black conf " style=""></i>
                 </a>
+            <span class="avatar avatar-sm rounded-circle" style=" margin-right: 80%;">
+                
                 <a href="/profile">
                     <img alt="Image placeholder"    src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg" class= "">
                 </a>
                 
             </span> <br></br>
             <div class="media-body ml-2 d-none d-lg-inline">
-                <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->name }}</span> 
+                <span class="mb-0 text-sm  font-weight-bold" style=" font-size: 30px;">{{ auth()->user()->name }}</span> 
             </div>
         </div>
         <!-- Collapse -->
@@ -68,36 +69,41 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link text-black"  href="{{ url('home') }}">
-                        <i class="iconos ni ni-chart-bar-32 text-black " style="font-size: 20px;"></i> {{ __('Dashboard') }}
+                        <i class="iconos ni ni-chart-bar-32 text-black " style="font-size: 30px;"></i> 
+                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 20px;">{{ __('Dashboard') }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-black" href="{{ url('building') }}">
-                        <i class="ni ni-building text-black" style="font-size: 20px;"></i> {{ __('Entity') }}
+                        <i class="ni ni-building text-black" style="font-size: 30px; font-size: 30px;"></i> 
+                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 20px;">{{ __('Entity') }}</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="ni ni-money-coins text-black" style="color: #f4645f; font-size: 20px;"></i>
-                        <span class="nav-link-text text-black" style="color: #f4645f;">{{ __('Expenses') }}</span>
+                        <i class="ni ni-money-coins text-black" style="color: #f4645f; font-size: 30px;"></i>
+                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 20px;">{{ __('Expenses') }}</span>
                     </a>
 
                     <div class="collapse" id="navbar-examples">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('bills') }}">
-                                    {{ __('Expenses') }}
+                                <a class="nav-link font-size: 30px;" href="{{ url('bills') }}">
+                                <span class="nav-link-text text-black" style="color: #f4645f; font-size: 20px;"> {{ __('Expenses') }}</span>
+                                   
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('tenantpayments') }}">
-                                    {{ __('Expense report') }}
+                                <a class="nav-link font-size: 30px;" href="{{ url('tenantpayments') }}">
+                                <span class="nav-link-text text-black" style="color: #f4645f; font-size: 20px;">{{ __('Expense report') }}</span>
+                                    
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('tenantpayments.wallet') }}">
-                                    {{ __('Wallet') }}
+                                <a class="nav-link font-size: 30px;" href="{{ route('tenantpayments.wallet') }}">
+                                <span class="nav-link-text text-black" style="color: #f4645f; font-size: 20px;"> {{ __('Wallet') }}</span>
+                                   
                                 </a>
                             </li>
                         </ul>
@@ -106,8 +112,8 @@
                 <li class="nav-item">
                     <a href="{{ route('logout') }}" class="nav-link text-black" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
-                        <i class="ni ni-user-run" style="font-size: 20px;"></i>
-                        <span>{{ __('Logout') }}</span>
+                        <i class="ni ni-user-run" style="font-size: 30px; "></i>
+                        <span font-size: 30px; style=" font-size: 20px;">{{ __('Logout') }}</span>
                     </a>
                 </li>
             </ul>
