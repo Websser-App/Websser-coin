@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class paymentsController extends Controller
 {
 
     public function __construct()
@@ -19,8 +19,8 @@ class UserController extends Controller
      * @param  \App\Models\User  $model
      * @return \Illuminate\View\View
      */
-    public function profile()
+    public function payment()
     {
-        return view('profile.edit');
+        return view('payments.packagesP');
     }
 }

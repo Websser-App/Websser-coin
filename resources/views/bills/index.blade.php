@@ -1,3 +1,26 @@
+<style>
+    .btn-primary{
+        width:fit-content;
+        height: 40%;
+        
+    }
+    .textoaD{
+        font-size: 120%;
+    }
+
+    @media only screen and (max-width: 680px) {
+        .textoaD {
+            display: none;
+        }
+    }
+
+    @media only screen and (min-width: 680px) {
+        .iconoD {
+            display: none;
+        }
+    }
+</style>
+
 @extends('layouts.app')
 
 @section('content')
@@ -10,7 +33,9 @@
                     <h3 class="mb-0">{{__('Expense Concepts')}}</h3>
                 </div>
                 <div class="col-4 text-right">
-                    <a href="{{ route('bills.create')}}" class="btn btn-sm btn-primary">{{ __('Create expense concept') }}</a>
+                    <a href="{{ route('bills.create')}}" class="buttons btn btn-sm btn-primary " >
+                        <label class="iconoD"><i class="ni ni-money-coins text-white" style="color: #f4645f; font-size: 20px;"></i></label>
+                        <label class="textoaD">{{ __('Create expense concept') }}</a>
                 </div>
             </div>
             <div class="col-12 text-center">

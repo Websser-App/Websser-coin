@@ -4,6 +4,11 @@
 @include('layouts.headers.page')
 <div class="container-fluid mt-7">
     <style>
+        .buttons{
+            width:100%;
+            height: 40%;
+            font-size: 90%;
+        }
         .row{
             width: 99%;
             display: flex;
@@ -23,7 +28,7 @@
                             {{-- <a href="{{ route('tenantpayments.create')}}" class="btn btn-sm btn-primary mt-3 text-center">{{ __('Create expense payment') }}</a> --}}
                         </div>
                         <div class="col-4 text-right">
-                            <button type="button" class="btn btn-sm btn-primary mt-3 text-center" data-bs-toggle="modal" data-bs-target="#modalPDF">
+                            <button type="button" class="btn btn-sm btn-primary mt-3 text-center buttons" data-bs-toggle="modal" data-bs-target="#modalPDF">
                                 {{ __('Generate PDF') }}
                               </button>
                         </div>
@@ -46,13 +51,13 @@
 
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">@lang('Bulding')</th>
-                                <th scope="col">@lang('Departament')</th>
-                                <th scope="col">@lang('Tenant name')</th>
-                                <th scope="col">@lang('Expense name')</th>
-                                <th scope="col">@lang('Amount')</th>
-                                <th scope="col">@lang('IsActive')</th>
-                                <th scope="col">@lang('Actions')</th>
+                                <th scope="col" style="font-size: 15px;">@lang('Bulding')</th>
+                                <th scope="col" style="font-size: 15px;">@lang('Departament')</th>
+                                <th scope="col" style="font-size: 15px;">@lang('Tenant name')</th>
+                                <th scope="col" style="font-size: 15px;">@lang('Expense name')</th>
+                                <th scope="col" style="font-size: 15px;">@lang('Amount')</th>
+                                <th scope="col" style="font-size: 15px;">@lang('IsActive')</th>
+                                <th scope="col" style="font-size: 15px;">@lang('Actions')</th>
 
 
                             </tr>
@@ -60,15 +65,15 @@
                         <tbody>
                             @foreach($tenantPayments as $tenantPayment)
                         <tr>
-                            <td>{{$tenantPayment->buildings->UUID}}</td>
-                            <td>{{$tenantPayment->departaments->number_departament}}</td>
-                            <td>{{$tenantPayment->tenants->name}} {{$tenantPayment->tenants->surname}} {{$tenantPayment->tenants->second_surname}}</td>
-                            <td>{{$tenantPayment->bills->name}}</td>
-                            <td>${{getAmount($tenantPayment->amount,2)}}</td>
+                            <td style="font-size: 15px;">{{$tenantPayment->buildings->UUID}}</td>
+                            <td style="font-size: 15px;">{{$tenantPayment->departaments->number_departament}}</td>
+                            <td style="font-size: 15px;">{{$tenantPayment->tenants->name}} {{$tenantPayment->tenants->surname}} {{$tenantPayment->tenants->second_surname}}</td>
+                            <td style="font-size: 15px;">{{$tenantPayment->bills->name}}</td>
+                            <td style="font-size: 15px;">${{getAmount($tenantPayment->amount,2)}}</td>
                             @if ($tenantPayment->isActive == 1)    
-                                <td class="bg-success">@lang('Paid')</td>
+                                <td class="bg-success" style="font-size: 15px;">@lang('Paid')</td>
                             @else
-                                <td class="bg-danger">@lang('Not payed')</td>
+                                <td class="bg-danger" style="font-size: 15px;">@lang('Not payed')</td>
                             @endif
                             <td class="text-right">
                                 <div class="dropdown">

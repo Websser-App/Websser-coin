@@ -1,3 +1,13 @@
+<style>
+    .buttons{
+        width:130px;
+        height: 30px;
+        font-size: 30px;
+    }
+    td{
+        font-size: 15px;
+    }
+</style>
 @extends('layouts.app')
 
 @section('content')
@@ -66,7 +76,7 @@
                                 <h3 class="mb-0">Edificios</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="{{url('buildings')}}" class="btn btn-sm btn-primary">Ver todos</a>
+                                <a href="{{url('buildings')}}" class="btn btn-sm btn-primary buttons" style="font-size: 15px;">Ver todos</a>
                             </div>
                         </div>
                     </div>
@@ -75,17 +85,17 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">@lang('ID Bulding')</th>
-                                    <th scope="col">Piso</th>
-                                    <th scope="col">Departamentos por piso</th>
+                                    <th scope="col" style="font-size: 15px;">@lang('ID Bulding')</th>
+                                    <th scope="col" style="font-size: 15px;">Piso</th>
+                                    <th scope="col" style="font-size: 15px;">Departamentos por piso</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($buildingsAll as $building)                                       
                                     <tr>
-                                        <td>{{$building->UUID}}</td>
-                                        <td>{{$building->rows}}</td>
-                                        <td>{{$building->columns}}</td>
+                                        <td style="font-size: 15px;">{{$building->UUID}}</td>
+                                        <td style="font-size: 15px;"> {{$building->rows}}</td>
+                                        <td style="font-size: 15px;">{{$building->columns}}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -101,7 +111,7 @@
                                 <h3 class="mb-0">Departamentos</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">Ver todos</a>
+                                <a href="#!" class="btn btn-sm btn-primary buttons" style="font-size: 15px;">Ver todos</a>
                             </div>
                         </div>
                     </div>
@@ -110,15 +120,15 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">@lang('ID Bulding')</th>
-                                    <th scope="col">@lang('Departament Number')</th>
+                                    <th scope="col" style="font-size: 15px;">@lang('ID Bulding')</th>
+                                    <th scope="col" style="font-size: 15px;">@lang('Departament Number')</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody >
                                 @foreach ($departamentsAll as $departaments)
-                                    <tr>
-                                        <td>{{$departaments->buildings->UUID}}</td>
-                                        <td>{{$departaments->number_departament}}</td>
+                                    <tr style="text-aling: center">
+                                        <td style="font-size: 15px;">{{$departaments->buildings->UUID}}</td>
+                                        <td style="font-size: 15px;">{{$departaments->number_departament}}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -1,3 +1,8 @@
+<style>
+    i{
+        font-size: 30px;
+    }
+</style>
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
     <div class="container-fluid">
         <!-- Toggler -->
@@ -6,9 +11,12 @@
         </button>
         <!-- Brand -->
         <div class="navbar-brand pt-0">
+        <div class = "mb-3"></div>
             <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg">
-            </span> <br>
+                <a href="/profile">
+                    <img alt="Image placeholder" style="width: 200%; height: 200%;" width="60"  src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg" class= "mb-2">
+                </a>
+            </span> <br></br>
             <div class="media-body ml-2 d-none d-lg-inline">
                 <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->name }}</span> 
             </div>
@@ -29,19 +37,19 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-black" href="{{ url('home') }}">
-                        <i class="ni ni-chart-bar-32 text-black"></i> {{ __('Dashboard') }}
+                    <a class="nav-link text-black"  href="{{ url('home') }}">
+                        <i class="iconos ni ni-chart-bar-32 text-black " style="font-size: 20px;"></i> {{ __('Dashboard') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-black" href="{{ url('building') }}">
-                        <i class="ni ni-building text-black"></i> {{ __('Entity') }}
+                        <i class="ni ni-building text-black" style="font-size: 20px;"></i> {{ __('Entity') }}
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="ni ni-money-coins text-black" style="color: #f4645f;"></i>
+                        <i class="ni ni-money-coins text-black" style="color: #f4645f; font-size: 20px;"></i>
                         <span class="nav-link-text text-black" style="color: #f4645f;">{{ __('Expenses') }}</span>
                     </a>
 
@@ -68,7 +76,7 @@
                 <li class="nav-item">
                     <a href="{{ route('logout') }}" class="nav-link text-black" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
-                        <i class="ni ni-user-run"></i>
+                        <i class="ni ni-user-run" style="font-size: 20px;"></i>
                         <span>{{ __('Logout') }}</span>
                     </a>
                 </li>
