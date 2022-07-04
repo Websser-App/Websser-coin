@@ -71,6 +71,7 @@ crossorigin="anonymous"></script>
             language: {
                 "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
             },
+            pageLength : 10,
             "lengthMenu": [[5, 10, 15, 25, 50, -1], [5, 10, 15, 25, 50, "Todos"]],
         });
 
@@ -81,6 +82,7 @@ crossorigin="anonymous"></script>
             language: {
                 "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
             },
+            pageLength : 10,
             "lengthMenu": [[5, 10, 15, 25, 50, -1], [5, 10, 15, 25, 50, "Todos"]],
         });
 
