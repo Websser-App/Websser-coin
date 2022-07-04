@@ -143,6 +143,9 @@
     "Fields preceded by a * are required":"Los campos precedidos de un * son obligatorios",
     "Complete your registration": "Completa tu registro",
     "Complete all the fields": "Completa todos los campos",
-    "Choose the floor number": "Escoge el numero de piso"
+    "Choose the floor number": "Escoge el numero de piso",
+    "User information": "Informacion de usuario",
+    "Edit Profile": "Editar perfil",
+    "New Password": "Nueva contraseña"
     
 }
