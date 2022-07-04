@@ -2,12 +2,11 @@
 
 @section('content')
 @include('layouts.headers.page')
-<div class="container-fluid mt-7">
-    <style>
+<style>
         .buttons{
-            width:40%;
-            height: 40%;
+            
             font-size: 140%;
+            
         }
         .row{
             width: 99%;
@@ -17,19 +16,39 @@
             gap: 0px;
             align-items: center;
         }
+        @media only screen and (max-width: 893px) {
+            .textoaD {
+                display: none;
+            }
+            .iconoD {
+                margin-right:10px;
+            }
+        }
+
+        @media only screen and (min-width: 892px) {
+            .iconoD {
+                display: none;
+            }
+        }
+        button{
+            text-align: center;
+        }
     </style>
-    <div class="row">
-        <div class="col">
+<div class="">
+    <div class="">
+        <div class="col" style="margin-top: 10%; text-align: center;">
             <div class="card shadow">
                 <div class="card-header border-0">
                     <div class="row">
-                        <div class="col-8">
+                        <div class="container" style="word-break: normal;">
                             <h3 class="mb-0">{{__('Expense report')}}</h3>
                             {{-- <a href="{{ route('tenantpayments.create')}}" class="btn btn-sm btn-primary mt-3 text-center">{{ __('Create expense payment') }}</a> --}}
                         </div>
-                        <div class="col-4 text-right">
-                            <button type="button" class="btn btn-sm btn-primary mt-3 text-center buttons" data-bs-toggle="modal" data-bs-target="#modalPDF">
-                                {{ __('Generate PDF') }}
+                        <div class="col text-right">
+                            <button type="button" class="btn btn-sm btn-primary mt-3 text-center buttons" style="text-align: center;" data-bs-toggle="modal" data-bs-target="#modalPDF">
+                                
+                                <label class="textoaD">{{ __('Generate PDF') }} </label>
+                                <i class="ni ni-cloud-download-95 iconoD " ></i>
                               </button>
                         </div>
                     </div>
