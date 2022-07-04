@@ -55,7 +55,7 @@
 
     @foreach($bills as $bill)
     <div class="col-sm-3">
-        <a href="{{route('bills.tenants', $bill->id )}}" class="card">
+        <div class="card">
             <img src="{{asset('argon')}}\img\concepgastos.png" width="auto" height=auto alt="">
             <div align="right"> 
                 <div class="dropdown">
@@ -72,15 +72,15 @@
                     </div>
                 </div>
             </div>
-          <div class="card-body">
+          <a href="{{route('bills.tenants', $bill->id )}}" class="card-body">
             <h5 class="card-title">@lang('Information')</h5>
             <strong><b> @lang('Name'):</b></strong>
             <p class="card-text">{{$bill->name}}</p>
             <strong><b>@lang('Amount'):</b></strong>
             <p class="card-text">${{getAmount($bill->amount, 2)}}</p>
 
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
     @endforeach
     </div>
