@@ -11,12 +11,7 @@
         </div>
         <div class="card-body">
             <form  method="post" action="{{route('building.store')}}" enctype="multipart/form-data">
-                @csrf
-
-                <h6 class="heading-small text-muted mb-4 text-red">{{ __('Fields preceded by a * are required') }}</h6>
-
-                
-                
+                @csrf                
 
                 <h2>@lang('Building Type') *</h2>
                 <div align="right"> 
@@ -65,7 +60,7 @@
                 <center>
                 <div class="pl-lg-4">
                         <div  class="form-check form-check-inline{{ $errors->has('name') ? ' has-danger' : '' }}">
-                            <input type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Vertical') }}"  value="vertical" required autofocus>
+                            <input type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Vertical') }}"  value="vertical"  autofocus>
                             <label class="form-check-label" for="input-name">{{ __('Vertical') }}</label>
                             <img src="{{ asset('argon') }}/img/v.png" width="300 " class="p-1">
                             
@@ -77,7 +72,7 @@
                         </div>
                         
                         <div class="form-check form-check-inline{{ $errors->has('name') ? ' has-danger' : '' }}">
-                            <input  type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Horizontal') }}" value="horizontal" required  autofocus>
+                            <input  type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Horizontal') }}" value="horizontal"   autofocus>
                             <label class="form-check-label" for="input-name">{{ __('Horizontal') }}</label>
                             <img src="{{ asset('argon') }}/img/h.png" width="350" class="mt-2"> <br>
                             

@@ -57,6 +57,21 @@
     <div class="col-sm-3">
         <a href="{{route('bills.tenants', $bill->id )}}" class="card">
             <img src="{{asset('argon')}}\img\concepgastos.png" width="auto" height=auto alt="">
+            <div align="right"> 
+                <div class="dropdown">
+                    <a class="btn btn-sm btn-icon-only text-primary btnI" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                        <a class="dropdown-item" href="{{ route('bills.edit', $bill->id) }}">{{__('Edit')}}</a>
+                        <form action="{{ route('bills.destroy', $bill->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" class="dropdown-item" value="{{__('Delete')}}">
+                        </form>
+                    </div>
+                </div>
+            </div>
           <div class="card-body">
             <h5 class="card-title">@lang('Information')</h5>
             <strong><b> @lang('Name'):</b></strong>
