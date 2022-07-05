@@ -17,7 +17,7 @@
         display: grid;
         gap: 5rem;
         grid-auto-rows: 10rem;
-        grid-template-columns:repeat(auto-fit, minmax(15rem, 1fr));
+        grid-template-columns:repeat(auto-fit, minmax(11rem, 1fr));
         margin-left: 5%;
         margin-right: 5%;
         
@@ -34,7 +34,7 @@
                 
                 
                     <div class= "precios">
-                        <h5 class="card-title text-uppercase text-muted mb-0" style = "font-size: 90%;">@lang('Buildings')</h5>
+                        <h5 class="card-title text-uppercase text-muted mb-0" style = "font-size: 90%;">@lang('Buildings') n</h5>
                         <span class="h2 font-weight-bold mb-1" style = "font-size: 90%;">{{$buildings}}</span>
                         
                         <div class="row centrar">
