@@ -75,7 +75,7 @@
         @foreach($bills as $bill)
             <div class="">
                 <div class="precios">
-                    <img src="{{asset('argon')}}\img\concepgastos.png" width="70%" height="70%" alt=""></img>
+                    <img src="{{asset('argon')}}\img\concepgastos.png" width="300px" height="300px" alt=""></img>
                     <div align="right"> 
                         <div class="dropdown">
                             <a class="btn btn-sm btn-icon-only text-primary btnI" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
