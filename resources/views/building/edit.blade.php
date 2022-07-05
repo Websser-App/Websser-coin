@@ -2,6 +2,19 @@
 
 @section('content')
 @include('layouts.headers.page')
+<style>
+    .contenerdor2{
+        display: grid;
+        gap: 1rem;
+        grid-auto-rows: 25rem;
+        grid-template-columns:repeat(auto-fit, minmax(15rem, 1fr));
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 5%;
+    }
+</style>
+
+
 <body onload="initialize();">
     <div class="card bg-secondary shadow">
         <div class="card-header bg-white border-0">
@@ -60,31 +73,32 @@
                 </div>
 
                 <center>
-                <div class="pl-lg-4">
-                        <div  class="form-check form-check-inline{{ $errors->has('name') ? ' has-danger' : '' }}">
-                            <input type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Vertical') }}"  value="vertical"  autofocus>
-                            <label class="form-check-label" for="input-name">{{ __('Vertical') }}</label>
-                            <img src="{{ asset('argon') }}/img/v.png" width="300 " class="p-1">
-                            
-                            @if ($errors->has('name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
-                            @endif
-                        </div>
+                
+                <div class="contenerdor2">
+                    <div  class="form-check form-check-inline{{ $errors->has('name') ? ' has-danger' : '' }}">
+                        <input type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Vertical') }}"  value="vertical"  autofocus>
+                        <label class="form-check-label" for="input-name">{{ __('Vertical') }}</label>
+                        <img src="{{ asset('argon') }}/img/v.png" width="100%" class="p-1">
                         
-                        <div class="form-check form-check-inline{{ $errors->has('name') ? ' has-danger' : '' }}">
-                            <input  type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Horizontal') }}" value="horizontal"   autofocus>
-                            <label class="form-check-label" for="input-name">{{ __('Horizontal') }}</label>
-                            <img src="{{ asset('argon') }}/img/h.png" width="350" class="mt-2"> <br>
-                            
-                            @if ($errors->has('name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-                    </div> 
+                        @if ($errors->has('name'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                    
+                    <div class="form-check form-check-inline{{ $errors->has('name') ? ' has-danger' : '' }}">
+                        <input  type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Horizontal') }}" value="horizontal"   autofocus>
+                        <label class="form-check-label" for="input-name">{{ __('Horizontal') }}</label>
+                        <img src="{{ asset('argon') }}/img/h.png" width="100%" class="mt-2"> <br>
+                        
+                        @if ($errors->has('name'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div> 
                 </center>
 
                 <h2>@lang('Building Information') *</h2>

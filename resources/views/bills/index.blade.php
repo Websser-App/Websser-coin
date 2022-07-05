@@ -17,12 +17,13 @@
     }
     .contenerdor2{
         display: grid;
-        gap: 1rem;
-        grid-auto-rows: 25rem;
+        gap: 10rem;
+        grid-auto-rows: 30rem;
         grid-template-columns:repeat(auto-fit, minmax(15rem, 1fr));
         margin-left: 5%;
         margin-right: 5%;
         margin-top: 5%;
+        margin-bottom: 7%;
     }
 
     @media only screen and (max-width: 680px) {
@@ -74,7 +75,7 @@
         @foreach($bills as $bill)
             <div class="">
                 <div class="precios">
-                    <img src="{{asset('argon')}}\img\concepgastos.png" width="100px" height="100px" alt=""></img>
+                    <img src="{{asset('argon')}}\img\concepgastos.png" width="60%" height="70%" alt=""></img>
                     <div align="right"> 
                         <div class="dropdown">
                             <a class="btn btn-sm btn-icon-only text-primary btnI" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
