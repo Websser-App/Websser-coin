@@ -8,8 +8,7 @@
         gap: 1rem;
         grid-auto-rows: 25rem;
         grid-template-columns:repeat(auto-fit, minmax(15rem, 1fr));
-        margin-left: 5%;
-        margin-right: 5%;
+        
         margin-top: 5%;
     }
 </style>
@@ -78,7 +77,7 @@
                     <div  class="form-check form-check-inline{{ $errors->has('name') ? ' has-danger' : '' }}">
                         <input type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Vertical') }}"  value="vertical"  autofocus>
                         <label class="form-check-label" for="input-name">{{ __('Vertical') }}</label>
-                        <img src="{{ asset('argon') }}/img/v.png" width="100%" class="p-1">
+                        <img src="{{ asset('argon') }}/img/v.png" width="100%" class="">
                         
                         @if ($errors->has('name'))
                         <span class="invalid-feedback" role="alert">
@@ -90,7 +89,7 @@
                     <div class="form-check form-check-inline{{ $errors->has('name') ? ' has-danger' : '' }}">
                         <input  type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Horizontal') }}" value="horizontal"   autofocus>
                         <label class="form-check-label" for="input-name">{{ __('Horizontal') }}</label>
-                        <img src="{{ asset('argon') }}/img/h.png" width="100%" class="mt-2"> <br>
+                        <img src="{{ asset('argon') }}/img/h.png" width="100%" class=""> <br>
                         
                         @if ($errors->has('name'))
                         <span class="invalid-feedback" role="alert">
