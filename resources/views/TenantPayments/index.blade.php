@@ -88,11 +88,12 @@
                             <td style="font-size: 15px;">{{$tenantPayment->departaments->number_departament}}</td>
                             <td style="font-size: 15px;">{{$tenantPayment->tenants->name}} {{$tenantPayment->tenants->surname}} {{$tenantPayment->tenants->second_surname}}</td>
                             <td style="font-size: 15px;">{{$tenantPayment->bills->name}}</td>
-                            <td style="font-size: 15px;">${{getAmount($tenantPayment->amount,2)}}</td>
-                            @if ($tenantPayment->isActive == 1)    
-                                <td class="bg-success" style="font-size: 15px;">@lang('Paid')</td>
-                            @else
+                            @if ($tenantPayment->amount == 0)    
+                                <td style="font-size: 15px;">${{getAmount($tenantPayment->amount,2)}}</td>
                                 <td class="bg-danger" style="font-size: 15px;">@lang('Not payed')</td>
+                            @else
+                                <td style="font-size: 15px;">${{getAmount($tenantPayment->amount,2)}}</td>
+                                <td class="bg-success" style="font-size: 15px;">@lang('Paid')</td>
                             @endif
                             <td class="text-right">
                                 <div class="dropdown">

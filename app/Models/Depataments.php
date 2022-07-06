@@ -13,12 +13,16 @@ class Depataments extends Model
 
 
     protected $fillable = [
+        'user_id',
         'UUID',
         'building_id ', 
         'number_departament', 
     ];
 
-
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
     public function buildings()
     {

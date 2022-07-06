@@ -12,11 +12,17 @@ class Bills extends Model
 
 
     protected $fillable = [
+        'user_id',
         'building_id',
         'name', 
         'amount', 
         'isActive'
     ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
     public function buildings()
     {

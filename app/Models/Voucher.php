@@ -11,10 +11,15 @@ class Voucher extends Model
     public $table = 'vouchers';
 
     protected $fillable = [
+        'user_id',
         'bills_id',
         'voucher',
     ];
-
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    
     public function bills()
     {
         return $this->belongsTo(Bills::class, 'bills_id');

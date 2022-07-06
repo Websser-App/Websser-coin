@@ -12,6 +12,7 @@ class TenantPayments extends Model
     public $table = 'tenant_payments';
 
     protected $fillable = [
+        'user_id',
         'buildings_id',
         'depataments_id',
         'tenants_id',
@@ -19,6 +20,10 @@ class TenantPayments extends Model
         'amount',
         'isActive'
     ];
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
     public function buildings()
     {

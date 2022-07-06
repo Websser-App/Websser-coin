@@ -13,6 +13,7 @@ class Building extends Model
 
 
     protected $fillable = [
+        'user_id',
         'UUID',
         'type_building', 
         'rows', 
@@ -20,6 +21,11 @@ class Building extends Model
         'latitude', 
         'longitude', 
     ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
     public function bills()
     {

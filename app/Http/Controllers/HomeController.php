@@ -26,12 +26,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $buildings = count(Building::all());
-        $buildingsAll = Building::latest()->take(5)->get();
-        $tenants = count(Tenants::all());
-        $departaments = count(Depataments::all());
-        $departamentsAll = Depataments::latest()->take(5)->get();
-        $payments = TenantPayments::where('isActive', 1)->sum('amount');
+        $buildings = count(Building::where('user_id', auth()->user()->id)->get());
+        $buildingsAll = Building::where('user_id', auth()->user()->id)->latest()->take(5)->get();
+        $tenants = count(Tenants::where('user_id', auth()->user()->id)->get());
+        $departaments = count(Depataments::where('user_id', auth()->user()->id)->get());
+        $departamentsAll = Depataments::where('user_id', auth()->user()->id)->latest()->take(5)->get();
+        $payments = TenantPayments::where('isActive', 1)->where('user_id', auth()->user()->id)->sum('amount');
 
         return view('dashboard', compact('buildings', 'tenants', 'payments', 'departaments', 'buildingsAll', 'departamentsAll'));
     }

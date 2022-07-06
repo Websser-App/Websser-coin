@@ -23,7 +23,7 @@ class DepatamentsController extends Controller
      */
     public function index()
     {
-        $departaments = Depataments::all();
+        $departaments = Depataments::where('user_id', auth()->user()->id)->get();
         return view('departaments.index')->with('departaments', $departaments);
     }
 
@@ -57,6 +57,7 @@ class DepatamentsController extends Controller
     {
         try {
             $this->validate($request, [
+                'user_id' => 'required',
                 'building_id' => 'required',
                 'buildings_row' => 'required', '[]',
                 'number_departament' => 'required', '[]',
@@ -67,6 +68,7 @@ class DepatamentsController extends Controller
             if ( $request->number_departament ) {
                 foreach(array_combine($request->number_departament, $request->buildings_row) as $departaments => $key){
                     $departament = new Depataments;
+                    $departament->user_id = $request->user_id;
                     $departament->UUID = uniqid();
                     $departament->building_id = $buildings->id;
                     $departament->floor = $key;

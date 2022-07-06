@@ -25,10 +25,10 @@ class TenantPaymentsController extends Controller
      */
     public function index()
     {
-        $buildings = Building::all();
+        $buildings = Building::where('user_id', auth()->user()->id)->get();
         TenantPayments::where('depataments_id', null)->delete();
-        $tenantPayments = TenantPayments::all();
-        $sumAmounts = TenantPayments::where('isActive', 1)->sum('amount');
+        $tenantPayments = TenantPayments::where('user_id', auth()->user()->id)->get();
+        $sumAmounts = TenantPayments::where('isActive', 1)->where('user_id', auth()->user()->id)->sum('amount');
         return view('TenantPayments.index')->with('buildings', $buildings)->with('tenantPayments', $tenantPayments)->with('sumAmounts', $sumAmounts);
     }
 
@@ -53,12 +53,14 @@ class TenantPaymentsController extends Controller
     {
         try {
             $this->validate($request, [
+                'user_id' => 'required',
                 'building_id' => 'required',
             ]);
             
 
 
             $tenantPayments = new TenantPayments();
+            $tenantPayments->user_id = $request->user_id;
             $tenantPayments->buildings_id = $request->building_id;
             $tenantPayments->save();
 
@@ -164,11 +166,11 @@ class TenantPaymentsController extends Controller
             ]);
 
             $bills = Bills::find($request->bill_id);
-            $sumAmounts = TenantPayments::where('bills_id', $bills->id)->where('buildings_id', $bills->building_id)->where('isActive', 1)->sum('amount');
+            $sumAmounts = TenantPayments::where('bills_id', $bills->id)->where('buildings_id', $bills->building_id)->where('user_id', auth()->user()->id)->where('isActive', 1)->sum('amount');
             $tenants = Tenants::leftjoin('tenant_payments', function($query) use($bills){
                 $query->on('tenant_payments.tenants_id', 'tenants.id');
                 $query->where('tenant_payments.bills_id', $bills->id);
-            })->where('tenants.building_id', $bills->building_id)->select('tenants.*','tenant_payments.*', 'tenant_payments.id as payments_id')->get();
+            })->where('tenants.building_id', $bills->building_id)->where('tenants.user_id', auth()->user()->id)->select('tenants.*','tenant_payments.*', 'tenant_payments.id as payments_id')->get();
             view()->share ('bills', $bills);
             view()->share('tenants', $tenants);
             view()->share('sumAmounts', $sumAmounts);
@@ -183,7 +185,7 @@ class TenantPaymentsController extends Controller
     }
 
     public function wallet(){
-        $sumAmounts = TenantPayments::where('isActive', 1)->sum('amount');
+        $sumAmounts = TenantPayments::where('isActive', 1)->where('user_id', auth()->user()->id)->get()->sum('amount');
         return view('TenantPayments.wallet')->with('sumAmounts', $sumAmounts);
 
     }

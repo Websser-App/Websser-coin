@@ -12,7 +12,7 @@
         <div class="card-body">
             <form  method="post" action="{{route('building.store')}}" enctype="multipart/form-data">
                 @csrf                
-
+                <input type="hidden" value="{{auth()->user()->id}}" name="user_id">
                 <h2>@lang('Building Type') *</h2>
                 <div align="right"> 
                     <h2>@lang('Building Location') *</h2>

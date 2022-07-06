@@ -12,7 +12,7 @@
         <div class="card-body">
             <form class="row g-3" method="post" action="{{route('bills.store')}}" enctype="multipart/form-data">
                 @csrf
-
+                    <input type="hidden" value="{{auth()->user()->id}}" name="user_id">
                     <div class="input-group right">
                         <select class="custom-select" id="inputGroupSelect04" name="building_id">
                             <option selected>@lang('Choose the building')</option>

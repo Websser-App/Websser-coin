@@ -21,10 +21,9 @@ class TenantsController extends Controller
      */
     public function index()
     {
-        $tenants = Tenants::all();
+        $tenants = Tenants::where('user_id', auth()->user()->id)->get();
         return view('tenants.index')->with('tenants', $tenants);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -45,8 +44,8 @@ class TenantsController extends Controller
     public function store(Request $request)
     {
         try {
-            $this->validate($request, [
-                
+            $this->validate($request, [   
+                'user_id' => 'required',            
                 'departament_id' => 'required',
                 'name' => 'required',
                 'surname' => 'required',
@@ -57,6 +56,7 @@ class TenantsController extends Controller
             ]);
             $departament = Depataments::where('id', $request->departament_id)->first();
             $tenants = new Tenants();
+            $tenants->user_id = $request->user_id;
             $tenants->depatament_id = $request->departament_id;
             $tenants->building_id = $departament->building_id;
             $tenants->name = $request->name;

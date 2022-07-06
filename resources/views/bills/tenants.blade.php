@@ -24,7 +24,7 @@
                 <div class="card-header border-0">
                     <div class="row">
                         <div class="col-8">
-                            <h3 class="mb-0">{{__('List of expense payments')}} sss</h3>
+                            <h3 class="mb-0">{{__('List of expense payments')}}</h3>
                             {{-- <a href="{{ route('tenantpayments.create')}}" class="btn btn-sm btn-primary mt-3 text-center">{{ __('Create expense payment') }}</a> --}}
                         </div>
                         <div class="card-footer py-4">
@@ -87,6 +87,8 @@
                                                 <center>
                                                     <form action="{{route('bills.notPayed', $tenant->payments_id)}}" method="POST">
                                                         @csrf
+                                                        <input type="hidden" value="{{auth()->user()->id}}" name="user_id">
+
                                                         <div class="col-md-6">
                                                             <label for="amount" class="form-label text-center">@lang('Amount')</label>
                                                             <input type="text" class="form-control text-center" id="amount" name="amount" value="0" placeholder="@lang('Amount')" readonly required>
@@ -123,6 +125,8 @@
                                                 <center>
                                                     <form action="{{route('bills.paid', $tenant->departaments->id)}}" method="POST">
                                                         @csrf
+                                                        <input type="hidden" value="{{auth()->user()->id}}" name="user_id">
+
                                                         <input type="hidden" name="payments_id" value="{{$tenant->payments_id}}">
                                                         <input type="hidden" name="bills_id" value="{{$bills->id}}">
                                                         <div class="col-md-6">

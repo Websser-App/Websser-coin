@@ -19,7 +19,7 @@ class VoucherController extends Controller
      */
     public function index()
     {
-        $vouchers = Voucher::all();
+        $vouchers = Voucher::where('user_id', auth()->user()->id)->get();
         return view('bills.vouchers.index')->with('vouchers', $vouchers);
 
     }
@@ -31,7 +31,7 @@ class VoucherController extends Controller
      */
     public function create()
     {
-        $bills = Bills::all();
+        $bills = Bills::where('user_id', auth()->user()->id)->get();
         return view('bills.vouchers.create')->with('bills', $bills);
     }
 
@@ -45,7 +45,7 @@ class VoucherController extends Controller
     {
         try {
             $this->validate($request, [
-                
+                'user_id' => 'required',
                 'bills_id' => 'required',
                 'voucher' => 'required',
             ]);

@@ -13,6 +13,7 @@ class Tenants extends Model
 
 
     protected $fillable = [
+        'user_id',
         'building_id',
         'depatament_id',
         'name', 
@@ -22,6 +23,10 @@ class Tenants extends Model
         'type', 
     ];
 
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
     public function departaments()
     {
         return $this->belongsTo(Depataments::class, 'depatament_id');

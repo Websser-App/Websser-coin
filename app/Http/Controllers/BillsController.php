@@ -23,7 +23,7 @@ class BillsController extends Controller
      */
     public function index()
     {   
-        $bills = Bills::all();
+        $bills = Bills::where('user_id', auth()->user()->id)->get();
         return view('bills.index')->with('bills', $bills);
     }
 
@@ -34,7 +34,7 @@ class BillsController extends Controller
      */
     public function create()
     {
-        $buildings = Building::all();
+        $buildings = Building::where('user_id', auth()->user()->id)->get();
         return view('bills.create')->with('buildings', $buildings);
     }
 
@@ -48,11 +48,13 @@ class BillsController extends Controller
     {
         try {
             $this->validate($request, [
+                'user_id' => 'required',
                 'building_id' => 'required',
                 'name' => 'required',
                 'amount' => 'required',
             ]);
         $bills = new Bills();
+        $bills->user_id = $request->user_id;
         $bills->building_id = $request->building_id;
         $bills->name = $request->name;
         $bills->amount = $request->amount;
@@ -68,21 +70,22 @@ class BillsController extends Controller
         $tenants = Tenants::leftjoin('tenant_payments', function($query) use($bills){
             $query->on('tenant_payments.tenants_id', 'tenants.id');
             $query->where('tenant_payments.bills_id', $bills->id);
-        })->where('tenants.building_id', $bills->building_id)->select('tenants.*','tenant_payments.*', 'tenant_payments.id as payments_id')->get();
+        })->where('tenants.building_id', $bills->building_id)->where('tenants.user_id', auth()->user()->id)->select('tenants.*','tenant_payments.*', 'tenant_payments.id as payments_id')->get();
         $tenantsCount = count(Tenants::leftjoin('tenant_payments', function($query) use($bills){
             $query->on('tenant_payments.tenants_id', 'tenants.id');
             $query->where('tenant_payments.bills_id', $bills->id);
-        })->where('tenants.building_id', $bills->building_id)->select('tenants.*','tenant_payments.*', 'tenant_payments.id as payments_id')->get());
+        })->where('tenants.building_id', $bills->building_id)->where('tenants.user_id', auth()->user()->id)->select('tenants.*','tenant_payments.*', 'tenant_payments.id as payments_id')->get());
         $tenantsSum = Tenants::leftjoin('tenant_payments', function($query) use($bills){
             $query->on('tenant_payments.tenants_id', 'tenants.id');
             $query->where('tenant_payments.bills_id', $bills->id);
-        })->where('tenants.building_id', $bills->building_id)->select('tenants.*','tenant_payments.*', 'tenant_payments.id as payments_id')->get()->sum('amount');
+        })->where('tenants.building_id', $bills->building_id)->where('tenants.user_id', auth()->user()->id)->select('tenants.*','tenant_payments.*', 'tenant_payments.id as payments_id')->get()->sum('amount');
         return view('bills.tenants')->with('tenants', $tenants)->with('bills', $bills)->with('tenantsCount', $tenantsCount)->with('tenantsSum', $tenantsSum);
     }
 
     public function paid(Request $request, $id){
         try {
             $this->validate($request, [
+                'user_id' => 'required',
                 'amount' => 'required',
             ]);
 
@@ -94,6 +97,7 @@ class BillsController extends Controller
                 } else {
                     $departaments = Depataments::find($id);
                     $tenantpayments = new TenantPayments();
+                    $tenantpayments->user_id = $request->user_id;
                     $tenantpayments->buildings_id  = $departaments->building_id ;
                     $tenantpayments->depataments_id  = $departaments->id;
                     $tenantpayments->tenants_id  = $departaments->tenants->id;
@@ -135,7 +139,7 @@ class BillsController extends Controller
     public function edit($id)
     {
         $bills = Bills::find($id);
-        $buildings = Building::all();
+        $buildings = Building::where('user_id', auth()->user()->id)->get();
         return view('bills.edit')->with('bills', $bills)->with('buildings', $buildings);
     }
 
@@ -154,6 +158,9 @@ class BillsController extends Controller
                 'amount' => 'required',
             ]);
         $bills = Bills::find($id);
+        TenantPayments::where('bills_id', $id)->update([
+            'amount' => '0'
+        ]);
         if($request->building_id){
             $bills->building_id = $request->building_id;
         }
