@@ -148,6 +148,9 @@
     "User information": "Informacion de usuario",
     "Edit Profile": "Editar perfil",
     "New Password": "Nueva contraseña",
-    "Subscription": "Subscripcion"
+    "Subscription": "Subscripcion",
+    "Pay": "Pagar",
+    "Generate payment receipt": "Generar recibo de pago",
+    "Send receipt by mail": "Enviar recibo por correo"
     
 }

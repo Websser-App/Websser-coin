@@ -78,6 +78,7 @@
                                 <th scope="col" style="font-size: 15px;">@lang('IsActive')</th>
 
 
+
                             </tr>
                         </thead>
                         <tbody>

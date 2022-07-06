@@ -72,8 +72,14 @@
                                     <td class="bg-success">@lang('Paid')</td>
                                     <td>
                                         <button title="@lang('Not payed')" class="btn btn-sm text-danger"  data-bs-toggle="modal"  data-bs-target="#notPayedModal{{ $tenant->payments_id }}" data-id="{{ $tenant->payments_id }}">
-                                            <i style="font-size: 20px" class="ni ni-fat-remove"></i>
+                                            <i style="font-size: 20px" class="bi bi-file-minus"></i>
                                         </button>
+                                        <a title="@lang('Generate payment receipt')" class="btn btn-sm text-blue">
+                                            <i style="font-size: 20px" class="bi bi-file-arrow-down"></i>
+                                        </a>
+                                        <a title="@lang('Send receipt by mail')" class="btn btn-sm text-primary">
+                                            <i style="font-size: 20px" class="bi bi-envelope"></i>
+                                        </a>
                                     </td>
                                     <!-- Modal -->
                                     <div class="modal fade" id="notPayedModal{{ $tenant->payments_id }}" tabindex="-1" role="dialog" aria-labelledby="notPayedModal{{ $tenant->payments_id }}" aria-hidden="true">
@@ -109,8 +115,8 @@
                                     <td>$0</td>
                                     <td class="bg-danger">@lang('Not payed')</td>
                                     <td>
-                                        <button title="@lang('Paid')" class="btn btn-sm text-success" data-bs-toggle="modal"  data-bs-target="#successModal{{ $tenant->departaments->id }}" data-id="{{ $tenant->departaments->id }}">
-                                            <i style="font-size: 20px" class="ni ni-check-bold"></i>
+                                        <button title="@lang('Pay')" class="btn btn-sm text-success" data-bs-toggle="modal"  data-bs-target="#successModal{{ $tenant->departaments->id }}" data-id="{{ $tenant->departaments->id }}">
+                                            <i style="font-size: 20px" class="bi bi-file-plus"></i>
                                         </button>
                                     </td>
                                     <!-- Modal -->
