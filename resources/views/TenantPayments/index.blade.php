@@ -76,7 +76,6 @@
                                 <th scope="col" style="font-size: 15px;">@lang('Expense name')</th>
                                 <th scope="col" style="font-size: 15px;">@lang('Amount')</th>
                                 <th scope="col" style="font-size: 15px;">@lang('IsActive')</th>
-                                <th scope="col" style="font-size: 15px;">@lang('Actions')</th>
 
 
                             </tr>
@@ -95,20 +94,6 @@
                                 <td style="font-size: 15px;">${{getAmount($tenantPayment->amount,2)}}</td>
                                 <td class="bg-success" style="font-size: 15px;">@lang('Paid')</td>
                             @endif
-                            <td class="text-right">
-                                <div class="dropdown">
-                                    <a class="btn btn-sm btn-icon-only text-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <form action="{{ route('tenantpayments.destroy', $tenantPayment->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <input type="submit" class="dropdown-item" value="{{__('Delete')}}">
-                                        </form>
-                                    </div>
-                                </div>
-                            </td>
                         @endforeach
                     </tbody>
                 </table>
