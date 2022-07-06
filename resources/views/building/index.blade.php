@@ -115,6 +115,25 @@
 
                         </div>
                         
+                        <div class="modal fade" id="assignModal{{ $building->id }}" tabindex="-1" role="dialog" aria-labelledby="assignModal{{ $building->id }}" aria-hidden="true">
+                                    <div class="modal-dialog modalSize">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="assignModal{{ $building->id }}">@lang('Address')</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <center>
+                                                    <h5>{{$building->address}}</h5>
+                                                </center>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('Close')</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        
 
                     @endforeach
                 </div>
