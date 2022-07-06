@@ -86,9 +86,9 @@
                             <button title="@lang('Address')" type="button" class="btn btn-sm text-primary btnI" data-bs-toggle="modal"  data-bs-target="#assignModal{{ $building->id }}" data-id="{{ $building->id }}">
                                 <i class="ni ni-square-pin" style="font-size: 25px;"></i>
                             </button>
-                            <a title="@lang('Departaments')" href="{{route('departaments.create', $building->id)}}" class="btn btn-sm text-primary btnI">
+                            {{-- <a title="@lang('Departaments')" href="{{route('departaments.create', $building->id)}}" class="btn btn-sm text-primary btnI">
                                 <i class="ni ni-building" style="font-size: 25px;"></i> 
-                            </a>
+                            </a> --}}
                             <div class="dropdown">
                                 <a class="btn btn-sm btn-icon-only text-primary btnI" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-ellipsis-v"></i>
@@ -109,10 +109,11 @@
                                     <img src="{{ asset('argon') }}/img/h.png"  height= "100%;"class="">
                                 @endif
                             </div>
-                            <p class="card-title">@lang('Information')</p>
-                            <strong><b> @lang('ID'):</b></strong>
-                            <p class="card-text">{{$building->UUID}}</p>
-
+                            <a href="{{route('departaments.create', $building->id)}}">
+                                <p class="card-title">@lang('Information')</p>
+                                <strong><b> @lang('ID'):</b></strong>
+                                <p class="card-text">{{$building->UUID}}</p>
+                            </a>
                         </div>
                         
                         <div class="modal fade" id="assignModal{{ $building->id }}" tabindex="-1" role="dialog" aria-labelledby="assignModal{{ $building->id }}" aria-hidden="true">
