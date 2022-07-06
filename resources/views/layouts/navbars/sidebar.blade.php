@@ -69,7 +69,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link text-black"  href="{{ url('home') }}">
-                        <i class="iconos ni ni-chart-bar-32 text-black " style="font-size: 30px;"></i> 
+                        <i class="iconos ni ni-chart-bar-32 text-blue " style="font-size: 30px;"></i> 
                         <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Dashboard') }}</span>
                     </a>
                 </li>
@@ -82,7 +82,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link text-black" href="{{url('bills')}}">
-                        <i class="ni ni-money-coins text-black" style="color: #f4645f; font-size: 30px;"></i>
+                        <i class="ni ni-money-coins text-yellow" style="color: #f4645f; font-size: 30px;"></i>
                         <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Expenses') }}</span>
                     </a>
                 </li>
@@ -96,7 +96,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link text-black" href="{{ route('tenantpayments.wallet') }}">
-                        <i class="bi bi-cash text-black" style="color: #f4645f; font-size: 30px;"></i>
+                        <i class="bi bi-cash text-green" style="color: #f4645f; font-size: 30px;"></i>
                         <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Wallet') }}</span>
                     </a>
                 </li>
@@ -104,7 +104,7 @@
                 
                 <li class="nav-item">
                     <a class="nav-link text-black" href="{{ route('packages') }}">
-                        <i class="bi bi-credit-card-2-front text-black" style="color: #f4645f; font-size: 30px;"></i>
+                        <i class="bi bi-credit-card-2-front text-silver" style="color: #f4645f; font-size: 30px;"></i>
                         <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Subscription') }}</span>
                     </a>
                 </li>
