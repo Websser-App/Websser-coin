@@ -119,7 +119,7 @@
                     @endforeach
                 </div>
                  
-
+                <!---
                 <div class="table-responsive">
                     <table id="tablelist" class="table align-items-center table-flush letras" >
 

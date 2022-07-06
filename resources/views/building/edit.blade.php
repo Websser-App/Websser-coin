@@ -11,6 +11,12 @@
         
         margin-top: 5%;
     }
+    .btn2{
+        width: 10%;
+        margin-right: 15%;
+        position: relative;
+        right: -90%;
+    }
     .imagenes{
         overflow: hidden;
         height: 100%;
@@ -22,11 +28,18 @@
         background-repeat: no-repeat;
         background-size: 100% 100%;
     }
-    @media only screen and (min-width:1630px) {
-            .iconoD {
-                display: none;
-            }
+    @media only screen and (max-width:524px) {
+        .imagenes{
+            overflow: hidden;
+            height: 50%;
         }
+    }
+    @media only screen and (max-width:345px) {
+        .imagenes{
+            overflow: hidden;
+            height: 30%;
+        }
+    }
 </style>
 
 
@@ -46,8 +59,8 @@
                 <h2>@lang('Building Type') *</h2>
                 <div align="right"> 
                     <h2>@lang('Building Location') *</h2>
-                    <div class="d-grid gap-2 col-2">
-                        <button title="@lang('Address')" type="button" class="btn btn-primary" data-toggle="modal" data-target="#address">
+                    <div class="d-grid gap-2 text-right" >
+                        <button title="@lang('Address')" type="button" class="btn  btn2 btn-primary" data-toggle="modal" data-target="#address">
                             <i class="ni ni-square-pin"></i>
                         </button>
                         <!-- Modal -->
@@ -88,35 +101,37 @@
                 </div>
 
                 <center>
-                
-                <div class="contenerdor2">
-                    <div  class="form-check form-check-inline{{ $errors->has('name') ? ' has-danger' : '' }}">
-                        <input type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Vertical') }}"  value="vertical"  autofocus>
-                        <label class="form-check-label" for="input-name">{{ __('Vertical') }}</label>
-                        <div class= "imagenes">
-                            <img src="{{ asset('argon') }}/img/h.png" height="100%" class="" > <br>
+                <div class="container-lg">
+                    <div class="contenerdor2">
+                        <div  class="form-check form-check-inline{{ $errors->has('name') ? ' has-danger' : '' }}">
+                            <input type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Vertical') }}"  value="vertical"  autofocus>
+                            <label class="form-check-label" for="input-name">{{ __('Vertical') }}</label>
+                            <div class= "imagenes">
+                                <img src="{{ asset('argon') }}/img/v.png" height="100%" class="" > <br>
+                            </div>
+                            
+                            
+                            @if ($errors->has('name'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                            @endif
                         </div>
                         
-                        
-                        @if ($errors->has('name'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('name') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                    
-                    <div class="form-check form-check-inline{{ $errors->has('name') ? ' has-danger' : '' }}">
-                        <input  type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Horizontal') }}" value="horizontal"   autofocus>
-                        <label class="form-check-label" for="input-name">{{ __('Horizontal') }}</label>
-                        <img src="{{ asset('argon') }}/img/h.png" width="50%" class="" style="margin-botton: 30px;"> <br>
-                        
-                        @if ($errors->has('name'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('name') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div> 
+                        <div class="form-check form-check-inline{{ $errors->has('name') ? ' has-danger' : '' }}">
+                            <input  type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Horizontal') }}" value="horizontal"   autofocus>
+                            <label class="form-check-label" for="input-name">{{ __('Horizontal') }}</label>
+                            <div class= "imagenes">
+                                <img src="{{ asset('argon') }}/img/h.png" height="100%" class="" style="margin-botton: 30px;"> <br>
+                            </div>
+                            @if ($errors->has('name'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div> 
+                </div>
                 </center>
 
                 <h2>@lang('Building Information') *</h2>
