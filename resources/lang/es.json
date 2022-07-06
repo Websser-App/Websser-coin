@@ -73,7 +73,8 @@
     "Nombre del inquilino": "Tenant name",
     "Actions": "Acciones",
     "Not assigned": "No asignado",
-    "Assign departments": "Assignar departamentos",
+    "Assign departments": "Asignar departamentos",
+    "Assign department": "Asignar departamento",
     "Save": "Guardar",
     "Type Building": "Tipo de edificio",
     "Address": "Direccion",
@@ -146,6 +147,7 @@
     "Choose the floor number": "Escoge el numero de piso",
     "User information": "Informacion de usuario",
     "Edit Profile": "Editar perfil",
-    "New Password": "Nueva contraseña"
+    "New Password": "Nueva contraseña",
+    "Subscription": "Subscripcion"
     
 }

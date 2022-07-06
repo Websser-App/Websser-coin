@@ -38,14 +38,14 @@
         <!-- Brand -->
         <div class="navbar-brand pt-0">
             <div class = "mb-3"></div>
-                <a href="{{url('packages')}}">
+                <a title="Perfil" href="{{url('profile')}}">
                     <i class="iconos ni ni-settings-gear-65 text-black conf " style=""></i>
                 </a>
             <span class="avatar avatar-sm rounded-circle" style=" margin-right: 80%;">
                 
-                <a href="{{url('profile')}}">
+                <div href="{{url('profile')}}">
                     <img alt="Image placeholder"    src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg" class= "">
-                </a>
+                </div>
                 
             </span> <br></br>
             <div class="media-body ml-2 d-none d-lg-inline">
@@ -81,34 +81,34 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                    <a class="nav-link text-black" href="{{url('bills')}}">
                         <i class="ni ni-money-coins text-black" style="color: #f4645f; font-size: 30px;"></i>
                         <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Expenses') }}</span>
                     </a>
-
-                    <div class="collapse" id="navbar-examples">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link font-size: 30px;" href="{{ url('bills') }}">
-                                <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;"> {{ __('Expenses') }}</span>
-                                   
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link font-size: 30px;" href="{{ url('tenantpayments') }}">
-                                <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Expense report') }}</span>
-                                    
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link font-size: 30px;" href="{{ route('tenantpayments.wallet') }}">
-                                <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;"> {{ __('Wallet') }}</span>
-                                   
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-black" href="{{ url('tenantpayments') }}">
+                        <i class="bi bi-card-checklist text-black" style="color: #f4645f; font-size: 30px;"></i>
+                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Expense report') }}</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-black" href="{{ route('tenantpayments.wallet') }}">
+                        <i class="bi bi-cash text-black" style="color: #f4645f; font-size: 30px;"></i>
+                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Wallet') }}</span>
+                    </a>
+                </li>
+
+                
+                <li class="nav-item">
+                    <a class="nav-link text-black" href="{{ route('packages') }}">
+                        <i class="bi bi-credit-card-2-front text-black" style="color: #f4645f; font-size: 30px;"></i>
+                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Subscription') }}</span>
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a href="{{ route('logout') }}" class="nav-link text-black" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">

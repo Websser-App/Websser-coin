@@ -34,7 +34,7 @@
                 
                 
                     <div class= "precios">
-                        <h5 class="card-title text-uppercase text-muted mb-0" style = "font-size: 90%;">@lang('Buildings') n</h5>
+                        <h5 class="card-title text-uppercase text-muted mb-0" style = "font-size: 90%;">@lang('Buildings')</h5>
                         <span class="h2 font-weight-bold mb-1" style = "font-size: 90%;">{{$buildings}}</span>
                         
                         <div class="row centrar">

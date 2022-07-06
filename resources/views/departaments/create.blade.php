@@ -38,6 +38,7 @@
         <div class="card-body">
             <form class="contenerdor2" method="post" action="{{route('departaments.store')}}" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" value="{{auth()->user()->id}}" name="user_id">
                 <input type="hidden" class="form-control" id="building_id" name="building_id" value="{{ $buildings->id }}">
 
 
@@ -46,7 +47,7 @@
                     @for ($i = 0; $i < $inputsDepartaments; $i++)
                         <div class="precios">
                             <div class="container">
-                                <label for="number_departament" class="form-label">@lang('Departament Number')</label>
+                                <label for="number_departament" class="form-label">@lang('Assign department')</label>
                                 <select  class="form-select marginado" aria-label="Default select example" name="buildings_row[]">
                                     <option selected disabled>@lang('Choose the floor number')</option>
                                     @for ($j = 1; $j <= $buildings->rows; $j++)
