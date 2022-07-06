@@ -6,11 +6,27 @@
     .contenerdor2{
         display: grid;
         gap: 1rem;
-        grid-auto-rows: 25rem;
-        grid-template-columns:repeat(auto-fit, minmax(15rem, 1fr));
+        grid-auto-rows: 30rem;
+        grid-template-columns:repeat(auto-fill, minmax(35rem, 1fr));
         
         margin-top: 5%;
     }
+    .imagenes{
+        overflow: hidden;
+        height: 100%;
+    }
+    .imagenP{
+        width: 100%;
+        height: 100%;
+        background-image: url("{{ asset('argon') }}/img/v.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    @media only screen and (min-width:1630px) {
+            .iconoD {
+                display: none;
+            }
+        }
 </style>
 
 
@@ -77,7 +93,10 @@
                     <div  class="form-check form-check-inline{{ $errors->has('name') ? ' has-danger' : '' }}">
                         <input type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Vertical') }}"  value="vertical"  autofocus>
                         <label class="form-check-label" for="input-name">{{ __('Vertical') }}</label>
-                        <img src="{{ asset('argon') }}/img/v.png" width="100%" class="">
+                        <div class= "imagenes">
+                            <img src="{{ asset('argon') }}/img/h.png" height="100%" class="" > <br>
+                        </div>
+                        
                         
                         @if ($errors->has('name'))
                         <span class="invalid-feedback" role="alert">
@@ -89,7 +108,7 @@
                     <div class="form-check form-check-inline{{ $errors->has('name') ? ' has-danger' : '' }}">
                         <input  type="checkbox" name="type_building" id="checkbox" class="form-check-input{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Horizontal') }}" value="horizontal"   autofocus>
                         <label class="form-check-label" for="input-name">{{ __('Horizontal') }}</label>
-                        <img src="{{ asset('argon') }}/img/h.png" width="100%" class=""> <br>
+                        <img src="{{ asset('argon') }}/img/h.png" width="50%" class="" style="margin-botton: 30px;"> <br>
                         
                         @if ($errors->has('name'))
                         <span class="invalid-feedback" role="alert">

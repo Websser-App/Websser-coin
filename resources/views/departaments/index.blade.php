@@ -1,3 +1,26 @@
+<style>
+    .precios{
+        font-size: 100%;
+        text-align: center;
+        
+        background-color: white;
+        border-radius: 25px;
+    }
+    .contenerdor2{
+        justify-content: center;
+        margin-bottom: 10%;
+        display: grid;
+        gap: 1rem;
+        grid-auto-rows: 13rem;
+        grid-template-columns:repeat(auto-fit, minmax(15rem, 1fr));
+        margin-left: 5%;
+        margin-right: 5%;
+        
+    }
+</style>
+
+
+
 @extends('layouts.app')
 
 @section('content')
