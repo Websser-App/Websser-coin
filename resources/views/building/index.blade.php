@@ -9,14 +9,19 @@
         background-color: white;
         
     }
+    .titulo{
+        margin-left:2%;
+        font-size: 150%;
+        font-weight: bold;
+    }
     .contenerdor2{
         
         justify-content: center;
         margin-bottom: 20%;
         display: grid;
-        gap:12rem;
-        grid-auto-rows: 15rem;
-        grid-template-columns:repeat(auto-fit, minmax(13rem, 1fr));
+        gap:1rem;
+        grid-auto-rows: 30rem;
+        grid-template-columns:repeat(auto-fit, minmax(25rem, 1fr));
         margin-left: 5%;
         margin-right: 5%;
         
@@ -28,7 +33,9 @@
         width:130px;
         height: 30px;
         font-size: 15px;
-        
+        position: relative;
+        right: -90%;
+        bottom: -90%;
       
     }
     td{
@@ -53,10 +60,87 @@
     }
     .conttenedorImg{
         overflow: hidden;
-        height: 100%;
+        height: 70%;
     }
 </style>
 <div class="container-lg mt-7">
+    <div class="row">
+        
+        <a href="{{ route('building.create')}}" class="btn btn-sm btn-primary buttons" >{{ __('Create Entity') }}</a>
+        <h3 class="mb-0 titulo">{{__('Buildings')}}</h3>
+    </div>
+    @if(Session::has('message'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ Session::get('message') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+
+                <div class="contenerdor2"> 
+                    @foreach($buildings as $building)
+                        <div class="precios">
+                            <button title="@lang('Address')" type="button" class="btn btn-sm text-primary btnI" data-bs-toggle="modal"  data-bs-target="#assignModal{{ $building->id }}" data-id="{{ $building->id }}">
+                                <i class="ni ni-square-pin" style="font-size: 25px;"></i>
+                            </button>
+                            {{-- <a title="@lang('Departaments')" href="{{route('departaments.create', $building->id)}}" class="btn btn-sm text-primary btnI">
+                                <i class="ni ni-building" style="font-size: 25px;"></i> 
+                            </a> --}}
+                            <div class="dropdown">
+                                <a class="btn btn-sm btn-icon-only text-primary btnI" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                    <a class="dropdown-item" href="{{ route('building.edit', $building->id) }}">{{__('Edit')}}</a>
+                                    <form action="{{ route('building.destroy', $building->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" class="dropdown-item" value="{{__('Delete')}}">
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="conttenedorImg">
+                                @if($building->type_building == 'vertical')
+                                    <img src="{{ asset('argon') }}/img/v.png"  height= "100%;" class="">
+                                @elseif($building->type_building == 'horizontal') 
+                                    <img src="{{ asset('argon') }}/img/h.png"  height= "100%;"class="">
+                                @endif
+                            </div>
+                            <a href="{{route('departaments.create', $building->id)}}">
+                                <p class="card-title">@lang('Information')</p>
+                                <strong><b> @lang('ID'):</b></strong>
+                                <p class="card-text">{{$building->UUID}}</p>
+                            </a>
+                        </div>
+                        
+                        <div class="modal fade" id="assignModal{{ $building->id }}" tabindex="-1" role="dialog" aria-labelledby="assignModal{{ $building->id }}" aria-hidden="true">
+                                    <div class="modal-dialog modalSize">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="assignModal{{ $building->id }}">@lang('Address')</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <center>
+                                                    <h5>{{$building->address}}</h5>
+                                                </center>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('Close')</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+
+                    @endforeach
+                </div>
+    
+
+
+
+
     <div class="card">
         <div class="row">
             <div class="col">
