@@ -68,17 +68,16 @@
                                 
                             @endif
                             <h5 class="card-title">@lang('Information')</h5>
-                            <strong><b> @lang('ID Bulding'):</b></strong>
-                            <p class="card-text">{{$departament->buildings->UUID}}</p>
-                            <strong><b> @lang('Departament Number'):</b></strong>
+                            <strong><b> @lang('ID departament'):</b></strong>
                             <p class="card-text">{{$departament->UUID}}</p>
+                            <strong><b> @lang('Departament Number'):</b></strong>
+                            <p class="card-text">{{$departament->number_departament}}</p>
                             <strong><b> @lang('Tenant name'):</b></strong>
                             @if($departament->tenants != NULL)
                             <p class="card-text">{{$departament->tenants->name}} {{$departament->tenants->surname}} {{$departament->tenants->second_surname}}</p>
                             @else
                                 <p class="card-text">@lang('Not assigned')</p>
                             @endif
-                            <p class="card-text">{{$departament->number_departament}}</p>
                         </div>
                     @endforeach
                     

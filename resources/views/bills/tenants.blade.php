@@ -63,21 +63,19 @@
                 @foreach($tenants as $tenant)
                     @if($tenant->amount)
                     <div class="precios" style="border: 1px solid green">
+                        <button title="@lang('Not payed')" class="btn btn-sm text-danger"  data-bs-toggle="modal"  data-bs-target="#notPayedModal{{ $tenant->payments_id }}" data-id="{{ $tenant->payments_id }}">
+                            <i style="font-size: 20px" class="bi bi-file-minus"></i>
+                        </button>
+                        <a title="@lang('Generate payment receipt')" class="btn btn-sm text-blue">
+                            <i style="font-size: 20px" class="bi bi-file-arrow-down"></i>
+                        </a>
+                        <a title="@lang('Send receipt by mail')" class="btn btn-sm text-primary">
+                            <i style="font-size: 20px" class="bi bi-envelope"></i>
+                        </a>
                         <h1>${{getAmount($tenant->amount,2)}}</h1>
+                        <p class="card-title">@lang('Amount')</p>
                         <h1 class="bg-success" >@lang('Paid')</h1>
-                        
-                            <button title="@lang('Not payed')" class="btn btn-sm text-danger"  data-bs-toggle="modal"  data-bs-target="#notPayedModal{{ $tenant->payments_id }}" data-id="{{ $tenant->payments_id }}">
-                                <i style="font-size: 20px" class="bi bi-file-minus"></i>
-                            </button>
-                            <a title="@lang('Generate payment receipt')" class="btn btn-sm text-blue">
-                                <i style="font-size: 20px" class="bi bi-file-arrow-down"></i>
-                            </a>
-                            <a title="@lang('Send receipt by mail')" class="btn btn-sm text-primary">
-                                <i style="font-size: 20px" class="bi bi-envelope"></i>
-                            </a>
-
-
-
+                    
                             <p class="card-title">@lang('Information')</p>
 
                             <strong><b>@lang('Departament'):</b></strong>
@@ -105,7 +103,7 @@
 
                                             <div class="col-md-6">
                                                 <label for="amount" class="form-label text-center">@lang('Amount')</label>
-                                                <input type="text" class="form-control text-center" id="amount" name="amount" value="0" placeholder="@lang('Amount')" readonly required>
+                                                <input type="text" class="form-control text-center" id="amount" name="amount" value="$0" placeholder="@lang('Amount')" readonly required>
                                             </div>
                                             <div class="text-center">
                                                 <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
@@ -160,7 +158,7 @@
                                             <input type="hidden" name="bills_id" value="{{$bills->id}}">
                                             <div class="col-md-6">
                                                 <label for="amount" class="form-label text-center">@lang('Amount')</label>
-                                                <input type="text" class="form-control text-center" id="amount" name="amount" value="{{$bills->amount}}" placeholder="@lang('Amount')" required readonly>
+                                                <input type="text" class="form-control text-center" id="amount" name="amount" value="${{$bills->amount}}" placeholder="@lang('Amount')" required readonly>
                                             </div>
                                             <div class="text-center">
                                                 <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>

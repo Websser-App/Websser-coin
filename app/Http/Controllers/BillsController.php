@@ -113,8 +113,11 @@ class BillsController extends Controller
 
 
     public function notPayed(Request $request, $id) {
+            $this->validate($request, [
+                'amount' => 'required',
+            ]);
             $tenantpayments = TenantPayments::find($id);
-            $tenantpayments->amount = $request->amount;
+            $tenantpayments->amount = 0;
             $tenantpayments->save();
             return redirect()->route('bills.tenants', $tenantpayments->bills_id)->with('message', __('The payment was accepted successfully'));
     }
