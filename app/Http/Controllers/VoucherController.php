@@ -50,6 +50,7 @@ class VoucherController extends Controller
                 'voucher' => 'required',
             ]);
             $vouchers = new Voucher();
+            $vouchers->user_id = $request->user_id;
             $vouchers->bills_id = $request->bills_id;
             $voucher = file_get_contents($request->file('voucher'));
             $voucher = base64_encode($voucher);
