@@ -33,7 +33,7 @@
         <div  class="contenerdor2">
                 
                 
-                    <div class= "precios">
+                    <a href="{{url('building')}}" class= "precios">
                         <h5 class="card-title text-uppercase text-muted mb-0" style = "font-size: 90%;">@lang('Buildings')</h5>
                         <span class="h2 font-weight-bold mb-1" style = "font-size: 90%;">{{$buildings}}</span>
                         
@@ -42,7 +42,7 @@
                                             <i class="fas fa-chart-bar" style = "font-size: 90%;"></i>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     
                 
                     <div class= "precios">
@@ -58,7 +58,7 @@
                         
                 
                 
-                    <div class= "precios">
+                    <a href="{{route('tenantpayments.wallet')}}" class= "precios">
                     <h5 class="card-title text-uppercase text-muted mb-0" style = "font-size: 90%;">@lang('Pagos')</h5>
                                         <span class="h2 font-weight-bold mb-0" style = "font-size: 90%;">${{getAmount($payments,0)}}</span>
                                         <div class="row centrar">
@@ -66,7 +66,7 @@
                                             <i class="fas fa-chart-pie"></i>
                                         </div>
                                     </div>
-                    </div>
+                                </a>
                         
                 
 
