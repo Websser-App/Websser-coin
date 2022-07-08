@@ -1,5 +1,6 @@
 <style>
     .precios{
+        border-radius: 20px;
         font-size: 100%;
         text-align: center;
         

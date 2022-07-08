@@ -3,6 +3,8 @@
 @include('layouts.headers.page')
 <style>
     .precios{
+        border-color: blue;
+        border-radius: 30px;
         font-size: 100%;
         text-align: center;
         height: 100%;
@@ -67,7 +69,7 @@
     <div class="row">
         
         <a href="{{ route('building.create')}}" class="btn btn-sm btn-primary buttons" >{{ __('Create Entity') }}</a>
-        <h3 class="mb-0 titulo">{{__('Buildings')}}</h3>
+        <h3 class="mb-0 titulo">{{__('Buildings')}} </h3>
     </div>
     @if(Session::has('message'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
