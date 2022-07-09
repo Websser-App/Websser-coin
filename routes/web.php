@@ -31,6 +31,10 @@ route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'r
 route::post('validation/{id}', [App\Http\Controllers\Auth\RegisterController::class, 'validation'])->name('validation');
 route::get('resendCode/{id}', [App\Http\Controllers\Auth\RegisterController::class, 'resendCode'])->name('resendCode');
 route::post('ajaxImageUploadPost', [App\Http\Controllers\Auth\RegisterController::class, 'ajaxImageUploadPost'])->name('ajaxImageUploadPost');
+route::post('ajaxIneFrontUploadPost', [App\Http\Controllers\Auth\RegisterController::class, 'ajaxIneFrontUploadPost'])->name('ajaxIneFrontUploadPost');
+route::post('ajaxIneBackUploadPost', [App\Http\Controllers\Auth\RegisterController::class, 'ajaxIneBackUploadPost'])->name('ajaxIneBackUploadPost');
+route::post('ajaxCertificateUploadPost', [App\Http\Controllers\Auth\RegisterController::class, 'ajaxCertificateUploadPost'])->name('ajaxCertificateUploadPost');
+
 route::post('completedRegister', [App\Http\Controllers\Auth\RegisterController::class, 'completedRegister'])->name('completedRegister');
 
 

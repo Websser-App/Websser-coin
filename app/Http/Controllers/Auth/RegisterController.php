@@ -103,11 +103,85 @@ class RegisterController extends Controller
         }
     }
 
-    public function ajaxImageUploadPost(Request $request)
+    public function ajaxIneFrontUploadPost(Request $request){
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+            'ine_front' => 'required',
+          ]);
+    
+    
+          if ($validator->passes()) {
+    
+    
+            $user = User::find($request->user_id);
+    
+            $ine_front = file_get_contents($request->file('ine_front'));
+            $ine_front = base64_encode($ine_front);
+            $user->ine_front = $ine_front;
+            $user->save(); 
+    
+    
+            return response()->json(['success'=>'done']);
+          }
+    
+          return response()->json(['error'=>$validator->errors()->all()]);
+    }
+
+    public function ajaxIneBackUploadPost(Request $request){
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+            'ine_back' => 'required',
+          ]);
+    
+    
+          if ($validator->passes()) {
+    
+    
+            $user = User::find($request->user_id);
+    
+            $ine_back = file_get_contents($request->file('ine_back'));
+            $ine_back = base64_encode($ine_back);
+            $user->ine_back = $ine_back;
+            $user->save(); 
+    
+    
+            return response()->json(['success'=>'done']);
+          }
+    
+          return response()->json(['error'=>$validator->errors()->all()]);
+    }
+
+    public function ajaxCertificateUploadPost(Request $request){
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+            'certificate' => 'required',
+          ]);
+    
+    
+          if ($validator->passes()) {
+    
+    
+            $user = User::find($request->user_id);
+    
+            $certificate = file_get_contents($request->file('certificate'));
+            $certificate = base64_encode($certificate);
+            $user->certificate = $certificate;
+            $user->save(); 
+    
+    
+            return response()->json(['success'=>'done']);
+          }
+    
+          return response()->json(['error'=>$validator->errors()->all()]);
+    }
+
+    public function ajaxUploadPost(Request $request)
     {
       $validator = Validator::make($request->all(), [
         'user_id' => 'required',
-        'image' => 'required',
+        'ine_front' => 'required',
+        'ine_back' => 'required',
+        'certificate' => 'required',
       ]);
 
 
