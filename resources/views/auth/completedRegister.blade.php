@@ -378,7 +378,7 @@
             formData.append("user_id", userid);
             formData.append("_token", $('input[name="_token"]').val());
 
-            console.log($('input[name="_token"]').val());
+            console.log("debe pasar aquiiiiiiiiiiiiiiiiiiiiii");
             console.log("formssaspppp ", file);
             console.log("despues ");
 
@@ -442,7 +442,7 @@
                     html = document.getElementById("preview").innerHTML;
                     document.getElementById("preview").innerHTML = image;
                 });
-
+                console.log("pocesandoooooo");
                 fileReader.readAsDataURL(file[0]);
                 uploadFile(file[0], id);
                 
@@ -487,7 +487,7 @@
 
 
 
-        function uploadFile(file, id){
+        function uploadFile2(file, id){
             formData = new FormData();
             formData.append("ine_back", file);
             formData.append("user_id", userid);
@@ -559,7 +559,7 @@
                 });
 
                 fileReader.readAsDataURL(file[0]);
-                uploadFile(file[0], id);
+                uploadFile2(file[0], id);
                 
             }else{
                 alert("No es un archivo valido");
