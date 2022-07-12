@@ -1,3 +1,75 @@
+<style>
+        input[type=file]{
+            width:90px;
+            color:transparent;
+            display: block;
+        }
+        input[type=file] button{
+            
+            color:#5256ad;
+            display: block;
+        }
+        .pugaso{
+            border: 5px dashed #ddd;
+        }
+        .drag-area{
+            display: block;
+            border: 5px dashed #ddd;
+            height: 2%;
+            width: 100%;
+            border-radius: 5px;
+            text-align: center;
+            
+        }
+        .drag-area.active{
+            background-color: #b8d4fe;
+            color: black;
+            border: 2px dashed #618ac9;
+        }
+        .drag-area span{
+            font-weight:500;
+            color: #000;
+        }
+        .drag-area h3{
+            font-weight:500;
+        }
+        .drag-area label{
+            padding:5px 25px;
+            border: 0;
+            outline: none;
+            background-color: #5256ad;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .file-container{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border: solid 1px #ddd;
+        }
+        .status-text{
+            padding: 0 10px;
+
+        }
+        .success{
+            color: green;
+        }
+        .failure{
+            color: #ff0000;
+        }
+
+
+    </style>
+
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+<link rel="stylesheet" href= "https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type = "text/css"/>
+
+<head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+</head>
+
 @extends('layouts.app')
 
 @section('content')
@@ -161,6 +233,63 @@
                                 </div>
                             </form>
                         @elseif($user->ine_front == null && $user->ine_back == null)
+                            <!-- forma pugaso--->
+                            
+                                <form role="form" method="POST" action="{{ route('ajaxIneBackUploadPost') }}" enctype="multipart/form-data">
+                                    @csrf
+                                        @lang('INE image in front')
+                                        <input type="hidden" name="id" value="{{ $user->id }}" id="userId">
+                                        <div class="drag-area" id= "drag" name="drag">
+                                            <h3 id="textG1" name = "textG1"> Arrastre y suelte su archivo </h3>
+                                            <p><span>O</span></p>
+                                            
+                                            
+                                            
+                                            <label for="ine_front">Selecione su archivo
+                                                    <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id = "ine_front" placeholder="{{ __('INE image in front') }}" type="file" name="ine_front" value="{{ old('name') }}" hidden required>
+                                            </label>
+                                        </div>
+                                        <div id = "preview" name = "preview"></div>
+                                </form>
+
+                                <form role="form" method="POST" action="{{ route('ajaxIneBackUploadPost') }}" enctype="multipart/form-data">
+                                    @csrf
+                                        @lang('INE image in back')
+                                        
+                                        <div class="drag-area" id= "drag2" name="drag2">
+                                            <h3 id="textG2" name = "textG2"> Arrastre y suelte su archivo </h3>
+                                            <p><span>O</span></p>
+                                            
+                                            
+                                            
+                                            <label for="ine_back">Selecione su archivo
+                                                    <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id = "ine_back" placeholder="{{ __('INE image in front') }}" type="file" name="ine_back" value="{{ old('name') }}" hidden required>
+                                            </label>
+                                        </div>
+                                        <div id = "preview2" name = "preview2"></div>
+                                </form>
+
+
+
+
+                                <form role="form" method="POST" action="{{ route('ajaxIneBackUploadPost') }}" enctype="multipart/form-data">
+                                    @csrf
+                                        @lang('Certificate image (Optional)')
+                                        
+                                        <div class="drag-area" id= "drag3" name="drag3">
+                                            <h3 id="textG3" name = "textG3"> Arrastre y suelte su archivo </h3>
+                                            <p><span>O</span></p>
+                                            
+                                            
+                                            
+                                            <label for="ine_back">Selecione su archivo
+                                                    <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id = "documento" placeholder="{{ __('INE image in front') }}" type="file" name="documento" value="{{ old('name') }}" hidden required>
+                                            </label>
+                                        </div>
+                                        <div id = "preview3" name = "preview3"></div>
+                                </form>
+
+                            <!--
                             <form role="form" method="POST" action="{{ route('completedRegister') }}" enctype="multipart/form-data">
                                 @csrf
                                 
@@ -217,10 +346,370 @@
                                     <button type="submit" class="btn btn-primary mt-4">{{ __('Complete registration') }}</button>
                                 </div>
                             </form>
+                            -->
                         @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <script>
+        button = document.querySelector(".button");
+
+        userid = input = document.getElementById("userId").value;
+        dropArea = document.getElementById("drag");
+        dragText = document.getElementById("textG1");
+        input = document.getElementById("ine_front");
+
+        
+        dropArea2 = document.getElementById("drag2");
+        dragText2 = document.getElementById("textG2");
+        
+        input2 = document.getElementById("ine_back");
+        
+        
+        let files;
+
+        function uploadFile(file, id){
+            formData = new FormData();
+            formData.append("ine_front", file);
+            formData.append("user_id", userid);
+            formData.append("_token", $('input[name="_token"]').val());
+
+            console.log($('input[name="_token"]').val());
+            console.log("formssaspppp ", file);
+            console.log("despues ");
+
+            try {
+                $.ajax({
+                        url: '/ajaxIneFrontUploadPost',
+                        method: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,  
+                        
+                    }).done(function(res){
+                        console.log("hecho si paso el post" )
+                        document.getElementById(
+                            `${id}st`
+                        ).innerHTML= '<span class="succes">Archivo subido corectamente...</span>';
+                    }).fail(function(error) {
+                        console.log( error );
+                    });
+            } catch (error) {
+                console.log($('input[name="_token"]').val());
+                console.log(error);
+            }
+        }
+        
+        input.addEventListener("change", function(e) {
+            files = this.files;
+            dropArea.classList.add("active");
+            
+            processFile(files);
+            dropArea.classList.remove("active");
+
+        });
+
+
+
+        function processFile(file){
+            
+            docType = file[0].type
+            console.log(docType)
+            validExtension = ['image/jpeg', 'image/jpg', 'image/png']
+
+            if(validExtension.includes(docType)){
+                //archivo valido
+                fileReader = new FileReader();
+                id = `file-${Math.random().toString(32).substring(7)}`;
+
+                fileReader.addEventListener('load', function(e){
+                    fileUrl = fileReader.result;
+                    image = `
+                        <div id="${id}" class = "file-container">
+                            <img src="${fileUrl}" alt="${file[0].name}" width= "50">
+                            <div class="status">
+                                
+                                <span>${file[0].name}</span>
+                                <span  id="${id}st" name = "${id}st" class="status-text"> Loading ...
+                                </span>
+                            </div>
+                        </div>
+                    `;
+                    html = document.getElementById("preview").innerHTML;
+                    document.getElementById("preview").innerHTML = image;
+                });
+
+                fileReader.readAsDataURL(file[0]);
+                uploadFile(file[0], id);
+                
+            }else{
+                alert("No es un archivo valido");
+            }
+        }
+
+        
+
+        dropArea.addEventListener("dragover", function(e) {
+            
+            e.preventDefault();
+            
+            dropArea.classList.add("active");
+            dragText.textContent = "Suelte para subir archivos";
+
+        });
+
+        dropArea.addEventListener("dragleave", function(e)  {
+           
+            e.preventDefault();
+            
+            dropArea.classList.remove("active");
+            dragText.textContent = "Arrastre y suelte su archivo";
+        });
+
+        dropArea.addEventListener("drop", function(e)  {
+            e.preventDefault();
+           
+            files = e.dataTransfer.files;
+            console.log(files);
+            processFile(files);
+            dropArea.classList.remove("active");
+            dragText.textContent = "Arrastre y suelte su archivo";
+        });
+
+        
+
+
+
+
+
+
+        function uploadFile(file, id){
+            formData = new FormData();
+            formData.append("ine_back", file);
+            formData.append("user_id", userid);
+            formData.append("_token", $('input[name="_token"]').val());
+
+            console.log($('input[name="_token"]').val());
+            console.log("formssaspppp ", file);
+            console.log("despues ");
+
+            try {
+                $.ajax({
+                        url: '/ajaxIneBackUploadPost',
+                        method: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,  
+                        
+                    }).done(function(res){
+                        console.log("hecho si paso el post" )
+                        document.getElementById(
+                            `${id}st`
+                        ).innerHTML= '<span class="succes">Archivo subido corectamente...</span>';
+                    }).fail(function(error) {
+                        console.log( error );
+                    });
+            } catch (error) {
+                console.log($('input[name="_token"]').val());
+                console.log(error);
+            }
+        }
+        
+        input2.addEventListener("change", function(e) {
+            files = this.files;
+            dropArea2.classList.add("active");
+            
+            processFile2(files);
+            dropArea2.classList.remove("active");
+
+        });
+
+
+
+        function processFile2(file){
+            
+            docType = file[0].type
+            console.log(docType)
+            validExtension = ['image/jpeg', 'image/jpg', 'image/png']
+
+            if(validExtension.includes(docType)){
+                //archivo valido
+                fileReader = new FileReader();
+                id = `file-${Math.random().toString(32).substring(7)}`;
+
+                fileReader.addEventListener('load', function(e){
+                    fileUrl = fileReader.result;
+                    image = `
+                        <div id="${id}" class = "file-container">
+                            <img src="${fileUrl}" alt="${file[0].name}" width= "50">
+                            <div class="status">
+                                
+                                <span>${file[0].name}</span>
+                                <span  id="${id}st" name = "${id}st" class="status-text"> Loading ...
+                                </span>
+                            </div>
+                        </div>
+                    `;
+                    html = document.getElementById("preview2").innerHTML;
+                    document.getElementById("preview2").innerHTML = image;
+                });
+
+                fileReader.readAsDataURL(file[0]);
+                uploadFile(file[0], id);
+                
+            }else{
+                alert("No es un archivo valido");
+            }
+        }
+
+        
+
+        dropArea2.addEventListener("dragover", function(e) {
+            
+            e.preventDefault();
+            
+            dropArea2.classList.add("active");
+            dragText2.textContent = "Suelte para subir archivos";
+
+        });
+
+        dropArea2.addEventListener("dragleave", function(e)  {
+           
+            e.preventDefault();
+            
+            dropArea2.classList.remove("active");
+            dragText2.textContent = "Arrastre y suelte su archivo";
+        });
+
+        dropArea2.addEventListener("drop", function(e)  {
+            e.preventDefault();
+           
+            files = e.dataTransfer.files;
+            console.log(files);
+            processFile2(files);
+            dropArea2.classList.remove("active");
+            dragText2.textContent = "Arrastre y suelte su archivo";
+        });
+
+
+
+        dropArea3 = document.getElementById("drag3");
+        dragText3 = document.getElementById("textG3");
+        input3 = document.getElementById("documento");
+
+
+        function uploadFile3(file, id){
+            formData = new FormData();
+            formData.append("certificate", file);
+            formData.append("user_id", userid);
+            formData.append("_token", $('input[name="_token"]').val());
+
+            console.log($('input[name="_token"]').val());
+            console.log("formssaspppp ", file);
+            console.log("despues ");
+
+            try {
+                $.ajax({
+                        url: '/ajaxCertificateUploadPost',
+                        method: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,  
+                        
+                    }).done(function(res){
+                        console.log("hecho si paso el post" )
+                        document.getElementById(
+                            `${id}st`
+                        ).innerHTML= '<span class="succes">Archivo subido corectamente...</span>';
+                    }).fail(function(error) {
+                        console.log( error );
+                    });
+            } catch (error) {
+                console.log($('input[name="_token"]').val());
+                console.log(error);
+            }
+        }
+        
+        input3.addEventListener("change", function(e) {
+            files = this.files;
+            dropArea3.classList.add("active");
+            
+            processFile3(files);
+            dropArea3.classList.remove("active");
+
+        });
+
+
+
+        function processFile3(file){
+            
+            docType = file[0].type
+            console.log(docType)
+            validExtension = ['image/jpeg', 'image/jpg', 'image/png']
+
+            if(validExtension.includes(docType)){
+                //archivo valido
+                fileReader = new FileReader();
+                id = `file-${Math.random().toString(32).substring(7)}`;
+
+                fileReader.addEventListener('load', function(e){
+                    fileUrl = fileReader.result;
+                    image = `
+                        <div id="${id}" class = "file-container">
+                            <img src="${fileUrl}" alt="${file[0].name}" width= "50">
+                            <div class="status">
+                                
+                                <span>${file[0].name}</span>
+                                <span  id="${id}st" name = "${id}st" class="status-text"> Loading ...
+                                </span>
+                            </div>
+                        </div>
+                    `;
+                    html = document.getElementById("preview").innerHTML;
+                    document.getElementById("preview3").innerHTML = image;
+                });
+
+                fileReader.readAsDataURL(file[0]);
+                uploadFile3(file[0], id);
+                
+            }else{
+                alert("No es un archivo valido");
+            }
+        }
+
+        
+
+        dropArea3.addEventListener("dragover", function(e) {
+            
+            e.preventDefault();
+            
+            dropArea3.classList.add("active");
+            dragText3.textContent = "Suelte para subir archivos";
+
+        });
+
+        dropArea3.addEventListener("dragleave", function(e)  {
+           
+            e.preventDefault();
+            
+            dropArea3.classList.remove("active");
+            dragText3.textContent = "Arrastre y suelte su archivo";
+        });
+
+        dropArea3.addEventListener("drop", function(e)  {
+            e.preventDefault();
+           
+            files = e.dataTransfer.files;
+            console.log(files);
+            processFile3(files);
+            dropArea3.classList.remove("active");
+            dragText3.textContent = "Arrastre y suelte su archivo";
+        });
+
+
+    </script>
 @endsection
