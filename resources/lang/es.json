@@ -151,6 +151,8 @@
     "Subscription": "Subscripcion",
     "Pay": "Pagar",
     "Generate payment receipt": "Generar recibo de pago",
-    "Send receipt by mail": "Enviar recibo por correo"
+    "Send receipt by mail": "Enviar recibo por correo",
+    "Mail sent successfully" : "El correo fue enviado con éxito",
+    "Contacts" : "Contatos"
     
 }

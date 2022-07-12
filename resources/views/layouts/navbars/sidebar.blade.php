@@ -96,6 +96,13 @@
 
                 <li class="nav-item">
                     <a class="nav-link text-black" href="{{ route('tenantpayments.wallet') }}">
+                        <i class="bi bi-person-lines-fill" style="color: #f4645f; font-size: 30px;"></i>
+                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Contacts') }}</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-black" href="{{ route('tenantpayments.wallet') }}">
                         <i class="bi bi-cash text-green" style="color: #f4645f; font-size: 30px;"></i>
                         <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Wallet') }}</span>
                     </a>

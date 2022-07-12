@@ -104,14 +104,6 @@ class RegisterController extends Controller
     }
 
     public function ajaxIneFrontUploadPost(Request $request){
-        $validator = Validator::make($request->all(), [
-            'user_id' => 'required',
-            'ine_front' => 'required',
-          ]);
-    
-    
-          if ($validator->passes()) {
-    
     
             $user = User::find($request->user_id);
     
@@ -122,9 +114,7 @@ class RegisterController extends Controller
     
     
             return response()->json(['success'=>'done']);
-          }
-    
-          return response()->json(['error'=>$validator->errors()->all()]);
+
     }
 
     public function ajaxIneBackUploadPost(Request $request){
