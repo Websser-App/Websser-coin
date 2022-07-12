@@ -235,11 +235,24 @@ class RegisterController extends Controller
                 return redirect('home');
                 break;
             case $user->ine_front == NULL && $user->ine_back == NULL:
-                Session::flash('message', __('Error al subir las imagenes'));
-                return redirect()->back()->with('user', $user);
+                return view('auth.completedRegister')->with('user', $user);
                 break;
         }
 
+    }
+
+    public function completeImagen($id){
+        $user = User::find($id);
+        if($user->ine_front != NULL && $user->ine_back != NULL){
+            Auth::login($user);
+            Session::flash('message', __('User completed successfully'));
+            return redirect('home');
+            break;
+        } else {
+            Session::flash('message', __('Error al subir las imagenes'));
+            return view('auth.completedRegister')->with('user', $user);
+            break;
+        } 
     }
 
     public function validateUserAuth(Request $request, $id){

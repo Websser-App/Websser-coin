@@ -35,6 +35,7 @@ route::post('/ajaxIneFrontUploadPost', [App\Http\Controllers\Auth\RegisterContro
 route::post('/ajaxIneBackUploadPost', [App\Http\Controllers\Auth\RegisterController::class, 'ajaxIneBackUploadPost'])->name('ajaxIneBackUploadPost');
 route::post('/ajaxCertificateUploadPost', [App\Http\Controllers\Auth\RegisterController::class, 'ajaxCertificateUploadPost'])->name('ajaxCertificateUploadPost');
 route::post('completedRegister', [App\Http\Controllers\Auth\RegisterController::class, 'completedRegister'])->name('completedRegister');
+route::get('completeImagen/{id}', [App\Http\Controllers\Auth\RegisterController::class, 'completeImagen'])->name('completeImagen');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
