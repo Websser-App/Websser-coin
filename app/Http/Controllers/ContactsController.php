@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Building;
 use App\Models\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
@@ -19,8 +19,16 @@ class contactsController extends Controller
      * @param  \App\Models\User  $model
      * @return \Illuminate\View\View
      */
-    public function contact()
+    public function index()
     {
-        return view('contacts.index');
+        $buildings = Building::where('user_id', auth()->user()->id)->get();
+        return view('contacts.index')->with('buildings', $buildings);
+    }
+
+
+    public function create()
+    {
+        //$buildings = Building::where('user_id', auth()->user()->id)->get();
+        return view('contacts.create');
     }
 }

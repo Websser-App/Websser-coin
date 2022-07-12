@@ -142,7 +142,7 @@
 
 
 
-
+<!---
     <div class="card">
         <div class="row">
             <div class="col">
@@ -225,7 +225,7 @@
                     @endforeach
                 </div>
                  
-                <!---
+                
                 <div class="table-responsive">
                     <table id="tablelist" class="table align-items-center table-flush letras" >
 
@@ -302,7 +302,7 @@
                         </tbody>
                     </table>
                 </div>
-                -->
+                
                 <div class="card-footer py-4">
                     <nav class="d-flex justify-content-end" aria-label="...">
                         
@@ -311,6 +311,7 @@
             </div>
         </div>
     </div>
+    -->
     @include('layouts.footers.auth')
 </div>
 @endsection

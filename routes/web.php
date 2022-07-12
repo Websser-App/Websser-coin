@@ -72,7 +72,11 @@ Route::post('tenantpayments/generatePDF', 'TenantPaymentsController@generatePDF'
 Route::get('/profile', 'UserController@profile')->name('profile');
 
 Route::get('/packages', 'paymentsController@payment')->name('packages');
-Route::get('/contacts', 'ContactsController@contact')->name('contacts');
+
+Route::resource('contacts', 'ContactsController')->except('show');
+
+//Route::get('/contacts', 'ContactsController@contact')->name('contacts');
+
 
 
 
