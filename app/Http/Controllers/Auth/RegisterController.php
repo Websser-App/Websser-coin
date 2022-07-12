@@ -247,11 +247,9 @@ class RegisterController extends Controller
             Auth::login($user);
             Session::flash('message', __('User completed successfully'));
             return redirect('home');
-            break;
         } else {
             Session::flash('message', __('Error al subir las imagenes'));
             return view('auth.completedRegister')->with('user', $user);
-            break;
         } 
     }
 

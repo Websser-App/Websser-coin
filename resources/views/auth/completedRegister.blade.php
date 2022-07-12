@@ -261,11 +261,6 @@
                                         <div id = "preview2" name = "preview2"></div>
                                 </form>
 
-                                <center>
-                                    <a href="{{route('completeImagen', $user->id)}}" class="btn btn-primary mt-4">
-                                        {{ __('Complete registration') }}
-                                    </a>
-                                </center>
 
 
                                 <form role="form" method="POST" action="{{ route('ajaxIneBackUploadPost') }}" enctype="multipart/form-data">
@@ -278,6 +273,11 @@
                                         </div>
                                         <div id = "preview3" name = "preview3"></div>
                                 </form>
+                                <center>
+                                    <a href="{{route('completeImagen', $user->id)}}" class="btn btn-primary mt-4">
+                                        {{ __('Complete registration') }}
+                                    </a>
+                                </center>
 
                             <!--
                             <form role="form" method="POST" action="{{ route('completedRegister') }}" enctype="multipart/form-data">
