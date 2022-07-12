@@ -8,7 +8,8 @@ use App\Models\Depataments;
 use App\Models\TenantPayments;
 use App\Models\Tenants;
 use Illuminate\Http\Request;
-use DB;
+use PDF;
+use Mail;
 
 class BillsController extends Controller
 {
@@ -80,6 +81,31 @@ class BillsController extends Controller
             $query->where('tenant_payments.bills_id', $bills->id);
         })->where('tenants.building_id', $bills->building_id)->where('tenants.user_id', auth()->user()->id)->select('tenants.*','tenant_payments.*', 'tenant_payments.id as payments_id')->get()->sum('amount');
         return view('bills.tenants')->with('tenants', $tenants)->with('bills', $bills)->with('tenantsCount', $tenantsCount)->with('tenantsSum', $tenantsSum);
+    }
+
+    public function sendEmail($id){
+        $data["tenantpayments"] = TenantPayments::find($id);
+        $data["email"] = $data["tenantpayments"]->tenants->email;
+        $data["title"] = "Reporte de pago";
+        $data["body"] = "Demo de pago";
+  
+        $pdf = PDF::loadView('TenantPayments.pdf.PaymentReportEmail', $data);
+  
+        Mail::send('TenantPayments.pdf.PaymentReportEmail', $data, function($message)use($data, $pdf) {
+            $message->to($data["email"], $data["email"])
+                    ->subject($data["title"])
+                    ->attachData($pdf->output(), "PaymentReport.pdf");
+        });
+  
+        return redirect()->route('bills.tenants', $data["tenantpayments"]->bills_id)->with('message', __('Mail sent successfully'));
+
+    }
+
+    public function paymentReport($id){
+        $tenantpayments = TenantPayments::find($id);
+        view()->share ('tenantpayments', $tenantpayments);
+        $pdf = PDF ::loadView ('TenantPayments.pdf.PaymentReport', ['tenantpayments' => $tenantpayments]);
+        return $pdf->download ('PaymentsReports.pdf');
     }
 
     public function paid(Request $request, $id){

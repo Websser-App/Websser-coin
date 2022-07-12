@@ -66,10 +66,10 @@
                         <button title="@lang('Not payed')" class="btn btn-sm text-danger"  data-bs-toggle="modal"  data-bs-target="#notPayedModal{{ $tenant->payments_id }}" data-id="{{ $tenant->payments_id }}">
                             <i style="font-size: 20px" class="bi bi-file-minus"></i>
                         </button>
-                        <a title="@lang('Generate payment receipt')" class="btn btn-sm text-blue">
+                        <a title="@lang('Generate payment receipt')" href="{{route('paymentReport', $tenant->id)}}" class="btn btn-sm text-blue">
                             <i style="font-size: 20px" class="bi bi-file-arrow-down"></i>
                         </a>
-                        <a title="@lang('Send receipt by mail')" class="btn btn-sm text-primary">
+                        <a title="@lang('Send receipt by mail')" href="{{route('sendEmail', $tenant->id)}}" class="btn btn-sm text-primary">
                             <i style="font-size: 20px" class="bi bi-envelope"></i>
                         </a>
                         <h1>${{getAmount($tenant->amount,2)}}</h1>

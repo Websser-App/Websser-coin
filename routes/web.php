@@ -31,10 +31,9 @@ route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'r
 route::post('validation/{id}', [App\Http\Controllers\Auth\RegisterController::class, 'validation'])->name('validation');
 route::get('resendCode/{id}', [App\Http\Controllers\Auth\RegisterController::class, 'resendCode'])->name('resendCode');
 route::post('ajaxImageUploadPost', [App\Http\Controllers\Auth\RegisterController::class, 'ajaxImageUploadPost'])->name('ajaxImageUploadPost');
-route::post('ajaxIneFrontUploadPost', [App\Http\Controllers\Auth\RegisterController::class, 'ajaxIneFrontUploadPost'])->name('ajaxIneFrontUploadPost');
-route::post('ajaxIneBackUploadPost', [App\Http\Controllers\Auth\RegisterController::class, 'ajaxIneBackUploadPost'])->name('ajaxIneBackUploadPost');
-route::post('ajaxCertificateUploadPost', [App\Http\Controllers\Auth\RegisterController::class, 'ajaxCertificateUploadPost'])->name('ajaxCertificateUploadPost');
-
+route::post('/ajaxIneFrontUploadPost', [App\Http\Controllers\Auth\RegisterController::class, 'ajaxIneFrontUploadPost'])->name('ajaxIneFrontUploadPost');
+route::post('/ajaxIneBackUploadPost', [App\Http\Controllers\Auth\RegisterController::class, 'ajaxIneBackUploadPost'])->name('ajaxIneBackUploadPost');
+route::post('/ajaxCertificateUploadPost', [App\Http\Controllers\Auth\RegisterController::class, 'ajaxCertificateUploadPost'])->name('ajaxCertificateUploadPost');
 route::post('completedRegister', [App\Http\Controllers\Auth\RegisterController::class, 'completedRegister'])->name('completedRegister');
 
 
@@ -50,6 +49,9 @@ route::get('departaments/{id}/create', 'DepatamentsController@create')->name('de
 
 Route::resource('bills', 'BillsController')->except('show');
 Route::get('bills/tenants/{id}', 'BillsController@tenants')->name('bills.tenants');
+Route::get('bills/tenants/sendEmail/{id}', 'BillsController@sendEmail')->name('sendEmail');
+Route::get('bills/tenants/paymentReport/{id}', 'BillsController@paymentReport')->name('paymentReport');
+Route::get('bills/tenants/downloadPDF/{id}', 'BillsController@downloadPDF')->name('downloadPDF');
 Route::post('bills/tenants/paid/{id}', 'BillsController@paid')->name('bills.paid');
 Route::post('bills/tenants/notPayed/{id}', 'BillsController@notPayed')->name('bills.notPayed');
 

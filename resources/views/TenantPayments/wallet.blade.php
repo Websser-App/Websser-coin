@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-8">
                             <h3 class="mb-0">{{__('Wallet')}}</h3>
-                            {{-- <a href="{{ route('tenantpayments.create')}}" class="btn btn-sm btn-primary mt-3 text-center">{{ __('Create expense payment') }}</a> --}}
+                            {{-- <a href="" class="btn btn-sm btn-primary mt-3 text-center">{{ __('Create expense payment') }}</a> --}}
                         </div>
                         {{-- <div class="col-4 text-right">
                             <button type="button" class="btn btn-sm btn-primary mt-3 text-center" data-bs-toggle="modal" data-bs-target="#modalPDF">
@@ -28,6 +28,8 @@
                         
                     </nav>
                 </div>
+                <a href="" class="btn btn-sm btn-primary mt-3 text-center">{{ __('Retirar dinero') }}</a>
+
             </div>
         </div>
     </div>
