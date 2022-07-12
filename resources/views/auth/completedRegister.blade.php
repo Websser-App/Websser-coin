@@ -13,13 +13,16 @@
             border: 5px dashed #ddd;
         }
         .drag-area{
-            display: block;
+            
             border: 5px dashed #ddd;
-            height: 2%;
-            width: 100%;
+            
             border-radius: 5px;
             text-align: center;
             
+        }
+        .tg{
+            margin-top:20%;
+            margin-bottom: 20%;
         }
         .drag-area.active{
             background-color: #b8d4fe;
@@ -240,14 +243,9 @@
                                         @lang('INE image in front')
                                         <input type="hidden" name="id" value="{{ $user->id }}" id="userId">
                                         <div class="drag-area" id= "drag" name="drag">
-                                            <h3 id="textG1" name = "textG1"> Arrastre y suelte su archivo </h3>
-                                            <p><span>O</span></p>
                                             
+                                            <h3 id="textG1" name = "textG1" class="tg"> Arrastre y suelte su archivo </h3>
                                             
-                                            
-                                            <label for="ine_front">Selecione su archivo
-                                                    <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id = "ine_front" placeholder="{{ __('INE image in front') }}" type="file" name="ine_front" value="{{ old('name') }}" hidden required>
-                                            </label>
                                         </div>
                                         <div id = "preview" name = "preview"></div>
                                 </form>
@@ -257,14 +255,8 @@
                                         @lang('INE image in back')
                                         
                                         <div class="drag-area" id= "drag2" name="drag2">
-                                            <h3 id="textG2" name = "textG2"> Arrastre y suelte su archivo </h3>
-                                            <p><span>O</span></p>
+                                            <h3 id="textG2" name = "textG2"  class="tg"> Arrastre y suelte su archivo </h3>
                                             
-                                            
-                                            
-                                            <label for="ine_back">Selecione su archivo
-                                                    <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id = "ine_back" placeholder="{{ __('INE image in front') }}" type="file" name="ine_back" value="{{ old('name') }}" hidden required>
-                                            </label>
                                         </div>
                                         <div id = "preview2" name = "preview2"></div>
                                 </form>
@@ -277,14 +269,8 @@
                                         @lang('Certificate image (Optional)')
                                         
                                         <div class="drag-area" id= "drag3" name="drag3">
-                                            <h3 id="textG3" name = "textG3"> Arrastre y suelte su archivo </h3>
-                                            <p><span>O</span></p>
+                                            <h3 id="textG3" name = "textG3"  class="tg"> Arrastre y suelte su archivo </h3>
                                             
-                                            
-                                            
-                                            <label for="ine_back">Selecione su archivo
-                                                    <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id = "documento" placeholder="{{ __('INE image in front') }}" type="file" name="documento" value="{{ old('name') }}" hidden required>
-                                            </label>
                                         </div>
                                         <div id = "preview3" name = "preview3"></div>
                                 </form>
@@ -361,13 +347,13 @@
         userid = input = document.getElementById("userId").value;
         dropArea = document.getElementById("drag");
         dragText = document.getElementById("textG1");
-        input = document.getElementById("ine_front");
+        
 
         
         dropArea2 = document.getElementById("drag2");
         dragText2 = document.getElementById("textG2");
         
-        input2 = document.getElementById("ine_back");
+        
         
         
         let files;
@@ -404,14 +390,7 @@
             }
         }
         
-        input.addEventListener("change", function(e) {
-            files = this.files;
-            dropArea.classList.add("active");
-            
-            processFile(files);
-            dropArea.classList.remove("active");
-
-        });
+        
 
 
 
@@ -519,14 +498,7 @@
             }
         }
         
-        input2.addEventListener("change", function(e) {
-            files = this.files;
-            dropArea2.classList.add("active");
-            
-            processFile2(files);
-            dropArea2.classList.remove("active");
-
-        });
+       
 
 
 
@@ -599,7 +571,7 @@
 
         dropArea3 = document.getElementById("drag3");
         dragText3 = document.getElementById("textG3");
-        input3 = document.getElementById("documento");
+       
 
 
         function uploadFile3(file, id){
@@ -634,14 +606,7 @@
             }
         }
         
-        input3.addEventListener("change", function(e) {
-            files = this.files;
-            dropArea3.classList.add("active");
-            
-            processFile3(files);
-            dropArea3.classList.remove("active");
-
-        });
+        
 
 
 

@@ -69,7 +69,7 @@ Route::post('tenantpayments/generatePDF', 'TenantPaymentsController@generatePDF'
 Route::get('/profile', 'UserController@profile')->name('profile');
 
 Route::get('/packages', 'paymentsController@payment')->name('packages');
-Route::get('/packages2', 'paymentsController@payment')->name('packages2');
+Route::get('/contacts', 'ContactsController@contact')->name('contacts');
 
 
 
