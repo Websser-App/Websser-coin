@@ -40,6 +40,8 @@ route::get('completeImagen/{id}', [App\Http\Controllers\Auth\RegisterController:
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::put('user/{id}', 'UserController@update')->name('user.update');
+
 Route::resource('building', 'BuildingController');
 
 Route::resource('tenants', 'TenantsController')->except('create','destroy','show');

@@ -91,7 +91,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="" autocomplete="off">
+                        <form method="post" action="{{route('user.update', auth()->user()->id)}}" autocomplete="on">
                             @csrf
                             @method('put')
 
@@ -118,6 +118,37 @@
                                         </span>
                                     @endif
                                 </div>
+
+                                <label class="form-control-label" for="input-name">{{ __('Surname') }}</label>
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                    <div class="input-group input-group-alternative mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-name-83"></i></span>
+                                        </div>
+                                        <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Surname') }}" type="text" name="surname" value="{{ old('name', auth()->user()->surname) }}" required>
+                                    </div>
+                                    @if ($errors->has('name'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <label class="form-control-label" for="input-name">{{ __('Second surname') }}</label>
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                    <div class="input-group input-group-alternative mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-name-83"></i></span>
+                                        </div>
+                                        <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Second surname') }}" type="text" name="second_surname" value="{{ old('name', auth()->user()->second_surname) }}" required>
+                                    </div>
+                                    @if ($errors->has('name'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
                                 <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
                                     <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email', auth()->user()->email) }}" required>
@@ -129,17 +160,56 @@
                                     @endif
                                 </div>
 
-                                <div class="form-group{{ $errors->has('country') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-email">{{ __('Country') }}</label><!--- Sin traducidrrrrrrrr-->
-                                    <input type="text" name="country" id="input-country" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('contry') }}" value="{{ old('email', auth()->user()->country) }}" required>
-
-                                    @if ($errors->has('email'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('country') }}</strong>
-                                        </span>
-                                    @endif
+                                <label class="form-control-label" for="input-name">{{ __('Country') }}</label>
+                                <div class="input-group right">
+                                    <select class="custom-select" id="inputGroupSelect04" name="country">
+                                        <option selected disabled>@lang('Select state')</option>
+                                        <option value="Aguascalientes">Aguascalientes</option>
+                                        <option value="Baja California">Baja California</option>
+                                        <option value="Baja California Sur">Baja California Sur</option>
+                                        <option value="Campeche">Campeche</option>
+                                        <option value="Chiapas">Chiapas</option>
+                                        <option value="Chihuahua">Chihuahua</option>
+                                        <option value="CDMX">Ciudad de México</option>
+                                        <option value="Coahuila">Coahuila</option>
+                                        <option value="Colima">Colima</option>
+                                        <option value="Durango">Durango</option>
+                                        <option value="Estado de México">Estado de México</option>
+                                        <option value="Guanajuato">Guanajuato</option>
+                                        <option value="Guerrero">Guerrero</option>
+                                        <option value="Hidalgo">Hidalgo</option>
+                                        <option value="Jalisco">Jalisco</option>
+                                        <option value="Michoacán">Michoacán</option>
+                                        <option value="Morelos">Morelos</option>
+                                        <option value="Nayarit">Nayarit</option>
+                                        <option value="Nuevo León">Nuevo León</option>
+                                        <option value="Oaxaca">Oaxaca</option>
+                                        <option value="Puebla">Puebla</option>
+                                        <option value="Querétaro">Querétaro</option>
+                                        <option value="Quintana Roo">Quintana Roo</option>
+                                        <option value="San Luis Potosí">San Luis Potosí</option>
+                                        <option value="Sinaloa">Sinaloa</option>
+                                        <option value="Sonora">Sonora</option>
+                                        <option value="Tabasco">Tabasco</option>
+                                        <option value="Tamaulipas">Tamaulipas</option>
+                                        <option value="Tlaxcala">Tlaxcala</option>
+                                        <option value="Veracruz">Veracruz</option>
+                                        <option value="Yucatán">Yucatán</option>
+                                        <option value="Zacatecas">Zacatecas</option>
+                                    </select>
                                 </div>
+                                <br>
 
+                                <label class="form-control-label" for="input-name">{{ __('Gender') }}</label>
+                                <div class="input-group right">
+                                    <select class="custom-select" id="inputGroupSelect04" name="gender">
+                                        <option selected>@lang('Choose gender')</option>
+                                        <option value="Men">@lang('Men')</option>
+                                        <option value="Woman">@lang('Woman')</option>
+
+                                    </select>
+                                </div>
+                                <br>
                                 <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">{{ __('Phone') }}</label>
                                     <input type="text" name="phone" id="input-phone" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('phone') }}" value="{{ old('name', auth()->user()->phone) }}" required autofocus>

@@ -203,34 +203,55 @@
                                         </span>
                                     @endif
                                 </div>
+                                
+                                <div class="input-group right">
+                                    <select class="custom-select" id="inputGroupSelect04" name="country">
+                                        <option selected disabled>@lang('Select state')</option>
+                                        <option value="Aguascalientes">Aguascalientes</option>
+                                        <option value="Baja California">Baja California</option>
+                                        <option value="Baja California Sur">Baja California Sur</option>
+                                        <option value="Campeche">Campeche</option>
+                                        <option value="Chiapas">Chiapas</option>
+                                        <option value="Chihuahua">Chihuahua</option>
+                                        <option value="CDMX">Ciudad de México</option>
+                                        <option value="Coahuila">Coahuila</option>
+                                        <option value="Colima">Colima</option>
+                                        <option value="Durango">Durango</option>
+                                        <option value="Estado de México">Estado de México</option>
+                                        <option value="Guanajuato">Guanajuato</option>
+                                        <option value="Guerrero">Guerrero</option>
+                                        <option value="Hidalgo">Hidalgo</option>
+                                        <option value="Jalisco">Jalisco</option>
+                                        <option value="Michoacán">Michoacán</option>
+                                        <option value="Morelos">Morelos</option>
+                                        <option value="Nayarit">Nayarit</option>
+                                        <option value="Nuevo León">Nuevo León</option>
+                                        <option value="Oaxaca">Oaxaca</option>
+                                        <option value="Puebla">Puebla</option>
+                                        <option value="Querétaro">Querétaro</option>
+                                        <option value="Quintana Roo">Quintana Roo</option>
+                                        <option value="San Luis Potosí">San Luis Potosí</option>
+                                        <option value="Sinaloa">Sinaloa</option>
+                                        <option value="Sonora">Sonora</option>
+                                        <option value="Tabasco">Tabasco</option>
+                                        <option value="Tamaulipas">Tamaulipas</option>
+                                        <option value="Tlaxcala">Tlaxcala</option>
+                                        <option value="Veracruz">Veracruz</option>
+                                        <option value="Yucatán">Yucatán</option>
+                                        <option value="Zacatecas">Zacatecas</option>
+                                    </select>
+                                </div>
+                                <br>
+                
+                                <div class="input-group right">
+                                    <select class="custom-select" id="inputGroupSelect04" name="gender">
+                                        <option selected>@lang('Choose gender')</option>
+                                        <option value="Men">@lang('Men')</option>
+                                        <option value="Woman">@lang('Woman')</option>
 
-                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                    <div class="input-group input-group-alternative mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ni ni-name-83"></i></span>
-                                        </div>
-                                        <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Country') }}" type="text" name="country" value="{{ old('name') }}" required>
-                                    </div>
-                                    @if ($errors->has('name'))
-                                        <span class="invalid-feedback" style="display: block;" role="alert">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                        </span>
-                                    @endif
+                                    </select>
                                 </div>
 
-                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                    <div class="input-group input-group-alternative mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ni ni-name-83"></i></span>
-                                        </div>
-                                        <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Gender') }}" type="text" name="gender" value="{{ old('name') }}" required>
-                                    </div>
-                                    @if ($errors->has('name'))
-                                        <span class="invalid-feedback" style="display: block;" role="alert">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary mt-4">{{ __('Complete registration') }}</button>
                                 </div>
