@@ -187,14 +187,14 @@
             
         </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <div class="col">
             <div class="card shadow">
                 <div class="card-header border-0">
                     <div class="row">
                         <div class="col-8">
                             <h3 class="mb-0">{{__('List of expense payments')}}</h3>
-                            {{-- <a href="{{ route('tenantpayments.create')}}" class="btn btn-sm btn-primary mt-3 text-center">{{ __('Create expense payment') }}</a> --}}
+                            <a href="{{ route('tenantpayments.create')}}" class="btn btn-sm btn-primary mt-3 text-center">{{ __('Create expense payment') }}</a> 
                         </div>
                         <div class="card-footer py-4">
                             <nav class="d-flex justify-content-end" aria-label="...">
@@ -333,7 +333,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     @include('layouts.footers.auth')
 </div>
 @endsection
