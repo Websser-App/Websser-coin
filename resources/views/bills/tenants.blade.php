@@ -22,7 +22,7 @@
         margin-bottom: 20%;
         display: grid;
         gap:2rem;
-        grid-auto-rows: 28rem;
+        grid-auto-rows: 32rem;
         grid-template-columns:repeat(auto-fill, minmax(15rem, 1fr));
         margin-left: 5%;
         margin-right: 5%;
