@@ -41,6 +41,7 @@ route::get('completeImagen/{id}', [App\Http\Controllers\Auth\RegisterController:
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::put('user/{id}', 'UserController@update')->name('user.update');
+route::post('/uploadUserAvatar', 'UserController@uploadUserAvatar')->name('uploadUserAvatar');
 
 Route::resource('building', 'BuildingController');
 
@@ -67,6 +68,8 @@ Route::get('tenantpayments/wallet', 'TenantPaymentsController@wallet')->name('te
 Route::post('tenantpayments/chooseBills', 'TenantPaymentsController@chooseBills')->name('tenantpayments.chooseBills');
 Route::post('tenantpayments/generatePDF', 'TenantPaymentsController@generatePDF')->name('tenantpayments.generatePDF');
 
+route::resource('withdrawals', 'WithdrawalsController')->except('index', 'create','show','destroy','edit', 'update');
+
 
 
 Route::get('/profile', 'UserController@profile')->name('profile');
@@ -75,7 +78,7 @@ Route::get('/packages', 'paymentsController@payment')->name('packages');
 
 Route::resource('contacts', 'ContactsController')->except('show');
 
-//Route::get('/contacts', 'ContactsController@contact')->name('contacts');
+// Route::get('/contacts', 'ContactsController@contact')->name('contacts');
 
 
 

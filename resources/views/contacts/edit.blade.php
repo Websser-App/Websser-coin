@@ -78,22 +78,22 @@ input{
 </style>
 <div class="container" style=" ">
 <div class= "fondo" >
-    <h1 class="preciosL">Agregar Contacto</h1>
+    <h1 class="preciosL">Editar Contacto</h1>
     
-        <form class="row g-3" method="post" action="{{route('contacts.store')}}" enctype="multipart/form-data">
+        <form class="row g-3" method="post" action="{{route('contacts.update', $contacts->id)}}" enctype="multipart/form-data">
             @csrf
-                
+            @method('PUT')    
             <div class= "contenerdor2" >
                 <div class="col">
                     
-                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Nombre(s) y apellidos (Obligatorio)*" required>
-                    <input type="text" class="form-control" id="email" name="email" placeholder="Correo electronico (Opcional)" >
+                    <input type="text" class="form-control" id="fullname" value="{{$contacts->fullname}}" name="fullname" placeholder="Nombre(s) y apellidos (Obligatorio)*" required>
+                    <input type="text" class="form-control" id="email" value="{{$contacts->email}}" name="email" placeholder="Correo electronico (Opcional)" >
                 </div>
 
                 <div class="col">
                     
-                    <input type="text" class="form-control" id="alias" name="alias" placeholder="Alias (Opcional)" >
-                    <input type="text" class="form-control" id="key_account" name="key_account" placeholder="Cuenta CLABE (Obligatoria)*" required>
+                    <input type="text" class="form-control" id="alias" value="{{$contacts->alias}}" name="alias" placeholder="Alias (Opcional)" >
+                    <input type="text" class="form-control" id="key_account" value="{{$contacts->key_account}}" name="key_account" placeholder="Cuenta CLABE (Obligatoria)*" required>
                 </div>
             </div>
             <div class="text-center">

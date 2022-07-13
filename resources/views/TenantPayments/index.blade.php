@@ -70,12 +70,13 @@
 
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col" style="font-size: 15px;">@lang('Bulding')</th>
-                                <th scope="col" style="font-size: 15px;">@lang('Departament')</th>
-                                <th scope="col" style="font-size: 15px;">@lang('Tenant name')</th>
-                                <th scope="col" style="font-size: 15px;">@lang('Expense name')</th>
-                                <th scope="col" style="font-size: 15px;">@lang('Amount')</th>
-                                <th scope="col" style="font-size: 15px;">@lang('IsActive')</th>
+                                <th scope="col" style="font-size: 13px;">@lang('Bulding')</th>
+                                <th scope="col" style="font-size: 13px;">@lang('Departament')</th>
+                                <th scope="col" style="font-size: 13px;">@lang('Tenant name')</th>
+                                <th scope="col" style="font-size: 13px;">@lang('Expense name')</th>
+                                <th scope="col" style="font-size: 13px;">@lang('Amount')</th>
+                                <th scope="col" style="font-size: 13px;">@lang('IsActive')</th>
+                                <th scope="col" style="font-size: 13px;">@lang('Expense date')</th>
 
 
 
@@ -84,17 +85,18 @@
                         <tbody>
                             @foreach($tenantPayments as $tenantPayment)
                         <tr>
-                            <td style="font-size: 15px;">{{$tenantPayment->buildings->UUID}}</td>
-                            <td style="font-size: 15px;">{{$tenantPayment->departaments->number_departament}}</td>
-                            <td style="font-size: 15px;">{{$tenantPayment->tenants->name}} {{$tenantPayment->tenants->surname}} {{$tenantPayment->tenants->second_surname}}</td>
-                            <td style="font-size: 15px;">{{$tenantPayment->bills->name}}</td>
+                            <td style="font-size: 13px;">{{$tenantPayment->buildings->UUID}}</td>
+                            <td style="font-size: 13px;">{{$tenantPayment->departaments->number_departament}}</td>
+                            <td style="font-size: 13px;">{{$tenantPayment->tenants->name}} {{$tenantPayment->tenants->surname}} {{$tenantPayment->tenants->second_surname}}</td>
+                            <td style="font-size: 13px;">{{$tenantPayment->bills->name}}</td>
                             @if ($tenantPayment->amount == 0)    
-                                <td style="font-size: 15px;">${{getAmount($tenantPayment->amount,2)}}</td>
+                                <td style="font-size: 13px;">${{getAmount($tenantPayment->amount,2)}}</td>
                                 <td class="bg-danger" style="font-size: 15px;">@lang('Not payed')</td>
                             @else
-                                <td style="font-size: 15px;">${{getAmount($tenantPayment->amount,2)}}</td>
+                                <td style="font-size: 13px;">${{getAmount($tenantPayment->amount,2)}}</td>
                                 <td class="bg-success" style="font-size: 15px;">@lang('Paid')</td>
                             @endif
+                            <td style="font-size: 13px;">{{$tenantPayment->created_at->format('d-m-Y')}}</td>
                         @endforeach
                     </tbody>
                 </table>

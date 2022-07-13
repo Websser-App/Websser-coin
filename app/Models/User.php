@@ -22,7 +22,8 @@ class User extends Authenticatable
         'country', 
         'gender', 
         'email', 
-        'phone', 
+        'phone',
+        'avatar', 
         'ine_front', 
         'ine_back', 
         'certificate', 
@@ -39,6 +40,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function contacts()
+    {
+        return $this->hasMany(Contacts::class);
+    }
 
     public function bills()
     {
@@ -63,5 +69,9 @@ class User extends Authenticatable
     public function vouchers()
     {
         return $this->hasMany(Voucher::class);
+    }
+    public function withdrawals()
+    {
+        return $this->hasMany(Withdrawals::class);
     }
 }

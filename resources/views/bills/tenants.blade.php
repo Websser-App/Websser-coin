@@ -85,7 +85,11 @@
                             <p class="card-title">{{$tenant->name}} {{$tenant->surname}} {{$tenant->second_surname}}</p>
 
                             <strong><b>@lang('Expense name'):</b></strong>
-                            <p class="card-title">{{$bills->name}}</p>  
+                            <p class="card-title">{{$bills->name}}</p>
+
+                            <strong><b>@lang('Expense date'):</b></strong>
+                            <p class="card-title">{{$tenant->created_at->format('d-m-Y')}}</p>    
+
                         
                         <!-- Modal -->
                         <div class="modal fade" id="notPayedModal{{ $tenant->payments_id }}" tabindex="-1" role="dialog" aria-labelledby="notPayedModal{{ $tenant->payments_id }}" aria-hidden="true">
@@ -138,7 +142,10 @@
                         <p class="card-title">{{$tenant->name}} {{$tenant->surname}} {{$tenant->second_surname}}</p>
 
                         <strong><b>@lang('Expense name'):</b></strong>
-                        <p class="card-title">{{$bills->name}}</p>    
+                        <p class="card-title">{{$bills->name}}</p>  
+                        
+                        <strong><b>@lang('Expense date'):</b></strong>
+                        <p class="card-title"> - </p>  
                         
                         <!-- Modal -->
                         <div class="modal fade" id="successModal{{ $tenant->departaments->id }}" tabindex="-1" role="dialog" aria-labelledby="successModal{{ $tenant->departaments->id }}" aria-hidden="true">

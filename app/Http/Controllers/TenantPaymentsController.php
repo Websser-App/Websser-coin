@@ -7,6 +7,7 @@ use App\Models\Building;
 use App\Models\Depataments;
 use App\Models\TenantPayments;
 use App\Models\Tenants;
+use App\Models\Withdrawals;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use PDF;
@@ -186,7 +187,8 @@ class TenantPaymentsController extends Controller
 
     public function wallet(){
         $sumAmounts = TenantPayments::where('isActive', 1)->where('user_id', auth()->user()->id)->get()->sum('amount');
-        return view('TenantPayments.wallet')->with('sumAmounts', $sumAmounts);
+        $sumWithdrawals = Withdrawals::where('user_id', auth()->user()->id)->get()->sum('amount');
+        return view('TenantPayments.wallet')->with('sumAmounts', $sumAmounts)->with('sumWithdrawals', $sumWithdrawals);
 
     }
 }

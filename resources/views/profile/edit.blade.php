@@ -90,6 +90,14 @@
                             <h3 class="mb-0">{{ __('Edit Profile') }}</h3>
                         </div>
                     </div>
+                    @if(Session::has('message'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ Session::get('message') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                     <div class="card-body">
                         <form method="post" action="{{route('user.update', auth()->user()->id)}}" autocomplete="on">
                             @csrf
@@ -163,7 +171,7 @@
                                 <label class="form-control-label" for="input-name">{{ __('Country') }}</label>
                                 <div class="input-group right">
                                     <select class="custom-select" id="inputGroupSelect04" name="country">
-                                        <option selected disabled>@lang('Select state')</option>
+                                        <option selected disabled>{{auth()->user()->country}}</option>
                                         <option value="Aguascalientes">Aguascalientes</option>
                                         <option value="Baja California">Baja California</option>
                                         <option value="Baja California Sur">Baja California Sur</option>
@@ -203,10 +211,12 @@
                                 <label class="form-control-label" for="input-name">{{ __('Gender') }}</label>
                                 <div class="input-group right">
                                     <select class="custom-select" id="inputGroupSelect04" name="gender">
-                                        <option selected>@lang('Choose gender')</option>
-                                        <option value="Men">@lang('Men')</option>
-                                        <option value="Woman">@lang('Woman')</option>
-
+                                        <option selected disabled>{{__(auth()->user()->gender)}}</option>
+                                        @if(auth()->user()->gender == 'Men')
+                                            <option value="Woman">@lang('Woman')</option>
+                                        @else
+                                            <option value="Men">@lang('Men')</option>
+                                        @endif
                                     </select>
                                 </div>
                                 <br>
@@ -231,12 +241,10 @@
                         <hr class="my-4" />
 
                         <!--<form method="post" action="{}" autocomplete="off">--->
-                            @csrf
-                            @method('put')
 
                                 <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-password">{{ __('New Password') }}</label>
-                                    <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('New Password') }}" value="" required>
+                                    <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('New Password') }}" value="">
                                     
                                     @if ($errors->has('password'))
                                         <span class="invalid-feedback" role="alert">

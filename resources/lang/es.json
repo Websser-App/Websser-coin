@@ -157,7 +157,15 @@
     "Select state": "Seleccionar estado",
     "Men":"Hombre",
     "Woman":"Mujer",
-    "Choose gender": "Seleccionar genero"
+    "Choose gender": "Seleccionar genero",
+    "Expense date": "Fecha de creacion",
+    "Successfully added contact": "Contacto agregado exitosamente",
+    "Successfully updated contact": "Contacto actualizado exitosamente",
+    "Successfully removed contact": "Contacto eliminado exitosamente",
+    "Successfully updated user": "Usuario actualizado exitosamente",
+    "The withdrawal was successful": "El retiro se hizo correctamente",
+    "You do not have enough balance in your wallet": "No tienes el balance suficiente en tu wallet"
+
 
     
 }
