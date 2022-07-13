@@ -80,7 +80,11 @@ class BillsController extends Controller
             $query->on('tenant_payments.tenants_id', 'tenants.id');
             $query->where('tenant_payments.bills_id', $bills->id);
         })->where('tenants.building_id', $bills->building_id)->where('tenants.user_id', auth()->user()->id)->select('tenants.*','tenant_payments.*', 'tenant_payments.id as payments_id')->get()->sum('amount');
-        return view('bills.tenants')->with('tenants', $tenants)->with('bills', $bills)->with('tenantsCount', $tenantsCount)->with('tenantsSum', $tenantsSum);
+        if(count($tenants) == 0){
+            return redirect('bills')->with('message', __('There are no tenants in this building'));
+        } else {    
+            return view('bills.tenants')->with('tenants', $tenants)->with('bills', $bills)->with('tenantsCount', $tenantsCount)->with('tenantsSum', $tenantsSum);
+        }
     }
 
     public function sendEmail($id){
