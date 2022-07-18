@@ -83,7 +83,8 @@
 
                     @for ($i = $index+1; $i < $inputsDepartaments; $i++)
                         @if($index !=  $inputsDepartaments)
-                        <div class="col-md-4">
+                        <div class="precios">
+                            <div class="container">
                                 <label for="number_departament" class="form-label">@lang('Departament Number')</label>
                                 <select class="form-select" aria-label="Default select example" name="buildings_row[]">
                                     <option selected disabled>@lang('Choose the floor number')</option>
@@ -92,6 +93,7 @@
                                     @endfor
                                 </select><br>
                                 <input type="text" class="form-control" id="number_departament" name="number_departament[]" placeholder="@lang('Departament Number')" required>
+                            </div>
                             </div>
                         @endif
                     @endfor

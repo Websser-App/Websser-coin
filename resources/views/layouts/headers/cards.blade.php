@@ -15,7 +15,7 @@
         justify-content: center;
         margin-bottom: 10%;
         display: grid;
-        gap: 5rem;
+        gap: 1rem;
         grid-auto-rows: 10rem;
         grid-template-columns:repeat(auto-fit, minmax(11rem, 1fr));
         margin-left: 5%;
@@ -82,6 +82,17 @@
                         </div>
                                         
                         </div>
+                    </div>
+
+                    <div class= "precios">
+                    <h5 class="card-title text-uppercase text-muted mb-0" style = "font-size: 90%;">@lang('Quinto card')</h5>
+                                        <span class="h2 font-weight-bold mb-0" style = "font-size: 90%;">Info</span>
+                                        <div class="row centrar">
+                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow" style = "font-size: 90%;"> 
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                    </div>
+                        
                     </div>
                         
                     

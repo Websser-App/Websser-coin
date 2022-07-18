@@ -42,10 +42,15 @@
                     <i class="iconos ni ni-settings-gear-65 text-black conf " style=""></i>
                 </a>
             <span class="avatar avatar-sm rounded-circle" style=" margin-right: 80%;">
-                
-                <div href="{{url('profile')}}">
-                    <img alt="Image placeholder"    src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg" class= "">
-                </div>
+                @if(auth()->user()->avatar == NULL)
+                    <div href="{{url('profile')}}">
+                        <img alt="Image placeholder"    src="{{ asset('argon') }}/img/theme/perfile.jpg" class= "">
+                    </div>
+                @else
+                    <div href="{{url('profile')}}">
+                        <img alt="Image placeholder"    src="data:image/png;base64,{{ auth()->user()->avatar }}" class= "">
+                    </div>
+                @endif
                 
             </span> <br></br>
             <div class="media-body ml-2 d-none d-lg-inline">

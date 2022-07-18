@@ -54,7 +54,7 @@
     .fondo{
         
         margin-top: 2%;
-        display: block;
+        display: ;
         
         background-color: white;
         border-radius: 20px;
@@ -75,9 +75,40 @@
         margin-bottom: 5%;
         width: 70%;
         
+        
     }
 </style>
-<div class="container" style=" ">
+
+
+<div class="" style=" ">
+    <div class= "" >
+        <div class="text-right">
+            <a href="{{route('contacts.create')}}" class="btn btn-sm btn-primary buttons" style="font-size: 15px; margin-top: 2%; margin-bottom: 2%; margin-right: 2%;">@lang('Agregar contacto')</a>
+        </div>
+        @if(Session::has('message'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ Session::get('message') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+            <h1 class="preciosL">Contactossssss</h1>
+            <div class="card shadow">
+                
+            </div>
+
+        
+        
+    </div>
+    
+</div>
+
+
+
+
+
+<div class="" style=" ">
     <div class= "fondo" >
         <div class="text-right">
             <a href="{{route('contacts.create')}}" class="btn btn-sm btn-primary buttons" style="font-size: 15px; margin-top: 2%; margin-bottom: 2%; margin-right: 2%;">@lang('Agregar contacto')</a>
@@ -90,13 +121,13 @@
                 </button>
             </div>
         @endif
-        <h1 class="preciosL">Contactos</h1>
-            <div class="">
-                <div class="table-responsive">
-                    <table id="tablelist" class="table align-items-center table-flush" >
+            <h1 class="preciosL">Contactos</h1>
+            <div class="card shadow">
+                <div class="table-responsive" style="width: 100%">
+                    <table id="tablelist" class="table align-items-center table-flush" style="margin-right: 0px; ">
 
                         <thead class="thead-light" >
-                            <tr class= "letras">
+                            <tr >
                                 <th scope="col" style="font-size: 13px;">@lang('Alias')</th>
                                 <th scope="col"style="font-size: 13px;">@lang('Nombre')</th>
                                 <th scope="col" style="font-size: 13px;">@lang('Correo electronico')</th>
@@ -144,6 +175,9 @@
         
         
     </div>
-    @include('layouts.footers.auth')
+    
 </div>
+
+@include('layouts.footers.auth')
+
 @endsection
