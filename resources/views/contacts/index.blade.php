@@ -80,29 +80,6 @@
 </style>
 
 
-<div class="" style=" ">
-    <div class= "" >
-        <div class="text-right">
-            <a href="{{route('contacts.create')}}" class="btn btn-sm btn-primary buttons" style="font-size: 15px; margin-top: 2%; margin-bottom: 2%; margin-right: 2%;">@lang('Agregar contacto')</a>
-        </div>
-        @if(Session::has('message'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ Session::get('message') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
-            <h1 class="preciosL">Contactossssss</h1>
-            <div class="card shadow">
-                
-            </div>
-
-        
-        
-    </div>
-    
-</div>
 
 
 
@@ -111,7 +88,7 @@
 <div class="" style=" ">
     <div class= "fondo" >
         <div class="text-right">
-            <a href="{{route('contacts.create')}}" class="btn btn-sm btn-primary buttons" style="font-size: 15px; margin-top: 2%; margin-bottom: 2%; margin-right: 2%;">@lang('Agregar contacto')</a>
+            <a href="{{route('contacts.create')}}" class="btn btn-sm btn-primary buttons" style="font-size: 15px;  margin-right: 2%;">@lang('Agregar contacto')</a>
         </div>
         @if(Session::has('message'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">

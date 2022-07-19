@@ -28,6 +28,14 @@
         }
         
     }
+    .imagenP{
+        background: url('data:image/png;base64, {{auth()->user()->avatar}}') ;
+        width: 10%;
+        padding: 20%;
+        background-size: cover;
+        background-position: center;
+        position:relative;
+    }
 </style>
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
     <div class="container-fluid">
@@ -41,14 +49,15 @@
                 <a title="Perfil" href="{{url('profile')}}">
                     <i class="iconos ni ni-settings-gear-65 text-black conf " style=""></i>
                 </a>
-            <span class="avatar avatar-sm rounded-circle" style=" margin-right: 80%;">
+            <span class="avatar avatar-sm rounded-circle" style=" " alt="avatar">
                 @if(auth()->user()->avatar == NULL)
                     <div href="{{url('profile')}}">
                         <img alt="Image placeholder"    src="{{ asset('argon') }}/img/theme/perfile.jpg" class= "">
                     </div>
                 @else
                     <div href="{{url('profile')}}">
-                        <img alt="Image placeholder"    src="data:image/png;base64,{{ auth()->user()->avatar }}" class= "">
+                        <img class="imagenP rounded-circle" src="{{ asset('argon') }}/img/theme/transparente.png" id="myImageId" style=""></img>
+                        <!--<img alt="Image placeholder"    src="data:image/png;base64,{{ auth()->user()->avatar }}" class= "">  transparente --> 
                     </div>
                 @endif
                 

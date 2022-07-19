@@ -83,6 +83,14 @@
         grid-template-columns: repeat(auto-fill, minmax(min(100%,25rem), 1fr));
         
     }
+
+    .contenerdorimg{
+        display: grid;
+        gap: 1rem;
+        grid-auto-rows: 7rem;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%,25rem), 1fr));
+        
+    }
     .nombre{
         margin-left: 5%;
         
@@ -94,43 +102,88 @@
         
         font-size: 200%;
     }
+    .rounded-circles{
+        width: 25%;
+        height: 25%;
+    }
 
+    .conttenedorImg{
+        overflow: hidden;
+        height: 70%;
+        
+    }
+    .imagenP{
+        background: url('data:image/png;base64, {{auth()->user()->avatar}}') ;
+        width:20%;
+        padding: 40%;
+        background-size: cover;
+        background-position: center;
+        position:relative;
+    }
+    
+
+    .containerp {
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        margin: 10px;
+        position: relative;
+    }
+    .containerp > .crop {
+        position:absolute;
+        left: -100%;
+        right: -100%;
+        top: -100%;
+        bottom: -100%;
+        margin: auto;
+        min-height: 100%;
+        min-width: 100%;
+    }
 </style>
 
-    
+
     <div class="card card-profile shadow">
+    
         <div class="row justify-content-right">
-            
+            <div class="">
+                
+                
+            </div>  
             <div class="col-lg-3 order-lg-2">
+                
                 <div class="card-profile-image">
                     
                     <a href="/home">
-                        @if(auth()->user()->avatar == NULL)
-                            <div href="{{url('profile')}}">
-                                <img alt="Image placeholder"  id="myImageId"   src="{{ asset('argon') }}/img/theme/perfile.jpg" class= "rounded-circle mb-3">
-                            </div>
-                        @else
-                            <div href="{{url('profile')}}">
-                                <img alt="Image placeholder"  id="myImageId"  src="data:image/png;base64, {{auth()->user()->avatar}}" class= "rounded-circle mb-3">
-                            </div>
-                        @endif    
+                        <div class="">
+                            @if(auth()->user()->avatar == NULL)
+                                <div href="{{url('profile')}}">
+                                    <img alt="Image placeholder"  id="myImageId"   src="{{ asset('argon') }}/img/theme/perfile.jpg" class= "rounded-circle mb-3">
+                                </div>
+                            @else
+                                <div href="{{url('profile')}}">
+                                    <div class="imagenP rounded-circle" id="myImageId" style=""></div>
+                                    <!---<img  id="myImageId" height= "100%;" src="data:image/png;base64, {{auth()->user()->avatar}}" class= "rounded-circle mb-3" > 
+                                    <div class="imagenP" style="background: url('data:image/png;base64, {{auth()->user()->avatar}}') 50% 50% no-repeat;"></div>-->
+                                </div>
+                            @endif  
+                        </div>  
                     </a>
                 </div>
             </div>
         </div>
-        <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-                        <!---
+       <!--- <div class="card-header text-center border-0  pt-md-4 pb-0">
+                        
                         <div class="d-flex justify-content-between">
                             <a href="#" class="btn btn-sm btn-info mr-4">{{ __('Connect') }}</a>
                             <a href="#" class="btn btn-sm btn-default float-right">{{ __('Message') }}</a>   class="rounded-circle mb-3"
                         </div>
-                        -->
-                    </div>
+                        
+                    </div>-->
                     <div class="card-body pt-0 pt-md-4">
                         
                         <div class="">
                             
-                                <div class=" display-flex justify-content- mt-md-5">
+                                <div class=" display-flex justify-content- ">
                                     <div class="nombre">
                                         <h2><label  style = "color = #000; font-weight:500; font-size: 200%; text-shadow: 2px 2px 3px;" >Bienvenido</label></h2>
                                     </div>
@@ -182,7 +235,7 @@
                         </div>
                         -->
         </div>
-        <label value="{{ old('name', auth()->user()->name) }}" class = ""></label>
+            <label value="{{ old('name', auth()->user()->name) }}" class = ""></label>
     </div>
 
 
@@ -381,7 +434,7 @@
                                         
                                     </div>
                                 @else
-                                    <div class="drag-area rounded-circle" id= "drag" name="drag" style=" background-image: url('data:image/png;base64, {{auth()->user()->avatar}}'); background-size: cover;">
+                                    <div class="drag-area rounded-circle" id= "drag" name="drag" style=" background-image: url('data:image/png;base64, {{auth()->user()->avatar}}'); background-size: cover; background-position: center;">
                                         
                                         <h3 id="textG1" name = "textG1" class="tg"> Arrastre y suelte su archivo </h3>
                                         
