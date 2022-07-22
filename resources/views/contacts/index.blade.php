@@ -5,7 +5,36 @@
 <style>
 
    
-    
+    .buttons{
+            
+            font-size: 140%;
+            
+        }
+        .row{
+            width: 99%;
+            display: flex;
+            grid-template-columns: repeat(3, auto);
+            padding: 0 40px;
+            gap: 0px;
+            align-items: center;
+        }
+        @media only screen and (max-width: 893px) {
+            .textoaD {
+                display: none;
+            }
+            .iconoD {
+                margin-right:10px;
+            }
+        }
+
+        @media only screen and (min-width: 892px) {
+            .iconoD {
+                display: none;
+            }
+        }
+        button{
+            text-align: center;
+        }
 
     .columna{
         width: 20%;
@@ -85,6 +114,10 @@
 
 
 
+
+
+
+
 <div class="" style=" ">
     <div class= "fondo" >
         <div class="text-right">
@@ -100,8 +133,12 @@
         @endif
             <h1 class="preciosL">Contactos</h1>
             <div class="card shadow">
-                <div class="table-responsive" style="width: 100%">
-                    <table id="tablelist" class="table align-items-center table-flush" style="margin-right: 0px; ">
+                
+            </div>
+
+
+            <div class="table-responsive" style="width: 100%">
+                    <table id="tablelistTenantsPayments" class="table align-items-center table-flush" style="">
 
                         <thead class="thead-light" >
                             <tr >
@@ -147,7 +184,6 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
 
         
         

@@ -36,6 +36,15 @@
         background-position: center;
         position:relative;
     }
+
+    .imagenAp{
+        background: url("{{ asset('argon') }}/img/theme/perfile.jpg") ;
+        width: 10%;
+        padding: 20%;
+        background-size: cover;
+        background-position: center;
+        position:relative;
+    }
 </style>
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
     <div class="container-fluid">
@@ -52,7 +61,7 @@
             <span class="avatar avatar-sm rounded-circle" style=" " alt="avatar">
                 @if(auth()->user()->avatar == NULL)
                     <div href="{{url('profile')}}">
-                        <img alt="Image placeholder"    src="{{ asset('argon') }}/img/theme/perfile.jpg" class= "">
+                        <img alt="Image placeholder"    src="{{ asset('argon') }}/img/theme/transparente.png" class= "imagenAp" id="myImageId">
                     </div>
                 @else
                     <div href="{{url('profile')}}">
@@ -108,6 +117,8 @@
                     </a>
                 </li>
 
+                
+
                 <li class="nav-item">
                     <a class="nav-link text-black" href="{{ route('contacts.index') }}">
                         <i class="bi bi-person-lines-fill" style="color: #f4645f; font-size: 30px;"></i>
@@ -119,6 +130,14 @@
                     <a class="nav-link text-black" href="{{ route('tenantpayments.wallet') }}">
                         <i class="bi bi-cash text-green" style="color: #f4645f; font-size: 30px;"></i>
                         <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Wallet') }}</span>
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link text-black" href="{{ url('paymentsReport') }}">
+                        <i class="bi bi-card-checklist text-green" style="color: #f4645f; font-size: 30px;"></i>
+                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('') }}Reporte de pagos</span>
                     </a>
                 </li>
 

@@ -12,10 +12,11 @@
         margin-bottom: 10%;
         display: grid;
         gap: 1rem;
-        grid-auto-rows: 19rem;
-        grid-template-columns:repeat(auto-fit, minmax(15rem, 1fr));
+        grid-auto-rows: 25rem;
+        grid-template-columns:repeat(auto-fill, minmax(min(100%, 15rem),15rem));
         margin-left: 5%;
         margin-right: 5%;
+        
         
     }
     .titulo{
@@ -25,6 +26,11 @@
     }
     i{
         font-size: 120%;
+    }
+    .conttenedorImg{
+        overflow: hidden;
+        height: 20%;
+        max-height: 40%;
     }
 </style>
 
@@ -57,27 +63,34 @@
                             @if($departament->tenants == NULL)
                                 
                                     <a title="@lang('Tenants')" href="{{ route('tenants.create', $departament->id)}}" class="btn btn-sm text-primary">
-                                        <i class="ni ni-single-02" style="font-size: 120%;"></i>
+                                        <i class="ni ni-single-02" style="font-size: 280%;"></i>
                                     </a>
                                 
                             @else
                                 
                                     <a title="@lang('Tenants')" href="{{ route('tenants.edit', $departament->tenants->id)}}" class="btn btn-sm text-primary">
-                                        <i class="ni ni-settings" style="font-size: 120%;"></i>
+                                        <i class="ni ni-settings" style="font-size: 280%;"></i>
                                     </a>
                                 
                             @endif
-                            <h5 class="card-title">@lang('Information')</h5>
-                            <strong><b> @lang('ID departament'):</b></strong>
+                            <div class="row" height="50%">
+                            <div class="conttenedorImg">
+                                <img src="{{ asset('argon') }}/img/theme/departament.jpg" width="100%" class="">
+                            </div>
+                            </div>
+                            <div class="row">
+                            <!--<h5 class="card-title">@lang('Information')</h5>--->
+                            <strong><b> @lang('')ID:</b></strong>
                             <p class="card-text">{{$departament->UUID}}</p>
-                            <strong><b> @lang('Departament Number'):</b></strong>
+                            <strong><b> @lang('')N° Departamento:</b></strong>
                             <p class="card-text">{{$departament->number_departament}}</p>
-                            <strong><b> @lang('Tenant name'):</b></strong>
+                            <strong><b> @lang('')Inquilino:</b></strong>
                             @if($departament->tenants != NULL)
                             <p class="card-text">{{$departament->tenants->name}} {{$departament->tenants->surname}} {{$departament->tenants->second_surname}}</p>
                             @else
                                 <p class="card-text">@lang('Not assigned')</p>
                             @endif
+                            </div>
                         </div>
                     @endforeach
                     

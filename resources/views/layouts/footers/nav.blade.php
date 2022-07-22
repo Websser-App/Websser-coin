@@ -77,7 +77,7 @@ crossorigin="anonymous"></script>
 
         $('#tablelistTenantsPayments').DataTable({
             retrieve: true,
-            searching: false,
+            searching: true,
             dom: "<'row'<'col-xs-5'l><'col-sm-5 text-center'B><'col-lg-5'f>>tp",
             language: {
                 "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"

@@ -121,7 +121,14 @@
         position:relative;
     }
     
-
+    .imagenAp{
+        background: url("{{ asset('argon') }}/img/theme/perfile.jpg") ;
+        width:20%;
+        padding: 40%;
+        background-size: cover;
+        background-position: center;
+        position:relative;
+    }
     .containerp {
         width: 200px;
         height: 200px;
@@ -151,17 +158,17 @@
             </div>  
             <div class="col-lg-3 order-lg-2">
                 
-                <div class="card-profile-image">
+                <div class="">
                     
                     <a href="/home">
                         <div class="">
                             @if(auth()->user()->avatar == NULL)
                                 <div href="{{url('profile')}}">
-                                    <img alt="Image placeholder"  id="myImageId"   src="{{ asset('argon') }}/img/theme/perfile.jpg" class= "rounded-circle mb-3">
+                                    <img alt="Image placeholder" style="" id="myImageId2"   src="{{ asset('argon') }}/img/theme/transparente.png" class= "rounded-circle mb-3 imagenAp">
                                 </div>
                             @else
                                 <div href="{{url('profile')}}">
-                                    <div class="imagenP rounded-circle" id="myImageId" style=""></div>
+                                    <div class="imagenP rounded-circle" id="myImageId2" style=""></div>
                                     <!---<img  id="myImageId" height= "100%;" src="data:image/png;base64, {{auth()->user()->avatar}}" class= "rounded-circle mb-3" > 
                                     <div class="imagenP" style="background: url('data:image/png;base64, {{auth()->user()->avatar}}') 50% 50% no-repeat;"></div>-->
                                 </div>
@@ -677,11 +684,23 @@
 
                         fileReader.addEventListener('load', function(e){
                             fileUrl = fileReader.result;
-                            document.getElementById("myImageId").src= `${fileUrl}`;
+                            
+                            imagena=document.getElementById("myImageId");
+                            
+                            imagena.style.background = `url('${fileUrl}')`
+                            imagena.style.backgroundSize = "cover";
+                            imagena.style.backgroundPosition= "center";
+
+                            imagena2=document.getElementById("myImageId2");
+                            imagena2.style.background = `url('${fileUrl}')`
+                            imagena2.style.backgroundSize = "cover";
+                            imagena2.style.backgroundPosition= "center";
+
                             dropArea.style.backgroundImage = `url('${fileUrl}')`;
                             document.getElementById(
                                 `${id}st`
                             ).innerHTML= '<span class="succes">Archivo subido corectamente...</span>';
+                            //window.location.reload();
                         });
                         
                         

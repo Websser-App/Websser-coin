@@ -78,7 +78,9 @@ Route::get('/packages', 'paymentsController@payment')->name('packages');
 
 Route::resource('contacts', 'ContactsController')->except('show');
 
-// Route::get('/contacts', 'ContactsController@contact')->name('contacts');
+Route::resource('paymentsReport', 'PaymentsReportController')->except('show');
+
+// Route::get('/contacts', 'ContactsController@contact')->name('contacts'); wallet
 
 
 

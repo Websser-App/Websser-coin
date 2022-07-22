@@ -2,16 +2,46 @@
 
 @section('content')
 @include('layouts.headers.page')
+
+
+<style>
+    .btn-lg{
+        height: 150%;
+        font-size: 150%;
+        background-color: transparent;
+        color: #5e72e4;
+        font-weight: bold;
+    }
+    .total{
+        border: solid 1px; 
+        width: 190px; 
+        text-align: center; 
+        left: 80%;
+        position: absolute;
+        margin-top: 5%;
+    }
+</style>
 <div class="container-fluid mt-7">
     <div class="row">
         <div class="col">
             <div class="card shadow">
                 <div class="card-header border-0">
-                    <div class="row">
-                        <div class="col-8">
-                            <h3 class="mb-0">{{__('Wallet')}}</h3>
+                    <div class="">
+                        <div style="">
+                            <div style="background-color: #7cb3dc; text-align: center; border-radius: 20px; margin-bottom: 2%;">
+                                <label class="mb-0" style="font-size: 250%;  color: #000">{{__('Wallet')}}</label>
+                            </div>
+                            <div class="text-right">
+                                <div class = "total" style="  font-family: Arial, Helvetica, sans-serif; margin:0; padding:0; font-size: 150%; ">Total: ${{getAmount(($sumAmounts-$sumWithdrawals), 2)}}</div>
+                            </div>
                             {{-- <a href="" class="btn btn-sm btn-primary mt-3 text-center">{{ __('Create expense payment') }}</a> --}}
                         </div>
+                        <div class="card-footer py-4">
+                               
+                                
+                                    
+                                
+                            </div>
                         @if(Session::has('message'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 {{ Session::get('message') }}
@@ -30,14 +60,9 @@
                 <center>
                     <img style="width: 60%" src="{{ asset('argon') }}/img/Credit-Card-PNG-Image.png" alt="">
                 </center>       
-                <div class="card-footer py-4">
-                    <nav class="d-flex justify-content-end" aria-label="...">
-                    <h3 style="width: 98%; text-align: right; font-family: Arial, Helvetica, sans-serif; margin:0; padding:0;">Total: ${{getAmount(($sumAmounts-$sumWithdrawals), 2)}}</h4>
-                        
-                    </nav>
-                </div>
+                
                 @if(($sumAmounts-$sumWithdrawals) > 0)
-                    <button class="btn btn-sm btn-primary mt-3 text-center" data-bs-toggle="modal"  data-bs-target="#withdrawals">{{ __('Retirar dinero') }}</button>
+                    <button class="btn btn-lg btn-primary mt-3 text-center" data-bs-toggle="modal"  data-bs-target="#withdrawals">{{ __('Retirar dinero') }}</button>
                     <!-- Modal -->
                     <div class="modal fade" id="withdrawals" tabindex="-1" role="dialog" aria-labelledby="withdrawals" aria-hidden="true">
                         <div class="modal-dialog">
