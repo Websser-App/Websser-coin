@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bills;
 use App\Models\Building;
+use App\Models\Contacts;
 use App\Models\Depataments;
 use App\Models\TenantPayments;
 use App\Models\Tenants;
@@ -186,9 +187,12 @@ class TenantPaymentsController extends Controller
     }
 
     public function wallet(){
+        // Withdrawals::each()->delete()w
+        Withdrawals::where('status', 0)->delete();
         $sumAmounts = TenantPayments::where('isActive', 1)->where('user_id', auth()->user()->id)->get()->sum('amount');
-        $sumWithdrawals = Withdrawals::where('user_id', auth()->user()->id)->get()->sum('amount');
-        return view('TenantPayments.wallet')->with('sumAmounts', $sumAmounts)->with('sumWithdrawals', $sumWithdrawals);
+        $sumWithdrawals = Withdrawals::where('user_id', auth()->user()->id)->where('status', 1)->get()->sum('amount');
+        $contacts = Contacts::all();
+        return view('TenantPayments.wallet')->with('sumAmounts', $sumAmounts)->with('sumWithdrawals', $sumWithdrawals)->with('contacts', $contacts);
 
     }
 }

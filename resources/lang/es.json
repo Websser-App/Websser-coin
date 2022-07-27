@@ -69,7 +69,7 @@
     "Departaments": "Departamentos",
     "ID Bulding": "ID de edificios",
     "ID departament": "Identificador de departamento",
-    "Departament Number": "Numero de departamento",
+    "Departament Number": "Nombre de departamento",
     "Nombre del inquilino": "Tenant name",
     "Actions": "Acciones",
     "Not assigned": "No asignado",
@@ -165,7 +165,16 @@
     "Successfully updated user": "Usuario actualizado exitosamente",
     "The withdrawal was successful": "El retiro se hizo correctamente",
     "You do not have enough balance in your wallet": "No tienes el balance suficiente en tu wallet",
-    "There are no tenants in this building": "No existen inquilinos en este edificio"
+    "There are no tenants in this building": "No existen inquilinos en este edificio",
+    "Edit Tenants": "Editar inquilino",
+    "Departaments updated successfully": "Departamento actualizado con exito",
+    "Error updating department": "Error al actualizar el departamento",
+    "Departaments deleted successfully": "Departamento eliminado con exito",
+    "Error deleted department": "Error al eliminar el departamento",
+    "Choose the contact": "Escoge el contacto",
+    "You have not registered any contact": "No existe ningun contacto registrado",
+    "An SMS was sent to the administrators number": "Se ha enviado un SMS al numero del administrador",
+    "Failed to withdraw": "Error al retirar"
 
 
     

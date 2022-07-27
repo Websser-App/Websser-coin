@@ -75,6 +75,16 @@
                                 <center>
                                     <form action="{{route('withdrawals.store')}}" method="POST">
                                         @csrf
+                                        <select class="form-select" aria-label="Default select example" name="contact_id">
+                                            <option selected disabled>@lang('Choose the contact')</option>
+                                                @if(count($contacts) != 0)
+                                                    @foreach ($contacts as $contact)
+                                                        <option value="{{$contact->id}}">{{$contact->fullname}} - {{$contact->alias}}</option>                                                       
+                                                    @endforeach    
+                                                @else
+                                                    <option disaled>@lang('You have not registered any contact')</option>
+                                                @endif
+                                          </select>
                                         <div class="col-md-6">
                                             <label for="amount" class="form-label text-center">@lang('Amount')</label>
                                             <input type="text" class="form-control text-center" id="amount" name="amount" placeholder="@lang('Amount')" required>

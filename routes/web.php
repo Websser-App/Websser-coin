@@ -48,7 +48,7 @@ Route::resource('building', 'BuildingController');
 Route::resource('tenants', 'TenantsController')->except('create','destroy','show');
 route::get('tenants/{id}/create', 'TenantsController@create')->name('tenants.create');
 
-Route::resource('departaments', 'DepatamentsController')->except('create','destroy','edit', 'update');
+Route::resource('departaments', 'DepatamentsController')->except('create', 'edit');
 route::get('departaments/{id}/create', 'DepatamentsController@create')->name('departaments.create');
 
 Route::resource('bills', 'BillsController')->except('show');
@@ -68,7 +68,8 @@ Route::get('tenantpayments/wallet', 'TenantPaymentsController@wallet')->name('te
 Route::post('tenantpayments/chooseBills', 'TenantPaymentsController@chooseBills')->name('tenantpayments.chooseBills');
 Route::post('tenantpayments/generatePDF', 'TenantPaymentsController@generatePDF')->name('tenantpayments.generatePDF');
 
-route::resource('withdrawals', 'WithdrawalsController')->except('index', 'create','show','destroy','edit', 'update');
+route::resource('withdrawals', 'WithdrawalsController')->except('create','show','destroy','edit', 'update');
+route::post('validationWithdrawals/{id}', 'WithdrawalsController@validationWithdrawals')->name('validationWithdrawals');
 
 
 
@@ -78,7 +79,6 @@ Route::get('/packages', 'paymentsController@payment')->name('packages');
 
 Route::resource('contacts', 'ContactsController')->except('show');
 
-Route::resource('paymentsReport', 'PaymentsReportController')->except('show');
 
 // Route::get('/contacts', 'ContactsController@contact')->name('contacts'); wallet
 

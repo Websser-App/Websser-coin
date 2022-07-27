@@ -66,39 +66,25 @@
 
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col" style="font-size: 13px;">@lang('Bulding')</th>
-                                <th scope="col" style="font-size: 13px;">@lang('Departament')</th>
-                                <th scope="col" style="font-size: 13px;">@lang('Tenant name')</th>
-                                <th scope="col" style="font-size: 13px;">@lang('Expense name')</th>
-                                <th scope="col" style="font-size: 13px;">@lang('Amount')</th>
-                                <th scope="col" style="font-size: 13px;">@lang('IsActive')</th>
-                                <th scope="col" style="font-size: 13px;">@lang('Expense date')</th>
+                                <th scope="col" style="font-size: 13px;">@lang('Contact name')</th>
+                                <th scope="col" style="font-size: 13px;">@lang('Contact aliases')</th>
+                                <th scope="col" style="font-size: 13px;">@lang('Contact account')</th>
+                                <th scope="col" style="font-size: 13px;">@lang('Retired amount')</th>
 
 
 
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($tenantPayments as $tenantPayment)
+                            @foreach($withdrawals as $withdrawal)
                         <tr>
-                            <td style="font-size: 13px;">{{$tenantPayment->buildings->UUID}}</td>
-                            <td style="font-size: 13px;">{{$tenantPayment->departaments->number_departament}}</td>
-                            <td style="font-size: 13px;">{{$tenantPayment->tenants->name}} {{$tenantPayment->tenants->surname}} {{$tenantPayment->tenants->second_surname}}</td>
-                            <td style="font-size: 13px;">{{$tenantPayment->bills->name}}</td>
-                            @if ($tenantPayment->amount == 0)    
-                                <td style="font-size: 13px;">${{getAmount($tenantPayment->amount,2)}}</td>
-                                <td class="bg-danger" style="font-size: 15px;">@lang('Not payed')</td>
-                            @else
-                                <td style="font-size: 13px;">${{getAmount($tenantPayment->amount,2)}}</td>
-                                <td class="bg-success" style="font-size: 15px;">@lang('Paid')</td>
-                            @endif
-                            <td style="font-size: 13px;">{{$tenantPayment->created_at->format('d-m-Y')}}</td>
+                            <td style="font-size: 13px;">{{$withdrawal->contact->fullname}}</td>
+                            <td style="font-size: 13px;">{{$withdrawal->contact->alias}}</td>
+                            <td style="font-size: 13px;">{{$withdrawal->contact->key_account}}</td>
+                            <td style="font-size: 13px;">${{getAmount($withdrawal->amount, 2)}}</td>
                         @endforeach
                     </tbody>
                 </table>
-                </div>
-                <div style="text-align: right; width: auto; height: auto; black; margin: 0;">
-                    <h3 style="width: 98%; text-align: right; font-family: Arial, Helvetica, sans-serif; margin:0; padding:0;">Total: ${{getAmount($sumAmounts, 2)}}</h4>
                 </div>
                 <div class="card-footer py-4">
                     <nav class="d-flex justify-content-end" aria-label="...">

@@ -135,7 +135,7 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link text-black" href="{{ url('paymentsReport') }}">
+                    <a class="nav-link text-black" href="{{ url('withdrawals') }}">
                         <i class="bi bi-card-checklist text-green" style="color: #f4645f; font-size: 30px;"></i>
                         <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('') }}Reporte de pagos</span>
                     </a>

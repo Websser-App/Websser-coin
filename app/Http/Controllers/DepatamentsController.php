@@ -8,6 +8,7 @@ use App\Models\Tenants;
 use Illuminate\Http\Request;
 use JetBrains\PhpStorm\Deprecated;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
+use Session;
 
 class DepatamentsController extends Controller
 {
@@ -63,6 +64,7 @@ class DepatamentsController extends Controller
                 'number_departament' => 'required', '[]',
 
             ]);
+
             $buildings = Building::find($request->building_id);
 
             if ( $request->number_departament ) {
@@ -102,9 +104,9 @@ class DepatamentsController extends Controller
      * @param  \App\Models\Depataments  $depataments
      * @return \Illuminate\Http\Response
      */
-    public function edit(Depataments $depataments)
+    public function edit($id)
     {
-        $departaments = Depataments::all();
+        $departaments = Depataments::find($id);
         return view('departaments.edit')->with('departaments', $departaments);
     }
 
@@ -117,7 +119,23 @@ class DepatamentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $this->validate($request, [
+                'number_departament' => 'required',
+
+            ]);
+
+            $departament = Depataments::find($id);
+            $departament->number_departament = $request->number_departament;
+            $departament->save();
+
+            $buildings = Building::find($departament->building_id);
+
+            Session::flash('message', __('Departaments updated successfully'));
+            return redirect()->route('departaments.show', $buildings->id)->with('message', __('Departaments updated successfully'));
+        } catch (\Exception $e) {
+            return redirect()->route('departaments.show', $buildings->id)->with('message', __('Error updating department'));
+        }
     }
 
     /**
@@ -128,6 +146,13 @@ class DepatamentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $departament = Depataments::find($id);
+            $departament->delete();
+            $buildings = Building::find($departament->building_id);
+            return redirect()->route('departaments.show', $buildings->id)->with('message', __('Departaments deleted successfully'));
+        } catch (\Exception $e) {
+            return redirect()->route('departaments.show', $buildings->id)->with('message', __('Error deleted department'));
+        }
     }
 }

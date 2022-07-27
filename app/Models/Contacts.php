@@ -23,4 +23,8 @@ class Contacts extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function withdrawals(){
+        return $this->hasMany(Withdrawals::class);
+    }
+
 }

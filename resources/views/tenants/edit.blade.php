@@ -6,7 +6,7 @@
     <div class="card bg-secondary shadow">
         <div class="card-header bg-white border-0">
             <div class="row align-items-center">
-                <h3 class="mb-0">{{ __('Create Tenants') }}</h3>
+                <h3 class="mb-0">{{ __('Edit Tenants') }}</h3>
             </div>
         </div>
         <div class="card-body">
