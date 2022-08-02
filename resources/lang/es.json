@@ -174,7 +174,11 @@
     "Choose the contact": "Escoge el contacto",
     "You have not registered any contact": "No existe ningun contacto registrado",
     "An SMS was sent to the administrators number": "Se ha enviado un SMS al numero del administrador",
-    "Failed to withdraw": "Error al retirar"
+    "Failed to withdraw": "Error al retirar",
+    "Contact name": "Nombre de contacto",
+    "Contact aliases": "Alias de contacto",
+    "Contact account": "Cuenta de contacto",
+    "Retired amount": "Cantidad retirado"
 
 
     

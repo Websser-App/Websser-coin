@@ -45,16 +45,17 @@
                     </a>
                     
                 
+                    
                     <div class= "precios">
-                    <h5 class="card-title text-uppercase text-muted mb-0" style = "font-size: 90%;">@lang('Inquilinos')</h5>
-                                        <span class="h2 font-weight-bold mb-0" style = "font-size: 90%;">{{$tenants}}</span>
-                                        <div class="row centrar">
-                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow" style = "font-size: 90%;"> 
-                                            <i class="fas fa-users"></i>
+                        <h5 class="card-title text-uppercase text-muted mb-0" style = "font-size: 90%;">@lang('Inquilinos Dueño')</h5>
+                                            <span class="h2 font-weight-bold mb-0" style = "font-size: 90%;">{{$tenantsOwner}}</span>
+                                            <div class="row centrar">
+                                            <div class="icon icon-shape bg-warning text-white rounded-circle shadow" style = "font-size: 90%;"> 
+                                                <i class="fas fa-users"></i>
+                                            </div>
                                         </div>
-                                    </div>
-                        
-                    </div>
+                            
+                        </div>
                         
                 
                 
@@ -85,8 +86,8 @@
                     </div>
 
                     <div class= "precios">
-                    <h5 class="card-title text-uppercase text-muted mb-0" style = "font-size: 90%;">@lang('Quinto card')</h5>
-                                        <span class="h2 font-weight-bold mb-0" style = "font-size: 90%;">Info</span>
+                    <h5 class="card-title text-uppercase text-muted mb-0" style = "font-size: 90%;">@lang('Inquilinos Renta')</h5>
+                                        <span class="h2 font-weight-bold mb-0" style = "font-size: 90%;">{{$tenantsRent}}</span>
                                         <div class="row centrar">
                                         <div class="icon icon-shape bg-warning text-white rounded-circle shadow" style = "font-size: 90%;"> 
                                             <i class="fas fa-users"></i>
@@ -146,7 +147,7 @@
                                 <div class="row">
                                     <div class="row">
                                         <h5 class="card-title text-uppercase text-muted mb-0">@lang('Inquilinos')</h5>
-                                        <span class="h2 font-weight-bold mb-0">{{$tenants}}</span>
+                                        <span class="h2 font-weight-bold mb-0"></span>
                                     </div>
                                     <div class="row centrar">
                                         <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
