@@ -12,7 +12,7 @@
         <div class="card-body">
             <form class="row g-3" method="post" action="{{route('vouchers.store')}}" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" value="{{auth()->user()->id}}" name="user_id">
+
                     <label for="bills_id" class="form-label">@lang('Expense concept')</label>
                     <select class="form-select" aria-label="Default select example" name="bills_id">
                         <option selected disabled>@lang('Choose the concept of expense')</option>

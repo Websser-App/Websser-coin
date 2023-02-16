@@ -13,7 +13,6 @@ class Building extends Model
 
 
     protected $fillable = [
-        'user_id',
         'UUID',
         'type_building', 
         'rows', 
@@ -21,29 +20,8 @@ class Building extends Model
         'latitude', 
         'longitude', 
     ];
-
-    public function users()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function bills()
-    {
-        return $this->hasMany(Bills::class);
-    }
-
     public function departaments()
     {
         return $this->hasMany(Depataments::class);
-    }
-
-    public function tenants()
-    {
-        return $this->hasMany(Bills::class);
-    }
-
-    public function tenantPayments()
-    {
-        return $this->hasOne(TenantPayments::class, 'buildings_id', 'id');
     }
 }

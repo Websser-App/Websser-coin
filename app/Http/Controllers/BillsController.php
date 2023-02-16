@@ -3,28 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bills;
-use App\Models\Building;
-use App\Models\Depataments;
-use App\Models\TenantPayments;
-use App\Models\Tenants;
 use Illuminate\Http\Request;
-use PDF;
-use Mail;
 
 class BillsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $bills = Bills::where('user_id', auth()->user()->id)->get();
+    {
+        $bills = Bills::all();
         return view('bills.index')->with('bills', $bills);
     }
 
@@ -35,8 +25,7 @@ class BillsController extends Controller
      */
     public function create()
     {
-        $buildings = Building::where('user_id', auth()->user()->id)->get();
-        return view('bills.create')->with('buildings', $buildings);
+        return view('bills.create');
     }
 
     /**
@@ -49,107 +38,22 @@ class BillsController extends Controller
     {
         try {
             $this->validate($request, [
-                'user_id' => 'required',
-                'building_id' => 'required',
+                
                 'name' => 'required',
                 'amount' => 'required',
-            ]);
+                'voucher' => 'required',
+        ]);
         $bills = new Bills();
-        $bills->user_id = $request->user_id;
-        $bills->building_id = $request->building_id;
         $bills->name = $request->name;
         $bills->amount = $request->amount;
+        $voucher = file_get_contents($request->file('voucher'));
+        $voucher = base64_encode($voucher);
+        $bills->voucher = $voucher;
         $bills->save();
         return redirect('bills')->with('message', __('Expenses added successfully'));
         } catch (\Exception $e) {
             return  redirect('bills')->with('message',$e->getMessage());
         }
-    }
-
-    public function tenants($id){
-        $bills = Bills::find($id);
-        $tenants = Tenants::leftjoin('tenant_payments', function($query) use($bills){
-            $query->on('tenant_payments.tenants_id', 'tenants.id');
-            $query->where('tenant_payments.bills_id', $bills->id);
-        })->where('tenants.building_id', $bills->building_id)->where('tenants.user_id', auth()->user()->id)->select('tenants.*','tenant_payments.*', 'tenant_payments.id as payments_id')->get();
-        $tenantsCount = count(Tenants::leftjoin('tenant_payments', function($query) use($bills){
-            $query->on('tenant_payments.tenants_id', 'tenants.id');
-            $query->where('tenant_payments.bills_id', $bills->id);
-        })->where('tenants.building_id', $bills->building_id)->where('tenants.user_id', auth()->user()->id)->select('tenants.*','tenant_payments.*', 'tenant_payments.id as payments_id')->get());
-        $tenantsSum = Tenants::leftjoin('tenant_payments', function($query) use($bills){
-            $query->on('tenant_payments.tenants_id', 'tenants.id');
-            $query->where('tenant_payments.bills_id', $bills->id);
-        })->where('tenants.building_id', $bills->building_id)->where('tenants.user_id', auth()->user()->id)->select('tenants.*','tenant_payments.*', 'tenant_payments.id as payments_id')->get()->sum('amount');
-        if(count($tenants) == 0){
-            return redirect('bills')->with('message', __('There are no tenants in this building'));
-        } else {    
-            return view('bills.tenants')->with('tenants', $tenants)->with('bills', $bills)->with('tenantsCount', $tenantsCount)->with('tenantsSum', $tenantsSum);
-        }
-    }
-
-    public function sendEmail($id){
-        $data["tenantpayments"] = TenantPayments::find($id);
-        $data["email"] = $data["tenantpayments"]->tenants->email;
-        $data["title"] = "Reporte de pago";
-        $data["body"] = "Demo de pago";
-  
-        $pdf = PDF::loadView('TenantPayments.pdf.PaymentReportEmail', $data);
-  
-        Mail::send('TenantPayments.pdf.PaymentReportEmail', $data, function($message)use($data, $pdf) {
-            $message->to($data["email"], $data["email"])
-                    ->subject($data["title"])
-                    ->attachData($pdf->output(), "PaymentReport.pdf");
-        });
-  
-        return redirect()->route('bills.tenants', $data["tenantpayments"]->bills_id)->with('message', __('Mail sent successfully'));
-
-    }
-
-    public function paymentReport($id){
-        $tenantpayments = TenantPayments::find($id);
-        view()->share ('tenantpayments', $tenantpayments);
-        $pdf = PDF ::loadView ('TenantPayments.pdf.PaymentReport', ['tenantpayments' => $tenantpayments]);
-        return $pdf->download ('PaymentsReports.pdf');
-    }
-
-    public function paid(Request $request, $id){
-        try {
-            $this->validate($request, [
-                'user_id' => 'required',
-                'amount' => 'required',
-            ]);
-
-                $bills = Bills::find($request->bills_id);
-                if($request->payments_id){
-                    $tenantpayments = TenantPayments::find($request->payments_id);
-                    $tenantpayments->amount = $bills->amount;
-                    $tenantpayments->save();
-                } else {
-                    $departaments = Depataments::find($id);
-                    $tenantpayments = new TenantPayments();
-                    $tenantpayments->user_id = $request->user_id;
-                    $tenantpayments->buildings_id  = $departaments->building_id ;
-                    $tenantpayments->depataments_id  = $departaments->id;
-                    $tenantpayments->tenants_id  = $departaments->tenants->id;
-                    $tenantpayments->bills_id  = $request->bills_id;
-                    $tenantpayments->amount = $bills->amount;
-                    $tenantpayments->save();
-                }  
-        return redirect()->route('bills.tenants', $request->bills_id)->with('message', __('The payment was accepted successfully'));
-        } catch (\Exception $e) {
-            return  redirect('bills.tenants', $request->bills_id)->with('message',$e->getMessage());
-        }
-    }
-
-
-    public function notPayed(Request $request, $id) {
-            $this->validate($request, [
-                'amount' => 'required',
-            ]);
-            $tenantpayments = TenantPayments::find($id);
-            $tenantpayments->amount = 0;
-            $tenantpayments->save();
-            return redirect()->route('bills.tenants', $tenantpayments->bills_id)->with('message', __('The payment was accepted successfully'));
     }
 
     /**
@@ -169,11 +73,9 @@ class BillsController extends Controller
      * @param  \App\Models\Bills  $bills
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Bills $bills)
     {
-        $bills = Bills::find($id);
-        $buildings = Building::where('user_id', auth()->user()->id)->get();
-        return view('bills.edit')->with('bills', $bills)->with('buildings', $buildings);
+        //
     }
 
     /**
@@ -183,27 +85,9 @@ class BillsController extends Controller
      * @param  \App\Models\Bills  $bills
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Bills $bills)
     {
-        try {
-            $this->validate($request, [
-                'name' => 'required',
-                'amount' => 'required',
-            ]);
-        $bills = Bills::find($id);
-        TenantPayments::where('bills_id', $id)->update([
-            'amount' => '0'
-        ]);
-        if($request->building_id){
-            $bills->building_id = $request->building_id;
-        }
-        $bills->name = $request->name;
-        $bills->amount = $request->amount;
-        $bills->save();
-        return redirect('bills')->with('message', __('Expenses Updated successfully'));
-        } catch (\Exception $e) {
-            return  redirect('bills')->with('message',$e->getMessage());
-        }
+        //
     }
 
     /**
@@ -212,10 +96,8 @@ class BillsController extends Controller
      * @param  \App\Models\Bills  $bills
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Bills $bills)
     {
-        $bills = Bills::find($id);
-        $bills->delete();
-        return redirect('bills')->with('message', __('Successfully removed expenses'));
+        //
     }
 }

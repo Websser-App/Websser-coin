@@ -10,7 +10,6 @@
             align-items: center;
         }
         .dataTables_length > label{
-            width: 99%;
             display: contents;
             grid-template-columns: repeat(3, auto);
             padding: 25px 50px;
@@ -18,26 +17,16 @@
             align-items: center;
         }
         .dataTables_filter > label{
-            width: 99%;
             display: contents;
             grid-template-columns: repeat(2, auto);
             padding: 25px 50px;
             gap: 0px;
             align-items: center;
         }
-        .dataTables_paginate {
-            width: 99%;
-            margin-top: 1px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1px;
-        }
-        .dataTables_paginate span{
-            width: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .pagination > li    {
+            display: inline;
+            margin-left: 10px;
+
         }
     </style>
 </head>
@@ -45,9 +34,7 @@
 <div class="row align-items-center justify-content-xl-between">
     <div class="col-xl-6">
         <div class="copyright text-center text-xl-left text-muted">
-            <b>
-                Copyright <a href="https://www.iqneting.com.mx" class="font-weight-bold ml-1 text-black" target="_blank">Iqneting</a> &copy; {{ now()->year }} 
-            </b>
+            Copyright <a href="https://www.iqneting.commx" class="font-weight-bold ml-1" target="_blank">Iqneting</a> &copy; {{ now()->year }} 
         </div>
     </div>
 </div>
@@ -71,25 +58,8 @@ crossorigin="anonymous"></script>
             language: {
                 "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
             },
-            pageLength : 10,
             "lengthMenu": [[5, 10, 15, 25, 50, -1], [5, 10, 15, 25, 50, "Todos"]],
         });
-
-        $('#tablelistTenantsPayments').DataTable({
-            retrieve: true,
-            searching: true,
-            dom: "<'row'<'col-xs-5'l><'col-sm-5 text-center'B><'col-lg-5'f>>tp",
-            language: {
-                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
-            },
-            pageLength : 10,
-            "lengthMenu": [[5, 10, 15, 25, 50, -1], [5, 10, 15, 25, 50, "Todos"]],
-        });
-
-        
-
-
-
 
     });
 </script>

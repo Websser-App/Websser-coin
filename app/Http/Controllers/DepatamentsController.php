@@ -6,9 +6,7 @@ use App\Models\Building;
 use App\Models\Depataments;
 use App\Models\Tenants;
 use Illuminate\Http\Request;
-use JetBrains\PhpStorm\Deprecated;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
-use Session;
 
 class DepatamentsController extends Controller
 {
@@ -24,7 +22,7 @@ class DepatamentsController extends Controller
      */
     public function index()
     {
-        $departaments = Depataments::where('user_id', auth()->user()->id)->get();
+        $departaments = Depataments::all();
         return view('departaments.index')->with('departaments', $departaments);
     }
 
@@ -39,10 +37,7 @@ class DepatamentsController extends Controller
         $countDepartaments= count(Building::where('buildings.id', $id)->join('depataments', 'buildings.id', 'depataments.building_id')->select('buildings.*', 'depataments.*')->get()); 
         $inputsDepartaments = ($buildings->rows * $buildings->columns);
         if($inputsDepartaments != $countDepartaments){
-            $departaments = Depataments::where('building_id', $buildings->id)->get();
-            $departamentsCount = count(Depataments::where('building_id', $buildings->id)->get());
-
-            return view('departaments.create')->with('buildings', $buildings)->with('inputsDepartaments', $inputsDepartaments)->with('departaments', $departaments);
+            return view('departaments.create')->with('buildings', $buildings)->with('inputsDepartaments', $inputsDepartaments);
         } else {
             return redirect()->route('departaments.show', $buildings->id);
         }   
@@ -58,22 +53,17 @@ class DepatamentsController extends Controller
     {
         try {
             $this->validate($request, [
-                'user_id' => 'required',
                 'building_id' => 'required',
-                'buildings_row' => 'required', '[]',
                 'number_departament' => 'required', '[]',
 
             ]);
-
             $buildings = Building::find($request->building_id);
 
             if ( $request->number_departament ) {
-                foreach(array_combine($request->number_departament, $request->buildings_row) as $departaments => $key){
+                foreach($request->number_departament as $departaments){
                     $departament = new Depataments;
-                    $departament->user_id = $request->user_id;
                     $departament->UUID = uniqid();
                     $departament->building_id = $buildings->id;
-                    $departament->floor = $key;
                     $departament->number_departament = $departaments;
                     $departament->save();
                 }
@@ -84,7 +74,6 @@ class DepatamentsController extends Controller
             return redirect('building')->with('message',$e->getMessage());
         }
     }
-    
 
     /**
      * Display the specified resource.
@@ -104,9 +93,9 @@ class DepatamentsController extends Controller
      * @param  \App\Models\Depataments  $depataments
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Depataments $depataments)
     {
-        $departaments = Depataments::find($id);
+        $departaments = Depataments::all();
         return view('departaments.edit')->with('departaments', $departaments);
     }
 
@@ -119,23 +108,7 @@ class DepatamentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try {
-            $this->validate($request, [
-                'number_departament' => 'required',
-
-            ]);
-
-            $departament = Depataments::find($id);
-            $departament->number_departament = $request->number_departament;
-            $departament->save();
-
-            $buildings = Building::find($departament->building_id);
-
-            Session::flash('message', __('Departaments updated successfully'));
-            return redirect()->route('departaments.show', $buildings->id)->with('message', __('Departaments updated successfully'));
-        } catch (\Exception $e) {
-            return redirect()->route('departaments.show', $buildings->id)->with('message', __('Error updating department'));
-        }
+        //
     }
 
     /**
@@ -146,13 +119,6 @@ class DepatamentsController extends Controller
      */
     public function destroy($id)
     {
-        try {
-            $departament = Depataments::find($id);
-            $departament->delete();
-            $buildings = Building::find($departament->building_id);
-            return redirect()->route('departaments.show', $buildings->id)->with('message', __('Departaments deleted successfully'));
-        } catch (\Exception $e) {
-            return redirect()->route('departaments.show', $buildings->id)->with('message', __('Error deleted department'));
-        }
+        //
     }
 }

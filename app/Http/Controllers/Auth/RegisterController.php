@@ -103,110 +103,8 @@ class RegisterController extends Controller
         }
     }
 
-    public function ajaxIneFrontUploadPost(Request $request){
-    
-            $user = User::find($request->user_id);
-    
-            $ine_front = file_get_contents($request->file('ine_front'));
-            $ine_front = base64_encode($ine_front);
-            $user->ine_front = $ine_front;
-            $user->save(); 
-    
-    
-            return response()->json(['success'=>'done']);
-
-    }
-
-    public function ajaxIneBackUploadPost(Request $request){
-        $validator = Validator::make($request->all(), [
-            'user_id' => 'required',
-            'ine_back' => 'required',
-          ]);
-    
-    
-          if ($validator->passes()) {
-    
-    
-            $user = User::find($request->user_id);
-    
-            $ine_back = file_get_contents($request->file('ine_back'));
-            $ine_back = base64_encode($ine_back);
-            $user->ine_back = $ine_back;
-            $user->save(); 
-    
-    
-            return response()->json(['success'=>'done']);
-          }
-    
-          return response()->json(['error'=>$validator->errors()->all()]);
-    }
-
-    public function ajaxCertificateUploadPost(Request $request){
-        $validator = Validator::make($request->all(), [
-            'user_id' => 'required',
-            'certificate' => 'required',
-          ]);
-    
-    
-          if ($validator->passes()) {
-    
-    
-            $user = User::find($request->user_id);
-    
-            $certificate = file_get_contents($request->file('certificate'));
-            $certificate = base64_encode($certificate);
-            $user->certificate = $certificate;
-            $user->save(); 
-    
-    
-            return response()->json(['success'=>'done']);
-          }
-    
-          return response()->json(['error'=>$validator->errors()->all()]);
-    }
-
-    public function ajaxUploadPost(Request $request)
-    {
-      $validator = Validator::make($request->all(), [
-        'user_id' => 'required',
-        'ine_front' => 'required',
-        'ine_back' => 'required',
-        'certificate' => 'required',
-      ]);
-
-
-      if ($validator->passes()) {
-
-
-        $user = User::find($request->user_id);
-
-        $ine_front = file_get_contents($request->file('ine_front'));
-        $ine_front = base64_encode($ine_front);
-        $user->ine_front = $ine_front;
-
-        $ine_back = file_get_contents($request->file('ine_back'));;
-        $ine_back = base64_encode($ine_back);
-        $user->ine_back = $ine_back;
-
-
-        if(!is_null($request->certificate)){ 
-            $certificate = file_get_contents($request->file('certificate'));
-            $certificate = base64_encode($certificate);
-            $user->certificate = $certificate;
-            $user->save(); 
-            return response()->json(['success'=>'done']);
-        }
-        $user->save(); 
-
-
-        return response()->json(['success'=>'done']);
-      }
-
-      return response()->json(['error'=>$validator->errors()->all()]);
-    }
-
     public function completedRegister(Request $request){
-        $user = User::find($request->id);
+
         switch ($request) {
             case $request->email != NULL && $request->password != NULL:
                 $user = User::find($request->id);
@@ -227,30 +125,37 @@ class RegisterController extends Controller
                 $user->save();
                 Session::flash('message', __('Data registered successfully'));
                 return view('auth.completedRegister')->with('user', $user);
+
                 break;
-            case $user->ine_front != NULL && $user->ine_back != NULL:
+            case $request->ine_front != NULL && $request->ine_back != NULL:
                 $user = User::find($request->id);
+
+                $ine_front = file_get_contents($request->file('ine_front'));
+                $ine_front = base64_encode($ine_front);
+                $user->ine_front = $ine_front;
+
+                $ine_back = file_get_contents($request->file('ine_back'));;
+                $ine_back = base64_encode($ine_back);
+                $user->ine_back = $ine_back;
+
+
+                if(!is_null($request->certificate)){ 
+                    $certificate = file_get_contents($request->file('certificate'));
+                    $certificate = base64_encode($certificate);
+                    $user->certificate = $certificate;
+                    $user->save(); 
+                    Auth::login($user);
+                    Session::flash('message', __('User completed successfully'));
+                    return redirect('home');
+                }
+
+                $user->save(); 
                 Auth::login($user);
                 Session::flash('message', __('User completed successfully'));
                 return redirect('home');
                 break;
-            case $user->ine_front == NULL && $user->ine_back == NULL:
-                return view('auth.completedRegister')->with('user', $user);
-                break;
         }
 
-    }
-
-    public function completeImagen($id){
-        $user = User::find($id);
-        if($user->ine_front != NULL && $user->ine_back != NULL){
-            Auth::login($user);
-            Session::flash('message', __('User completed successfully'));
-            return redirect('home');
-        } else {
-            Session::flash('message', __('Error al subir las imagenes'));
-            return view('auth.completedRegister')->with('user', $user);
-        } 
     }
 
     public function validateUserAuth(Request $request, $id){

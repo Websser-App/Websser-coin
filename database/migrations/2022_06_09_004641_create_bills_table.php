@@ -15,12 +15,9 @@ class CreateBillsTable extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('building_id')->unsigned()->nullable();
-            $table->string('name')->nullable();
             $table->integer('amount')->nullable();
             $table->boolean('isActive')->nullable()->default('0');
             $table->timestamps();
-            $table->foreign('building_id')->references('id')->on('buildings')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

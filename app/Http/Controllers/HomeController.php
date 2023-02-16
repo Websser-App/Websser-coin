@@ -2,11 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Building;
-use App\Models\Depataments;
-use App\Models\TenantPayments;
-use App\Models\Tenants;
-
 class HomeController extends Controller
 {
     /**
@@ -26,14 +21,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $buildings = count(Building::where('user_id', auth()->user()->id)->get());
-        $buildingsAll = Building::where('user_id', auth()->user()->id)->latest()->take(5)->get();
-        $tenantsOwner = count(Tenants::where('user_id', auth()->user()->id)->where('type', 'owner')->get());
-        $tenantsRent = count(Tenants::where('user_id', auth()->user()->id)->where('type', 'rent')->get());
-        $departaments = count(Depataments::where('user_id', auth()->user()->id)->get());
-        $departamentsAll = Depataments::where('user_id', auth()->user()->id)->latest()->take(5)->get();
-        $payments = TenantPayments::where('isActive', 1)->where('user_id', auth()->user()->id)->sum('amount');
-
-        return view('dashboard', compact('buildings', 'tenantsOwner', 'payments', 'departaments', 'buildingsAll', 'departamentsAll', 'tenantsRent'));
+        return view('dashboard');
     }
 }

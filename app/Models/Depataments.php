@@ -13,16 +13,12 @@ class Depataments extends Model
 
 
     protected $fillable = [
-        'user_id',
         'UUID',
         'building_id ', 
         'number_departament', 
     ];
 
-    public function users()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
+
 
     public function buildings()
     {
@@ -32,11 +28,6 @@ class Depataments extends Model
     public function tenants()
     {
         return $this->hasOne(Tenants::class, 'depatament_id', 'id');
-    }
-
-    public function tenantPayments()
-    {
-        return $this->hasMany(TenantPayments::class);
     }
 
 }

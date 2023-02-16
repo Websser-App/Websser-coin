@@ -20,7 +20,7 @@ class BuildingController extends Controller
      */
     public function index()
     {
-        $buildings = Building::where('user_id', auth()->user()->id)->get();
+        $buildings = Building::all();
         return view('building.index')->with('buildings', $buildings);
     }
 
@@ -44,7 +44,6 @@ class BuildingController extends Controller
     {
         try {
             $this->validate($request, [
-                'user_id' => 'required',
                 'type_building' => 'required',
                 'rows' => 'required',
                 'address' => 'required',
@@ -55,7 +54,6 @@ class BuildingController extends Controller
             ]);
 
             $building = new Building();
-            $building->user_id = $request->user_id;
             $building->UUID = uniqid();
             $building->type_building = $request->type_building;
             $building->rows = $request->rows;
@@ -67,7 +65,7 @@ class BuildingController extends Controller
 
             return redirect('building')->with('message', __('Building added successfully'));
         } catch (\Exception $e) {
-            return redirect()->back()->with('message',__('Complete all the fields'));
+            return redirect('')->with('message',$e->getMessage());
         }
     }
 

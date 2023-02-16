@@ -21,9 +21,10 @@ class TenantsController extends Controller
      */
     public function index()
     {
-        $tenants = Tenants::where('user_id', auth()->user()->id)->get();
+        $tenants = Tenants::all();
         return view('tenants.index')->with('tenants', $tenants);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -44,8 +45,8 @@ class TenantsController extends Controller
     public function store(Request $request)
     {
         try {
-            $this->validate($request, [   
-                'user_id' => 'required',            
+            $this->validate($request, [
+                
                 'departament_id' => 'required',
                 'name' => 'required',
                 'surname' => 'required',
@@ -54,11 +55,9 @@ class TenantsController extends Controller
                 'type' => 'required',
 
             ]);
-            $departament = Depataments::where('id', $request->departament_id)->first();
+
             $tenants = new Tenants();
-            $tenants->user_id = $request->user_id;
             $tenants->depatament_id = $request->departament_id;
-            $tenants->building_id = $departament->building_id;
             $tenants->name = $request->name;
             $tenants->surname = $request->surname;
             $tenants->second_surname = $request->second_surname;
@@ -66,10 +65,10 @@ class TenantsController extends Controller
             $tenants->type = $request->type;
             $tenants->save();
             Session::flash('message', __('Tenants added successfully'));
-            return redirect()->route('departaments.show', $request->building_id)->with('message', __('Tenants added successfully'));
+            return redirect()->route('departaments.create', $request->building_id);
         } catch (\Exception $e) {
             Session::flash('message',$e->getMessage());
-            return redirect()->route('departaments.show', $request->building_id)->with('message',$e->getMessage());
+            return redirect()->route('departaments.create', $request->building_id)->with('message',$e->getMessage());
         }
     }
 
@@ -123,11 +122,9 @@ class TenantsController extends Controller
             $tenants->type = $request->type;
             $tenants->save();
 
-            Session::flash('message', __('Tenants Updated successfully'));
-            return redirect()->route('departaments.show', $request->building_id)->with('message', __('Tenants Updated successfully'));
+            return redirect('tenants')->with('message', __('Tenants Updated successfully'));
         } catch (\Exception $e) {
-            Session::flash('message',$e->getMessage());
-            return redirect()->route('departaments.show', $request->building_id)->with('message',$e->getMessage());
+            return redirect('tenants')->with('message',$e->getMessage());
         }
     }
 

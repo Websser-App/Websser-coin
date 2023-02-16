@@ -17886,7 +17886,7 @@ a.text-darker:focus
 
 .text-muted
 {
-    color: #000 !important;
+    color: #8898aa !important;
 }
 
 .text-black-50
@@ -21397,7 +21397,7 @@ textarea[resize='horizontal']
 .navbar-vertical .navbar-brand > img
 {
     max-width: 100%;
-    max-height: 4rem;
+    max-height: 2rem;
 }
 @media (min-width: 768px)
 {
@@ -25689,7 +25689,7 @@ a.text-gray-dark:focus
 
 .text-light
 {
-    color: #000 !important;
+    color: #ced4da !important;
 }
 
 a.text-light:hover,

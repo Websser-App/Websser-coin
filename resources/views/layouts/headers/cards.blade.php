@@ -1,205 +1,93 @@
-<style>
-    .centrar{
-        justify-content: center;
-        text-align:center;
-    }
-
-    .precios{
-        font-size: 150%;
-        text-align: center;
-        
-        background-color: white;
-        border-radius: 25px;
-    }
-    .contenerdor2{
-        justify-content: center;
-        margin-bottom: 10%;
-        display: grid;
-        gap: 1rem;
-        grid-auto-rows: 10rem;
-        grid-template-columns:repeat(auto-fit, minmax(11rem, 1fr));
-        margin-left: 5%;
-        margin-right: 5%;
-        
-    }
-    h5{
-        margin-top: 6%;
-    }
-
-</style>
-
-<div class="header bg-gradient-primary   pt-md-8 " >
-    <div class="header-body" style="margin-bottom: 20px; justify-content: center;">
-        <div  class="contenerdor2">
-                
-                
-                    <a href="{{url('building')}}" class= "precios">
-                        <h5 class="card-title text-uppercase text-muted mb-0" style = "font-size: 90%;">@lang('Buildings')</h5>
-                        <span class="h2 font-weight-bold mb-1" style = "font-size: 90%;">{{$buildings}}</span>
-                        
-                        <div class="row centrar">
-                            <div class="icon icon-shape bg-danger text-white rounded-circle shadow ">
-                                            <i class="fas fa-chart-bar" style = "font-size: 90%;"></i>
-                            </div>
-                        </div>
-                    </a>
-                    
-                
-                    
-                    <div class= "precios">
-                        <h5 class="card-title text-uppercase text-muted mb-0" style = "font-size: 90%;">@lang('Inquilinos Dueño')</h5>
-                                            <span class="h2 font-weight-bold mb-0" style = "font-size: 90%;">{{$tenantsOwner}}</span>
-                                            <div class="row centrar">
-                                            <div class="icon icon-shape bg-warning text-white rounded-circle shadow" style = "font-size: 90%;"> 
-                                                <i class="fas fa-users"></i>
-                                            </div>
-                                        </div>
-                            
-                        </div>
-                        
-                
-                
-                    <a href="{{route('tenantpayments.wallet')}}" class= "precios">
-                    <h5 class="card-title text-uppercase text-muted mb-0" style = "font-size: 90%;">@lang('Pagos')</h5>
-                                        <span class="h2 font-weight-bold mb-0" style = "font-size: 90%;">${{getAmount($payments,0)}}</span>
-                                        <div class="row centrar">
-                                        <div class="icon icon-shape bg-yellow text-white rounded-circle shadow" style = "font-size: 90%;">
-                                            <i class="fas fa-chart-pie"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                        
-                
-
-                
-                
-                    <div class= "precios">
-                        <h5 class="card-title text-uppercase text-muted mb-0"  style = "font-size: 90%;">@lang('Departamentos')</h5>
-                        <span class="h2 font-weight-bold mb-0" style = "font-size: 90%;">{{$departaments}}</span>
-    
-                        <div class="row centrar" >
-                            <div class="icon icon-shape bg-info text-white rounded-circle shadow" style = "font-size: 90%;">
-                                <i class="fas fa-percent"></i>
-                        </div>
-                                        
-                        </div>
-                    </div>
-
-                    <div class= "precios">
-                    <h5 class="card-title text-uppercase text-muted mb-0" style = "font-size: 90%;">@lang('Inquilinos Renta')</h5>
-                                        <span class="h2 font-weight-bold mb-0" style = "font-size: 90%;">{{$tenantsRent}}</span>
-                                        <div class="row centrar">
-                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow" style = "font-size: 90%;"> 
-                                            <i class="fas fa-users"></i>
-                                        </div>
-                                    </div>
-                        
-                    </div>
-                        
-                    
-
-
-
-
-        </div>
-    
-        <div style="height: 40px;"></div>
-            
-            
-            <!-- Card stats
-
-            
-
-
-
-
-
-
-
-
-
-
-
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+            <!-- Card stats -->
             <div class="row">
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
-                            <center>
-                                <div class="row">
-                                    <div class="row">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">@lang('Buildings')</h5>
-                                        <span class="h2 font-weight-bold mb-1">{{$buildings}}</span>
-                                    </div>
-                                    <div class="row centrar" >
-                                        <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                            <i class="fas fa-chart-bar"></i>
-                                        </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
+                                    <span class="h2 font-weight-bold mb-0">350,897</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                        <i class="fas fa-chart-bar"></i>
                                     </div>
                                 </div>
-                            </center>
+                            </div>
+                            <p class="mt-3 mb-0 text-muted text-sm">
+                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                <span class="text-nowrap">Since last month</span>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
-                            <center>
-                                <div class="row">
-                                    <div class="row">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">@lang('Inquilinos')</h5>
-                                        <span class="h2 font-weight-bold mb-0"></span>
-                                    </div>
-                                    <div class="row centrar">
-                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                                            <i class="fas fa-users"></i>
-                                        </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
+                                    <span class="h2 font-weight-bold mb-0">2,356</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                        <i class="fas fa-chart-pie"></i>
                                     </div>
                                 </div>
-                            </center>
+                            </div>
+                            <p class="mt-3 mb-0 text-muted text-sm">
+                                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
+                                <span class="text-nowrap">Since last week</span>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
-                            <center>
-                                <div class="row">
-                                    <div class="row ">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">@lang('Pagos')</h5>
-                                        <span class="h2 font-weight-bold mb-0">${{getAmount($payments,0)}}</span>
-                                    </div>
-                                    <div class="row centrar">
-                                        <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                                            <i class="fas fa-chart-pie"></i>
-                                        </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
+                                    <span class="h2 font-weight-bold mb-0">924</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                        <i class="fas fa-users"></i>
                                     </div>
                                 </div>
-                            </center>
+                            </div>
+                            <p class="mt-3 mb-0 text-muted text-sm">
+                                <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                                <span class="text-nowrap">Since yesterday</span>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
-                            <center>
-                                <div class="row">
-                                    <div class="row">
-                                        <h5 class="card-title text-uppercase text-muted mb-0" style="padding: 1px;">@lang('Departamentos')</h5>
-                                        <span class="h2 font-weight-bold mb-0" >{{$departaments}}</span>
-                                    </div>
-                                    
-                                    <div class="row centrar">
-                                        <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                            <i class="fas fa-percent"></i>
-                                        </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
+                                    <span class="h2 font-weight-bold mb-0">49,65%</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                        <i class="fas fa-percent"></i>
                                     </div>
                                 </div>
-                            </center>
+                            </div>
+                            <p class="mt-3 mb-0 text-muted text-sm">
+                                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                                <span class="text-nowrap">Since last month</span>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-             -->
-        
+        </div>
     </div>
 </div>

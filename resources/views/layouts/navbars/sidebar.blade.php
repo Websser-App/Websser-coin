@@ -1,51 +1,3 @@
-<style>
-    i{
-        font-size: 30px;
-    }
-    .conf{
-        font-size: 40px;
-        position: ;
-        top: 18%;
-    }
-    .avatar{
-        width: 70%; 
-        height: 70%;
-    }
-    @media only screen and (max-width: 767px) {
-        .conf{
-            font-size: 20px;
-            position: absolute;
-            top: 10%;
-            right: 22%;
-        }
-        .avatar{
-        width: 20%; 
-        height: 20%;
-        margin-right: 80%;
-        position: absolute;
-        right:-75%;
-        top: 40%;
-        }
-        
-    }
-    .imagenP{
-        background: url('data:image/png;base64, {{auth()->user()->avatar}}') ;
-        width: 10%;
-        padding: 20%;
-        background-size: cover;
-        background-position: center;
-        position:relative;
-    }
-
-    .imagenAp{
-        background: url("{{ asset('argon') }}/img/theme/perfile.jpg") ;
-        width: 10%;
-        padding: 20%;
-        background-size: cover;
-        background-position: center;
-        position:relative;
-    }
-</style>
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
     <div class="container-fluid">
         <!-- Toggler -->
@@ -53,34 +5,59 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <div class="navbar-brand pt-0">
-            <div class = "mb-3"></div>
-                <a title="Perfil" href="{{url('profile')}}">
-                    <i class="iconos ni ni-settings-gear-65 text-black conf " style=""></i>
+        <a class="navbar-brand pt-0" href="{{ route('home') }}">
+            <img width="80px" src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" alt="...">
+        </a>
+        <!-- User -->
+        <ul class="nav align-items-center d-md-none">
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="media align-items-center">
+                        <span class="avatar avatar-sm rounded-circle">
+                        <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-1-800x800.jpg">
+                        </span>
+                    </div>
                 </a>
-            <span class="avatar avatar-sm rounded-circle" style=" " alt="avatar">
-                @if(auth()->user()->avatar == NULL)
-                    <div href="{{url('profile')}}">
-                        <img alt="Image placeholder"    src="{{ asset('argon') }}/img/theme/transparente.png" class= "imagenAp" id="myImageId">
+                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                    <div class=" dropdown-header noti-title">
+                        <h6 class="text-overflow m-0">{{ __('Welcome!') }}</h6>
                     </div>
-                @else
-                    <div href="{{url('profile')}}">
-                        <img class="imagenP rounded-circle" src="{{ asset('argon') }}/img/theme/transparente.png" id="myImageId" style=""></img>
-                        <!--<img alt="Image placeholder"    src="data:image/png;base64,{{ auth()->user()->avatar }}" class= "">  transparente --> 
-                    </div>
-                @endif
-                
-            </span> <br></br>
-            <div class="media-body ml-2 d-none d-lg-inline">
-                <span class="mb-0 text-sm  font-weight-bold" style=" font-size: 30px;">{{ auth()->user()->name }}</span> 
-            </div>
-        </div>
+                    {{-- <a href="{{ route('profile.edit') }}" class="dropdown-item">
+                        <i class="ni ni-single-02"></i>
+                        <span>{{ __('My profile') }}</span>
+                    </a> --}}
+                    <a href="#" class="dropdown-item">
+                        <i class="ni ni-settings-gear-65"></i>
+                        <span>{{ __('Settings') }}</span>
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i class="ni ni-calendar-grid-58"></i>
+                        <span>{{ __('Activity') }}</span>
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i class="ni ni-support-16"></i>
+                        <span>{{ __('Support') }}</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        <i class="ni ni-user-run"></i>
+                        <span>{{ __('Logout') }}</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
         <!-- Collapse -->
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
             <!-- Collapse header -->
             <div class="navbar-collapse-header d-md-none">
                 <div class="row">
-                    <div class="col-9 collapse-close right">
+                    <div class="col-6 collapse-brand">
+                        <a href="{{ route('home') }}">
+                            <img height="100px" width="90px" src="{{ asset('argon') }}/img/brand/blue.png">
+                        </a>
+                    </div>
+                    <div class="col-6 collapse-close">
                         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
                             <span></span>
                             <span></span>
@@ -88,72 +65,28 @@
                     </div>
                 </div>
             </div>
+            <!-- Form -->
+            <form class="mt-4 mb-3 d-md-none">
+                <div class="input-group input-group-rounded input-group-merge">
+                    <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="{{ __('Search') }}" aria-label="Search">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="fa fa-search"></span>
+                        </div>
+                    </div>
+                </div>
+            </form>
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-black"  href="{{ url('home') }}">
-                        <i class="iconos ni ni-chart-bar-32 text-blue " style="font-size: 30px;"></i> 
-                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Dashboard') }}</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="{{ url('building') }}">
-                        <i class="ni ni-building text-black" style="font-size: 30px; font-size: 30px;"></i> 
-                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Entity') }}</span>
+                    <a class="nav-link" href="{{ url('building') }}">
+                        <i class="ni ni-building text-primary"></i> {{ __('Entity') }}
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-black" href="{{url('bills')}}">
-                        <i class="ni ni-money-coins text-yellow" style="color: #f4645f; font-size: 30px;"></i>
-                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Expenses') }}</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="{{ url('tenantpayments') }}">
-                        <i class="bi bi-card-checklist text-black" style="color: #f4645f; font-size: 30px;"></i>
-                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Expense report') }}</span>
-                    </a>
-                </li>
-
-                
-
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="{{ route('contacts.index') }}">
-                        <i class="bi bi-person-lines-fill" style="color: #f4645f; font-size: 30px;"></i>
-                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Contacts') }}</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="{{ route('tenantpayments.wallet') }}">
-                        <i class="bi bi-cash text-green" style="color: #f4645f; font-size: 30px;"></i>
-                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Wallet') }}</span>
-                    </a>
-                </li>
-
-
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="{{ url('withdrawals') }}">
-                        <i class="bi bi-card-checklist text-green" style="color: #f4645f; font-size: 30px;"></i>
-                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('') }}Reporte de pagos</span>
-                    </a>
-                </li>
-
-                
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="{{ route('packages') }}">
-                        <i class="bi bi-credit-card-2-front text-silver" style="color: #f4645f; font-size: 30px;"></i>
-                        <span class="nav-link-text text-black" style="color: #f4645f; font-size: 110%;">{{ __('Subscription') }}</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="{{ route('logout') }}" class="nav-link text-black" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-                        <i class="ni ni-user-run" style="font-size: 30px; "></i>
-                        <span font-size: 30px; style=" font-size: 110%;">{{ __('Logout') }}</span>
+                    <a class="nav-link" href="{{ url('bills') }}">
+                        <i class="ni ni-money-coins text-primary"></i> {{ __('Expenses') }}
                     </a>
                 </li>
             </ul>

@@ -1,19 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.app', ['class' => 'bg-default'])
 
 @section('content')
     @include('layouts.headers.guest')
-    <div class="container mt--6 pb-1">
+    <div class="container mt--8 pb-5">
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-7">
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-body px-lg-5 py-lg-5">
-                        <center>
-                            <a class="navbar-brand" href="{{ route('inicio') }}">
-                                <img height="80px" width="80px" src="{{ asset('argon') }}/img/brand/blue.png" />
-                            </a>
-                        </center>
                         @if(Session::has('message'))
-                            <br>
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 {{ Session::get('message') }}
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -21,8 +15,6 @@
                                 </button>
                             </div>
                         @endif
-                        <br>
-                        
                         <form role="form" method="POST" action="{{ route('loginForm') }}">
                             @csrf
 
@@ -74,7 +66,7 @@
                     </div>
                     <div class="col-6 text-right">
                         <a href="{{ route('registration') }}" class="text-light">
-                            <small><b>{{ __('Create new account') }}</b></small>
+                            <small>{{ __('Create new account') }}</small>
                         </a>
                     </div>
                 </div>

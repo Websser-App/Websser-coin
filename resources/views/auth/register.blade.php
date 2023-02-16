@@ -1,21 +1,19 @@
-@extends('layouts.app')
+@extends('layouts.app', ['class' => 'bg-default'])
 
 @section('content')
     @include('layouts.headers.guest')
 
-    <div class="container mt--4 pb-5">
+    <div class="container mt--8 pb-5">
         <!-- Table -->
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8">
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-body px-lg-5 py-lg-5">
-                        <center>
-                            <a class="navbar-brand" href="{{ route('inicio') }}">
-                                <img height="80px" width="80px" src="{{ asset('argon') }}/img/brand/blue.png" />
-                            </a>
-                        </center>
-                        <br>
                         <div class="text-muted text-center mt-2 mb-4"><small>{{ __('Register Phone') }}</small></div>
+
+                        <div class="text-center text-muted mb-4">
+                            <small>{{ __('Enter your number to register') }}</small>
+                        </div>
                         <form role="form" method="POST" action="{{ route('register') }}">
                             @csrf
 

@@ -6,14 +6,14 @@
     <div class="card bg-secondary shadow">
         <div class="card-header bg-white border-0">
             <div class="row align-items-center">
-                <h3 class="mb-0">{{ __('Edit Tenants') }}</h3>
+                <h3 class="mb-0">{{ __('Create Tenants') }}</h3>
             </div>
         </div>
         <div class="card-body">
             <form class="row g-3" method="POST" action="{{route('tenants.update', $tenants->id)}}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                    <input type="hidden" value="{{$tenants->building_id}}" name="building_id">
+
                 <div class="col-md-6">
                   <label for="name" class="form-label">@lang('Name')</label>
                   <input type="text" class="form-control" id="name" name="name" placeholder="@lang('Name')" value="{{ $tenants->name }}" required>
@@ -34,10 +34,10 @@
                     <label for="type" class="form-label">@lang('Tenant type')</label>
                     <select id="type" class="form-select" name="type" required>
                         @if($tenants->type == 'owner')
-                            <option value="owner" selected readonly>@lang('Owner')</option>
+                            <option value="owner" selected>@lang('Owner')</option>
                             <option value="rent">@lang('Rent')</option>
                         @else
-                            <option value="rent" selected readonly>@lang('Rent')</option>
+                            <option value="rent" selected>@lang('Rent')</option>
                             <option value="owner">@lang('Owner')</option>
                         @endif    
                     </select>

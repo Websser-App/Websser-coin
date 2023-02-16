@@ -30,58 +30,17 @@ route::get('registration', [App\Http\Controllers\Auth\RegisterController::class,
 route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
 route::post('validation/{id}', [App\Http\Controllers\Auth\RegisterController::class, 'validation'])->name('validation');
 route::get('resendCode/{id}', [App\Http\Controllers\Auth\RegisterController::class, 'resendCode'])->name('resendCode');
-route::post('ajaxImageUploadPost', [App\Http\Controllers\Auth\RegisterController::class, 'ajaxImageUploadPost'])->name('ajaxImageUploadPost');
-route::post('/ajaxIneFrontUploadPost', [App\Http\Controllers\Auth\RegisterController::class, 'ajaxIneFrontUploadPost'])->name('ajaxIneFrontUploadPost');
-route::post('/ajaxIneBackUploadPost', [App\Http\Controllers\Auth\RegisterController::class, 'ajaxIneBackUploadPost'])->name('ajaxIneBackUploadPost');
-route::post('/ajaxCertificateUploadPost', [App\Http\Controllers\Auth\RegisterController::class, 'ajaxCertificateUploadPost'])->name('ajaxCertificateUploadPost');
 route::post('completedRegister', [App\Http\Controllers\Auth\RegisterController::class, 'completedRegister'])->name('completedRegister');
-route::get('completeImagen/{id}', [App\Http\Controllers\Auth\RegisterController::class, 'completeImagen'])->name('completeImagen');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::put('user/{id}', 'UserController@update')->name('user.update');
-route::post('/uploadUserAvatar', 'UserController@uploadUserAvatar')->name('uploadUserAvatar');
-
 Route::resource('building', 'BuildingController');
-
-Route::resource('tenants', 'TenantsController')->except('create','destroy','show');
+Route::resource('tenants', 'TenantsController')->except('create','destroy','edit','show', 'update');
 route::get('tenants/{id}/create', 'TenantsController@create')->name('tenants.create');
-
-Route::resource('departaments', 'DepatamentsController')->except('create', 'edit');
+Route::resource('departaments', 'DepatamentsController')->except('create','destroy','edit', 'update');
 route::get('departaments/{id}/create', 'DepatamentsController@create')->name('departaments.create');
-
-Route::resource('bills', 'BillsController')->except('show');
-Route::get('bills/tenants/{id}', 'BillsController@tenants')->name('bills.tenants');
-Route::get('bills/tenants/sendEmail/{id}', 'BillsController@sendEmail')->name('sendEmail');
-Route::get('bills/tenants/paymentReport/{id}', 'BillsController@paymentReport')->name('paymentReport');
-Route::get('bills/tenants/downloadPDF/{id}', 'BillsController@downloadPDF')->name('downloadPDF');
-Route::post('bills/tenants/paid/{id}', 'BillsController@paid')->name('bills.paid');
-Route::post('bills/tenants/notPayed/{id}', 'BillsController@notPayed')->name('bills.notPayed');
-
-
+Route::resource('bills', 'BillsController')->except('show','destroy','edit', 'update');
 Route::resource('vouchers', 'VoucherController')->except('show','destroy','edit', 'update');
-
-Route::resource('tenantpayments', 'TenantPaymentsController')->except('show', 'create', 'store');
-Route::post('tenantpayments/storeDepartament', 'TenantPaymentsController@storeDepartament')->name('tenantpayments.storeDepartament');
-Route::get('tenantpayments/wallet', 'TenantPaymentsController@wallet')->name('tenantpayments.wallet');
-Route::post('tenantpayments/chooseBills', 'TenantPaymentsController@chooseBills')->name('tenantpayments.chooseBills');
-Route::post('tenantpayments/generatePDF', 'TenantPaymentsController@generatePDF')->name('tenantpayments.generatePDF');
-
-route::resource('withdrawals', 'WithdrawalsController')->except('create','show','destroy','edit', 'update');
-route::post('validationWithdrawals/{id}', 'WithdrawalsController@validationWithdrawals')->name('validationWithdrawals');
-
-
-
-Route::get('/profile', 'UserController@profile')->name('profile');
-
-Route::get('/packages', 'paymentsController@payment')->name('packages');
-
-Route::resource('contacts', 'ContactsController')->except('show');
-
-
-// Route::get('/contacts', 'ContactsController@contact')->name('contacts'); wallet
-
 
 
 

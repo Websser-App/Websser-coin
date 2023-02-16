@@ -8,10 +8,6 @@ use Illuminate\Http\Request;
 
 class VoucherController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +15,7 @@ class VoucherController extends Controller
      */
     public function index()
     {
-        $vouchers = Voucher::where('user_id', auth()->user()->id)->get();
+        $vouchers = Voucher::all();
         return view('bills.vouchers.index')->with('vouchers', $vouchers);
 
     }
@@ -31,7 +27,7 @@ class VoucherController extends Controller
      */
     public function create()
     {
-        $bills = Bills::where('user_id', auth()->user()->id)->get();
+        $bills = Bills::all();
         return view('bills.vouchers.create')->with('bills', $bills);
     }
 
@@ -45,12 +41,11 @@ class VoucherController extends Controller
     {
         try {
             $this->validate($request, [
-                'user_id' => 'required',
+                
                 'bills_id' => 'required',
                 'voucher' => 'required',
             ]);
             $vouchers = new Voucher();
-            $vouchers->user_id = $request->user_id;
             $vouchers->bills_id = $request->bills_id;
             $voucher = file_get_contents($request->file('voucher'));
             $voucher = base64_encode($voucher);
